@@ -19,7 +19,7 @@ This app is for three types of users:
 3. PERFORMED - For Theatrical Artists and Perfomers, so that they can record all shows they have performed in by Role, Location, Date and include Notes (and Lines).
 
 ### UI Flow
-![UI Flow handwritten draft]()
+![UI Flow handwritten draft](images/node-capstone-user-flow.jpg)
 Login/Create an Account Page (demo account) -> Create Login information -> User Account Dashboard (Any entries populate here) --> Add Entry | Delete Entry (if entry exists) | Edit Entry |||| View All | View Performer Page | View Seen Shows | View Read (exists at bottom of other pages) -> Logout Button
 ### Wireframe _main
 ![Wireframe _Main]()
