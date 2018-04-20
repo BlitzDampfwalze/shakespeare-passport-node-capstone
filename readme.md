@@ -1,6 +1,7 @@
 ## "Shakespeare Passport" | Thinkful Node Capstone
 The Shakespeare Passport app is designed for Theatrical Performers, Theatre Goers, and Theatre enthusiast alike. It allows a User to compile a list of plays by SEEN, PERFORMED, and READ tracking date and location.
 
+basic structure (https://github.com/mariusbanea/not-just-luck-thinkful-full-stack-capstone)
 ## Screenshots
 
 Home Page View #1 | Home Page View #2
@@ -19,7 +20,7 @@ This app is for three types of users:
 3. PERFORMED - For Theatrical Artists and Perfomers, so that they can record all shows they have performed in by Role, Location, Date and include Notes (and Lines).
 
 ### UI Flow
-![UI Flow handwritten draft](https://github.com/KatiLong/node-capstone/blob/master/images/node-capstone-user-flow.jpg)
+![UI Flow handwritten draft](https://github.com/KatiLong/node-capstone/blob/master/github-images/node-capstone-user-flow.jpg)
 Login/Create an Account Page (demo account) -> Create Login information -> User Account Dashboard (Any entries populate here) --> Add Entry | Delete Entry (if entry exists) | Edit Entry |||| View All | View Performer Page | View Seen Shows | View Read (exists at bottom of other pages) -> Logout Button
 ### Wireframe _main
 ![Wireframe _Main]()
