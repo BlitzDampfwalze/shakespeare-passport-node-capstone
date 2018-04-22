@@ -89,6 +89,19 @@ input {
     width: 100%;
 }
 
+.bottom-button {
+    width: 100%;
+    margin: 30px auto;
+}
+
+.login-button {
+    background-color: #66b8ff;
+    padding: 8px 18px;
+    border-radius: 8px;
+    color: whitesmoke;
+    width: 25%;
+}
+
 #flag-shakes-logo {
     display: inline-block;
     max-width: 200px;
