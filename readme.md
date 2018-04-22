@@ -23,7 +23,7 @@ This app is for three types of users:
 ![UI Flow handwritten draft](https://github.com/KatiLong/node-capstone/blob/master/github-images/node-capstone-user-flow.jpg)
 Login/Create an Account Page (demo account) -> Create Login information -> User Account Dashboard (Any entries populate here) --> Add Entry | Delete Entry (if entry exists) | Edit Entry |||| View All | View Performer Page | View Seen Shows | View Read (exists at bottom of other pages) -> Logout Button
 ### Wireframe _main
-![Wireframe _Main]()
+![Wireframe _Main](https://github.com/KatiLong/node-capstone/blob/master/github-images/wireframe-v1.jpg)
 
 ## Working Prototype
 You can access a working prototype of the app here: https://shakespeare-passport.herokuapp.com/
