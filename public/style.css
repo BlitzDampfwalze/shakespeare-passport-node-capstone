@@ -27,7 +27,7 @@ header {
 
 #form-container {
     width: 100%;
-    max-width: 1080px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -37,6 +37,7 @@ header {
     width: 58%;
     text-align: left;
     padding: 0 20px 0 0;
+    vertical-align: middle;
 }
 
 #form-text p {
@@ -47,7 +48,8 @@ h3 {
     font-size: 4rem;
 }
 
-form {
+.sign-up-form {
+    vertical-align: middle;
     font-weight: 600;
     display: inline-block;
     margin: 0 auto;
@@ -60,23 +62,25 @@ form {
     padding: 20px 0;
 }
 
-legend {
+.sign-up-form legend {
     font-size: 36px;
     margin: 20px auto;
     padding: 10px;
+    border-bottom: #0E2E45 solid 1px;
+    width: 85%;
 }
 
-fieldset {
+.sign-up-form fieldset {
     border: none;
     padding: 0 2rem;
 }
 
-fieldset p {
+.sign-up-form fieldset p {
     margin: 10px auto 30px;
     text-align: left;
 }
 
-input {
+.sign-up-form input {
     border: #0E2E45 1px solid;
     width: 100%;
 }
@@ -91,7 +95,10 @@ input {
 
 .bottom-button {
     width: 100%;
-    margin: 30px auto;
+    border-top: whitesmoke solid 1px;
+    margin: 50px auto 30px;
+    max-width: 1000px;
+    padding: 50px 0 0;
 }
 
 .login-button {
@@ -105,8 +112,11 @@ input {
 #flag-shakes-logo {
     display: inline-block;
     max-width: 200px;
+    vertical-align: middle;
 }
 
 footer p {
     display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase;
 }
