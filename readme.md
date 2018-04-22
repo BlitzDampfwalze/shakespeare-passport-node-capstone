@@ -34,7 +34,7 @@ The app's functionality includes:
 
 ## Technology
 * FRONTEND: HTML5 | CSS3 | JavaScript ES6 | jQuery
-* BACKEND: Node.js | Express.js | Mocha | Chai | RESTful API Endpoints
+* BACKEND: Node.js | Express.js | Mocha | Chai | RESTful API Endpoints | MongoDB | Mongoose
 
 * The app uses AJAX JSON calls to the <a href="https://maps.googleapis.com/maps/api">Google Maps</a> Open Platform API, including the Places Library, to return an interactive map to search for Museums in a given area with clickable icons, which return Place Details for each museum result.
 

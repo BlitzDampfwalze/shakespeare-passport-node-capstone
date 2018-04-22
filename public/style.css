@@ -2,7 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css?family=Caudex|Puritan');
 
-* {}
+* {
+    box-sizing: border-box;
+}
 
 body {
     background-color: #0E2E45;
@@ -18,15 +20,43 @@ h1 {
     text-transform: uppercase;
 }
 
+header {
+    margin: 30px 0;
+}
+
 form {
     margin: 0 auto;
     background-color: #FFFF;
     color: #0E2E45;
-    max-width: 400px;
+    max-width: 500px;
     height: 20rem;
+    border-radius: 8px;
+    font-size: 24px;
+    padding: 20px 0;
+}
+
+legend {
+    font-size: 36px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+fieldset {
+    border: none;
+}
+
+fieldset p {
+    margin: 25px auto;
+    text-align: left;
+}
+
+input {
+    border: #0E2E45 1px solid;
 }
 
 #flag-shakes-logo {
     display: inline;
     max-width: 200px;
 }
+
+fieldset {}
