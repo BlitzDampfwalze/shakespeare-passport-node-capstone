@@ -26,7 +26,7 @@ Login/Create an Account Page (demo account) -> Create Login information -> User 
 ![Wireframe _Main]()
 
 ## Working Prototype
-You can access a working prototype of the app here: [https://katilong.github.io/](https://katilong.github.io/)
+You can access a working prototype of the app here: https://shakespeare-passport.herokuapp.com/
 
 ## Functionality
 The app's functionality includes:
