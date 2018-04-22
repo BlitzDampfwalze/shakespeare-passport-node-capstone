@@ -18,7 +18,7 @@ body {
 h1 {
     font-family: 'Caudex';
     text-transform: uppercase;
-    font-size: 4rem;
+    font-size: 5rem;
 }
 
 header {
@@ -27,26 +27,34 @@ header {
 
 #form-container {
     width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
 }
 
 #form-text {
     display: inline-block;
-    font-size: 24px;
+    font-size: 40px;
     width: 58%;
+    text-align: left;
+    padding: 0 20px 0 0;
+}
+
+#form-text p {
+    margin-top: 25px;
 }
 
 h3 {
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 form {
+    font-weight: 600;
     display: inline-block;
     margin: 0 auto;
     background-color: #FFFF;
     color: #0E2E45;
     width: 30%;
     max-width: 500px;
-    height: 20rem;
     border-radius: 8px;
     font-size: 24px;
     padding: 20px 0;
@@ -64,12 +72,21 @@ fieldset {
 }
 
 fieldset p {
-    margin: 10px auto;
+    margin: 10px auto 30px;
     text-align: left;
 }
 
 input {
     border: #0E2E45 1px solid;
+    width: 100%;
+}
+
+.submit-button {
+    background-color: #66b8ff;
+    padding: 8px 18px;
+    border-radius: 8px;
+    color: whitesmoke;
+    width: 100%;
 }
 
 #flag-shakes-logo {
