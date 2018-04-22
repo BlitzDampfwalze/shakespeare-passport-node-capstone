@@ -6,29 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shakespeare Passport Node Capstone</title>
     <link rel="stylesheet" href="style.css">
-    <!--    <link rel="stylesheet" href="reset.css">-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+    <link rel="stylesheet" href="reset.css">
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">-->
 </head>
 
 <body>
     <header role="banner">
         <h1>Shakespeare Passport</h1>
-        <h3>All the World's a Stage, so help you're memory out. Track all the plays you've Read, Seen, or Performed in.</h3>
     </header>
     <main role="main">
-        <form action="#">
-            <legend>Login</legend>
-            <fieldset>
-                <p>
-                    <label for="username">Username</label>
-                    <input type="email" id="username" placeholder="OtisThePug@hotmail.com">
-                </p>
-                <p>
-                    <label for="password">Password</label>
-                    <input type="email" id="password" placeholder="Lt_Fish1902">
-                </p>
-            </fieldset>
-        </form>
+        <div id="form-container">
+            <section id="form-text">
+                <h3>All the World's a Stage</h3>
+                <p>so help you're memory out. Track all the plays you've Read, Seen, or Performed in.</p>
+            </section>
+            <form action="#">
+                <legend>Login</legend>
+                <fieldset>
+                    <p>
+                        <label for="username">Username</label>
+                        <input type="email" id="username" placeholder="OtisThePug@hotmail.com">
+                    </p>
+                    <p>
+                        <label for="password">Password</label>
+                        <input type="email" id="password" placeholder="Lt_Fish1902">
+                    </p>
+                </fieldset>
+            </form>
+        </div>
     </main>
     <footer>
         <img src="images/flagstaff-shakes-logo.png" alt="Flagstaff Shakespeare Festival logo graphic with fancy Shakespeare 'S'" id="flag-shakes-logo">
