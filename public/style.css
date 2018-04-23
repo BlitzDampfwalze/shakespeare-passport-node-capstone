@@ -19,7 +19,7 @@ body {
 h1 {
     font-family: 'IM Fell French Canon SC', serif;
     /* text-transform: uppercase; */
-    font-size: 6rem;
+    font-size: 4rem;
     margin: 3rem;
 }
 
@@ -39,12 +39,12 @@ header {
 }
 
 #form-text {
-    display: inline-block;
-    font-size: 40px;
-    width: 64%;
-    text-align: left;
-    padding: 0 20px 0 0;
     vertical-align: middle;
+    font-size: 32px;
+    width: 90%;
+    text-align: center;
+    padding: 0 20px 10px 0;
+    margin: 0 auto;
 }
 
 #form-text p {
@@ -53,18 +53,18 @@ header {
 
 h3 {
     font-family: 'Rock Salt';
-    font-size: 3rem;
-    line-height: 4.5rem;
+    font-size: 2.8rem;
+    line-height: 3.5rem;
 }
 
 .sign-up-form {
+    width: 90%;
+
     vertical-align: middle;
     font-weight: 600;
-    display: inline-block;
     margin: 0 auto;
     background-color: #FFFF;
     color: #0E2E45;
-    width: 35%;
     max-width: 500px;
     border-radius: 8px;
     font-size: 24px;
@@ -88,6 +88,7 @@ h3 {
 .sign-up-form fieldset p {
     margin: 10px auto 30px;
     text-align: left;
+
 }
 
 .sign-up-form input {
@@ -133,4 +134,67 @@ footer p {
     display: inline-block;
     vertical-align: middle;
     text-transform: uppercase;
+}
+
+
+/*/////////////Above this line, mobile styles. Below this line, desktop styles.///////////////*/
+
+/*iPhone portrait*/
+
+@media only screen and (min-width: 320px) {
+    body {
+        /*        color: purple;*/
+    }
+}
+
+/*iPhone landscape*/
+
+@media only screen and (min-width: 480px) {
+
+    body {
+        /*        color: green;*/
+    }
+}
+
+/*ipad potrait*/
+
+@media only screen and (min-width: 768px) {
+
+    body {
+        /*        color: red;*/
+    }
+    h1 {
+        font-size: 5rem;
+    }
+    #form-text {
+        margin: 0 auto 20px;
+    }
+
+}
+
+/*ipad lanscape / small laptop*/
+
+@media only screen and (min-width: 1024px) {
+
+    body {
+        /*        color: blue;*/
+    }
+    h1 {
+        font-size: 6rem;
+    }
+    h3 {
+        font-size: 3rem;
+        line-height: 4.5rem;
+    }
+    #form-text {
+        display: inline-block;
+        font-size: 40px;
+        width: 64%;
+        text-align: left;
+        padding: 0 20px 0 0;
+    }
+    .sign-up-form {
+        display: inline-block;
+        width: 35%;
+    }
 }
