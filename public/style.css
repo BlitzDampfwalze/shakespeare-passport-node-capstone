@@ -1,6 +1,7 @@
 /*Google Fonts*/
 
-@import url('https://fonts.googleapis.com/css?family=Caudex|Puritan');
+@import url('https://fonts.googleapis.com/css?family=Rock+Salt|Caudex|Puritan');
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC');
 
 * {
     box-sizing: border-box;
@@ -16,8 +17,8 @@ body {
 }
 
 h1 {
-    font-family: 'Caudex';
-    text-transform: uppercase;
+    font-family: 'IM Fell French Canon SC', serif;
+    /*    text-transform: uppercase;*/
     font-size: 5rem;
 }
 
@@ -47,6 +48,7 @@ header {
 }
 
 h3 {
+    font-family: 'Rock Salt';
     font-size: 4rem;
 }
 
