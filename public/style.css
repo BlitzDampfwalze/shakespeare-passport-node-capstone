@@ -124,6 +124,43 @@ h3 {
     width: 25%;
 }
 
+.login-form {
+    width: 90%;
+    font-weight: 600;
+    margin: 40px auto;
+    background-color: #FFFF;
+    color: #0E2E45;
+    max-width: 500px;
+    border-radius: 8px;
+    font-size: 24px;
+    padding: 20px 0;
+}
+
+.login-form legend {
+    font-size: 36px;
+    margin: 10px auto;
+    padding: 10px;
+    border-bottom: #0E2E45 solid 1px;
+    width: 85%;
+}
+
+.login-form fieldset {
+    border: none;
+    padding: 0 2rem;
+    line-height: 34px;
+}
+
+.login-form fieldset p {
+    margin: 10px auto 30px;
+    text-align: left;
+
+}
+
+.login-form input {
+    border: #0E2E45 1px solid;
+    width: 100%;
+}
+
 #flag-shakes-logo {
     display: inline-block;
     max-width: 200px;
