@@ -204,6 +204,13 @@ footer p {
     text-align: right;
 }
 
+.user-list {
+    width: 95%;
+    margin: 2.5%;
+    border: 1px whitesmoke solid;
+    padding: 2%;
+    min-height: 400px;
+}
 
 /*/////////////Above this line, mobile styles. Below this line, desktop styles.///////////////*/
 
