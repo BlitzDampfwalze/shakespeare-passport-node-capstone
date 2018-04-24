@@ -173,6 +173,39 @@ footer p {
     text-transform: uppercase;
 }
 
+.navbar {
+    width: 100%;
+    background: #00000047 url(images/globe-theatre.jpg) no-repeat center center;
+    background-size: 100% auto;
+    background-blend-mode: multiply;
+    line-height: 32px;
+    font-size: 0;
+}
+
+#nav-header {
+    text-align: left;
+    width: 53%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 28px;
+}
+
+#nav-list {
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 24px;
+}
+
+#nav-list ul {
+    list-style-type: none;
+    text-align: right;
+}
+
+.navbar ul li {
+    /*    display: inline;*/
+}
+
 
 /*/////////////Above this line, mobile styles. Below this line, desktop styles.///////////////*/
 
@@ -189,7 +222,7 @@ footer p {
 @media only screen and (min-width: 480px) {
 
     body {
-        /*        color: green;*/
+        color: green;
     }
 }
 
@@ -198,7 +231,7 @@ footer p {
 @media only screen and (min-width: 768px) {
 
     body {
-        /*        color: red;*/
+        color: red;
     }
     h1 {
         font-size: 5rem;
@@ -214,7 +247,7 @@ footer p {
 @media only screen and (min-width: 1024px) {
 
     body {
-        /*        color: blue;*/
+        color: blue;
     }
     h1 {
         font-size: 6rem;
