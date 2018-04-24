@@ -183,27 +183,25 @@ footer p {
 }
 
 #nav-header {
+    padding-left: 1.5%;
     text-align: left;
-    width: 53%;
+    width: 51%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 32px;
+}
+
+#nav-list {
+    width: 43%;
+    padding-right: 1.5%;
     display: inline-block;
     vertical-align: top;
     font-size: 28px;
 }
 
-#nav-list {
-    width: 45%;
-    display: inline-block;
-    vertical-align: top;
-    font-size: 24px;
-}
-
 #nav-list ul {
     list-style-type: none;
     text-align: right;
-}
-
-.navbar ul li {
-    /*    display: inline;*/
 }
 
 
@@ -224,6 +222,18 @@ footer p {
     body {
         color: green;
     }
+    .navbar {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    #nav-header {
+        width: 66%;
+        /*        font-size: 40px;*/
+    }
+    #nav-list {
+        width: 34%;
+        /*        font-size: 32px;*/
+    }
 }
 
 /*ipad potrait*/
@@ -239,7 +249,20 @@ footer p {
     #form-text {
         margin: 0 auto 20px;
     }
-
+    .navbar {
+        line-height: 65px;
+    }
+    #nav-header {
+        width: 40%;
+        /*        font-size: 40px;*/
+    }
+    #nav-list {
+        width: 60%;
+        /*        font-size: 32px;*/
+    }
+    .navbar ul li {
+        display: inline;
+    }
 }
 
 /*ipad lanscape / small laptop*/
@@ -247,7 +270,7 @@ footer p {
 @media only screen and (min-width: 1024px) {
 
     body {
-        color: blue;
+        color: aliceblue;
     }
     h1 {
         font-size: 6rem;
@@ -266,5 +289,13 @@ footer p {
     .sign-up-form {
         display: inline-block;
         width: 35%;
+    }
+    #nav-header {
+        /*        width: 39%;*/
+        font-size: 40px;
+    }
+    #nav-list {
+        /*        width: 60%;*/
+        font-size: 32px;
     }
 }
