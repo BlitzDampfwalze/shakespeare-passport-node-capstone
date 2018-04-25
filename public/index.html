@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="navbar">
+    <div class="navbar" style="display: none;">
         <div id="nav-header">
             <h4>Shakespeare Passport</h4>
         </div>
@@ -23,31 +23,31 @@
             </ul>
         </div>
     </div>
-    <header role="banner" style="display: none;">
+    <header role="banner">
         <h1>Shakespeare Passport</h1>
     </header>
     <main role="main">
-        <div id="form-container" style="display: none;">
+        <div id="form-container">
             <div class="gutter">
                 <section id="form-text">
                     <h3>All the World's a Stage</h3>
                     <p>so help your memory out.</p>
                     <p>Track all the plays you've Read, Seen, or Performed in.</p>
                 </section>
-                <form action="#" class="sign-up-form">
+                <form class="sign-up-form">
                     <legend>Sign up</legend>
                     <fieldset>
                         <p>
-                            <label for="name">Name</label>
-                            <input type="name" id="password" placeholder="Peter Piper">
+                            <label for="signUpName">Name</label>
+                            <input type="name" id="signUpName" placeholder="Peter Piper" value="Paul Thompson">
                         </p>
                         <p>
-                            <label for="username">Email</label>
-                            <input type="email" id="username" placeholder="OtisThePug@hotmail.com">
+                            <label for="signUpUsername">Email</label>
+                            <input type="email" id="signUpUsername" placeholder="OtisThePug@hotmail.com" value="paul.thomp@gmail.com">
                         </p>
                         <p>
-                            <label for="password">Password</label>
-                            <input type="email" id="password" placeholder="Lt_Fish1902">
+                            <label for="signUpPassword">Password</label>
+                            <input type="password" id="signUpPassword" placeholder="Lt_Fish1902" value="pass2018">
                         </p>
                         <button type="submit" class="submit-button">Sign In</button>
                     </fieldset>
@@ -59,25 +59,28 @@
             <button type="submit" class="login-button">Login</button>
         </div>
         <section id="login-page" style="display: none;">
-            <form action="#" class="login-form">
+            <form class="login-form">
                 <legend>Login</legend>
                 <fieldset>
                     <p>
-                        <label for="username">Email</label>
-                        <input type="email" id="username" placeholder="OtisThePug@hotmail.com">
+                        <label for="loginUsername">Email</label>
+                        <input type="email" id="loginUsername" placeholder="OtisThePug@hotmail.com" value="paul.thomp@gmail.com">
                     </p>
                     <p>
-                        <label for="password">Password</label>
-                        <input type="email" id="password" placeholder="Lt_Fish1902">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="Lt_Fish1902" value="pass2018">
                     </p>
                     <button type="submit" class="submit-button">Sign In</button>
                     <span>Need to <button>Sign-up</button>?</span>
                 </fieldset>
             </form>
         </section>
-        <section class="user-list">
+
+        <section class="user-list" style="display: none;">
+
             <p>No Entries - add an entry.</p>
         </section>
+
     </main>
 
     <footer>
