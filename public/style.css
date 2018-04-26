@@ -27,6 +27,12 @@ header {
     padding: 1px 0;
 }
 
+button:hover {
+    background-color: aliceblue;
+    color: #0E2E45;
+    cursor: pointer;
+}
+
 .background-div {
     background: #00000047 url(images/globe-theatre.jpg) no-repeat center center;
     background-size: cover;
