@@ -223,6 +223,7 @@ footer p {
     border: 1px whitesmoke solid;
     padding: 2%;
     min-height: 400px;
+    min-height: 70vh;
 }
 
 #nav-list li:hover {
