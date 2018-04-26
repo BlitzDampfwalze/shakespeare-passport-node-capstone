@@ -219,6 +219,12 @@ footer p {
     min-height: 400px;
 }
 
+#nav-list li:hover {
+    background-color: whitesmoke;
+    color: black;
+    cursor: pointer;
+}
+
 /*/////////////Above this line, mobile styles. Below this line, desktop styles.///////////////*/
 
 /*iPhone portrait*/
@@ -328,7 +334,7 @@ footer p {
     }
     #nav-list {
         /*        width: 60%;*/
-        font-size: 32px;
+        font-size: 28px;
     }
     #form-container {
         /*        margin: 0 0 -250px;*/
