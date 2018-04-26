@@ -19,47 +19,49 @@ body {
 h1 {
     font-family: 'IM Fell French Canon SC', serif;
     /* text-transform: uppercase; */
-    font-size: 4rem;
-    margin: 3rem;
+    font-size: 2.9rem;
+    margin: 2.5rem .5rem;
 }
 
 header {
-    background: #00000047 url(images/globe-theatre.jpg) no-repeat center center;
-    background-size: 100% auto;
     padding: 1px 0;
+}
+
+.background-div {
+    background: #00000047 url(images/globe-theatre.jpg) no-repeat center center;
+    background-size: cover;
     background-blend-mode: multiply;
-    height: 50vh;
+    height: 28vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 #form-container {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /*    -ms-transform: translate(-50%, -50%);*/
     width: 100%;
     max-width: 1000px;
-    padding: 35px 0 0;
-    margin: 120px auto 0;
+    /*    padding: 35px 0 0;*/
+    margin: 0 auto;
 }
 
 #form-text {
     vertical-align: middle;
-    font-size: 32px;
+    font-size: 24px;
     width: 90%;
     text-align: center;
-    padding: 0 20px 10px 0;
     margin: 0 auto;
 }
 
 #form-text p {
-    margin-top: 25px;
+    margin: 25px 0 15px;
 }
 
 h3 {
     font-family: 'Rock Salt';
-    font-size: 2.8rem;
-    line-height: 3.5rem;
+    font-size: 2rem;
+    line-height: 3rem;
 }
 
 .sign-up-form {
@@ -246,6 +248,16 @@ footer p {
         width: 34%;
         /*        font-size: 32px;*/
     }
+    .background-div {
+        height: 35vh;
+    }
+    h1 {
+        font-size: 2.9rem;
+        margin: 2.5rem .5rem;
+    }
+    .sign-up-form {
+        margin-top: 10%;
+    }
 }
 
 /*ipad potrait*/
@@ -257,6 +269,10 @@ footer p {
     }
     h1 {
         font-size: 5rem;
+    }
+    h3 {
+        font-size: 2.8rem;
+        line-height: 3.5rem;
     }
     #form-text {
         margin: 0 auto 20px;
@@ -274,6 +290,9 @@ footer p {
     }
     .navbar ul li {
         display: inline;
+    }
+    .background-div {
+        height: 42vh;
     }
 }
 
@@ -298,6 +317,7 @@ footer p {
         text-align: left;
         padding: 0 20px 0 0;
     }
+    #form-text p {}
     .sign-up-form {
         display: inline-block;
         width: 35%;
@@ -311,6 +331,9 @@ footer p {
         font-size: 32px;
     }
     #form-container {
-        margin: 0 0 -250px;
+        /*        margin: 0 0 -250px;*/
+    }
+    .background-div {
+        height: 50vh;
     }
 }
