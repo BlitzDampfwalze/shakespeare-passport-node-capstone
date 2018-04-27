@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <nav class="navbar">
+    <nav class="navbar" style="display: none;">
         <div id="nav-header">
             <h4>Shakespeare Passport</h4>
         </div>
@@ -21,18 +21,20 @@
             </ul>
         </div>
     </nav>
-    <div class="background-div" style="display: none;"></div>
-    <header role="banner" style="display: none;">
+
+    <div class="background-div"></div>
+
+    <header role="banner">
         <h1>Shakespeare Passport</h1>
     </header>
 
     <main role="main">
-        <div id="form-container" style="display: none;">
-            <section id="form-text">
+        <section id="form-container">
+            <div id="form-text">
                 <h3>All the World's a Stage</h3>
                 <p>so help your memory out.</p>
                 <p>Track all the plays you've Read, Seen, or Performed in.</p>
-            </section>
+            </div>
             <form class="sign-up-form">
                 <legend>Sign up</legend>
                 <fieldset>
@@ -52,10 +54,10 @@
                 </fieldset>
             </form>
 
-        </div>
+        </section>
 
-        <section id="login-page">
-            <form class="login-form" style="display: none;">
+        <section id="login-page" style="display: none;">
+            <form class="login-form">
                 <legend>Login</legend>
                 <fieldset>
                     <p>
@@ -71,8 +73,7 @@
                 </fieldset>
             </form>
         </section>
-
-        <section class="user-list">
+        <section id="user-dashboard" style="display: none;">
             <div class="entry-commands">
                 <ul>
                     <li>Add Entry</li>
@@ -80,8 +81,11 @@
                     <li>Delete Entry</li>
                 </ul>
             </div>
-            <p>No Entries - add an entry.</p>
+            <div class="user-list">
+                <p>No Entries - add an entry.</p>
+            </div>
         </section>
+
 
     </main>
     <footer>

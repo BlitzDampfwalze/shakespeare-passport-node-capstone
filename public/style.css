@@ -20,7 +20,7 @@ h1 {
     font-family: 'IM Fell French Canon SC', serif;
     /* text-transform: uppercase; */
     font-size: 2.9rem;
-    margin: 2.5rem .5rem;
+    margin: 1.5rem .1rem;
 }
 
 header {
@@ -200,7 +200,7 @@ footer p {
     text-align: left;
     width: 51%;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
     font-size: 24px;
 }
 
@@ -208,7 +208,7 @@ footer p {
     width: 43%;
     padding-right: 1.5%;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
     font-size: 22px;
 }
 
@@ -228,6 +228,7 @@ footer p {
     padding: 2%;
     min-height: 400px;
     min-height: 70vh;
+    border-radius: 5px;
 }
 
 #nav-list li:hover {
@@ -238,17 +239,26 @@ footer p {
 }
 
 .entry-commands {
-    float: right;
     text-align: left;
-    width: 15%;
-    background: rgba(255, 255, 255, 0.7);
+    /*    width: 15%;*/
+    background: rgba(245, 245, 245, .9);
     color: black;
     border-radius: 5px;
     padding: 7px;
+    margin: 2.5%;
+    /*    display: inline-block;*/
 }
 
 .entry-commands ul {
     list-style-type: none;
+}
+
+.entry-commands li {
+    display: inline-block;
+}
+
+#user-dashboard {
+    width: 100%;
 }
 
 /*/////////////Above this line, mobile styles. Below this line, desktop styles.///////////////*/
@@ -285,10 +295,30 @@ footer p {
     }
     h1 {
         font-size: 2.9rem;
-        margin: 2.5rem .5rem;
+        margin: 1.5rem .5rem;
     }
     .sign-up-form {
         margin-top: 10%;
+    }
+    #form-text {
+        font-size: 18px;
+    }
+    .sign-up-form {
+        margin-top: 20%;
+    }
+}
+
+/*Android Resolution (Lollipop) 640px*/
+
+@media only screen and (min-width: 640px) {
+    #form-text {
+        font-size: 22px;
+    }
+    .background-div {
+        height: 33vh;
+    }
+    h1 {
+        margin: 2.5rem .5rem;
     }
 }
 
@@ -300,14 +330,15 @@ footer p {
         color: red;
     }
     h1 {
-        font-size: 5rem;
+        font-size: 4.5rem;
     }
     h3 {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
         line-height: 3.5rem;
     }
     #form-text {
         margin: 0 auto 20px;
+        font-size: 24px;
     }
     .navbar {
         line-height: 65px;
@@ -324,7 +355,7 @@ footer p {
         display: inline;
     }
     .background-div {
-        height: 42vh;
+        height: 39vh;
     }
 }
 
@@ -337,6 +368,7 @@ footer p {
     }
     h1 {
         font-size: 6rem;
+        margin: 2.5rem .5rem;
     }
     h3 {
         font-size: 3rem;
