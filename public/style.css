@@ -217,6 +217,10 @@ footer p {
     text-align: right;
 }
 
+#nav-list li {
+    padding: 7px;
+}
+
 .user-list {
     width: 95%;
     margin: 2.5%;
@@ -230,6 +234,7 @@ footer p {
     background-color: whitesmoke;
     color: black;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .entry-commands {
