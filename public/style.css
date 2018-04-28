@@ -365,11 +365,12 @@ footer p {
     }
     h1 {
         font-size: 3rem;
-        margin: 3rem 1rem;
+        margin: 2.5rem 1rem;
     }
     h3 {
-        font-size: 2rem;
+        font-size: 2.3rem;
         line-height: 3rem;
+        text-align: center;
     }
     .form-text-section {
         margin: .5%;
