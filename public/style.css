@@ -56,10 +56,15 @@ button:hover {
     z-index: -1;
 }
 
-#form-container {
+#signup-home-page {
     width: 100%;
     margin: 0 auto;
     max-width: 1100px;
+}
+
+#login-p {
+    font-size: 1.3rem;
+    text-align: center;
 }
 
 #form-text {
@@ -122,7 +127,7 @@ button:hover {
     border-radius: 8px;
     color: whitesmoke;
     width: 100%;
-    margin: 5% 0;
+    /*    margin: 5% 0;*/
 }
 
 .bottom-button {
@@ -293,11 +298,9 @@ footer p {
     }
     #nav-header {
         width: 66%;
-        /*        font-size: 40px;*/
     }
     #nav-list {
         width: 34%;
-        /*        font-size: 32px;*/
     }
     .background-div {
         height: 30vh;
@@ -313,17 +316,9 @@ footer p {
     html {
         font-size: 22px;
     }
-    #form-text {
-        /*        font-size: 22px;*/
-    }
     .background-div {
         height: 33vh;
     }
-    /*
-    h1 {
-        margin: 2.5rem .5rem;
-    }
-*/
     .sign-up-form {
         margin-top: 10%;
     }
@@ -370,7 +365,6 @@ footer p {
     h3 {
         font-size: 2.3rem;
         line-height: 3rem;
-        text-align: center;
     }
     .form-text-section {
         margin: .5%;
@@ -393,14 +387,18 @@ footer p {
         width: 60%;
         font-size: 28px;
     }
-    #form-container {
+    #signup-home-page {
         margin-bottom: 50px;
         padding: 0 50px;
     }
     .background-div {
-        height: 50vh;
+        height: 53vh;
     }
     .sign-up-form {
         margin-top: 0;
+    }
+    #login-p {
+        font-size: 1rem;
+        text-align: center;
     }
 }
