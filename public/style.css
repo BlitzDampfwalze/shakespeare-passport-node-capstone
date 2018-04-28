@@ -7,20 +7,31 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     background-color: #0E2E45;
     color: #FFFFFF;
     text-align: center;
     font-family: 'Puritan';
     font-weight: normal;
-    font-size: 1.1875rem;
+    /*    font-size: 1.1875rem;*/
 }
 
 h1 {
     font-family: 'IM Fell French Canon SC', serif;
     /* text-transform: uppercase; */
-    font-size: 2.9rem;
-    margin: 1.5rem .1rem;
+    font-size: 2.2rem;
+    margin: 1rem .5rem;
+
+}
+
+h3 {
+    font-family: 'Rock Salt';
+    font-size: 1.25rem;
+    line-height: 1.75rem;
 }
 
 header {
@@ -37,7 +48,7 @@ button:hover {
     background: #00000047 url(images/globe-theatre.jpg) no-repeat center center;
     background-size: cover;
     background-blend-mode: multiply;
-    height: 28vh;
+    height: 27vh;
     width: 100%;
     position: absolute;
     top: 0;
@@ -48,13 +59,12 @@ button:hover {
 #form-container {
     width: 100%;
     max-width: 1000px;
-    /*    padding: 35px 0 0;*/
     margin: 0 auto;
 }
 
 #form-text {
+    font-size: 1.3rem;
     vertical-align: middle;
-    font-size: 18px;
     width: 90%;
     text-align: center;
     margin: 0 auto;
@@ -64,14 +74,8 @@ button:hover {
     margin: 25px 0 15px;
 }
 
-h3 {
-
-    font-family: 'Rock Salt';
-    font-size: 1.75rem;
-    line-height: 2.5rem;
-}
-
 .sign-up-form {
+
     width: 90%;
     vertical-align: middle;
     font-weight: 600;
@@ -80,12 +84,11 @@ h3 {
     color: #0E2E45;
     max-width: 500px;
     border-radius: 8px;
-    font-size: 24px;
+    font-size: 1.3rem;
     padding: 20px 0;
 }
 
 .sign-up-form legend {
-    font-size: 36px;
     margin: 10px auto;
     padding: 10px;
     border-bottom: #0E2E45 solid 1px;
@@ -274,13 +277,14 @@ footer p {
 /*iPhone landscape*/
 
 @media only screen and (min-width: 480px) {
-
     body {
         color: green;
     }
+    html {
+        font-size: 18px;
+    }
     .navbar {
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding: 15px auto;
     }
     #nav-header {
         width: 66%;
@@ -291,34 +295,41 @@ footer p {
         /*        font-size: 32px;*/
     }
     .background-div {
-        height: 35vh;
-    }
-    h1 {
-        font-size: 2.9rem;
-        margin: 1.5rem .5rem;
+        height: 33vh;
     }
     .sign-up-form {
         margin-top: 20%;
+    }
+    /*
+    h1 {
+        font-size: 2.9rem;
+        margin: 1.5rem .5rem;
     }
     h3 {
         margin-bottom: 0px;
         font-size: 2rem;
         line-height: 3rem;
     }
+*/
 }
 
 /*Android Resolution (Lollipop) 640px*/
 
 @media only screen and (min-width: 640px) {
-    #form-text {
+    html {
         font-size: 22px;
+    }
+    #form-text {
+        /*        font-size: 22px;*/
     }
     .background-div {
         height: 33vh;
     }
+    /*
     h1 {
         margin: 2.5rem .5rem;
     }
+*/
     .sign-up-form {
         margin-top: 10%;
     }
@@ -331,6 +342,10 @@ footer p {
     body {
         color: red;
     }
+    html {
+        font-size: 24px;
+    }
+    /*
     h1 {
         font-size: 4.5rem;
     }
@@ -338,29 +353,32 @@ footer p {
         font-size: 2.5rem;
         line-height: 3.5rem;
     }
+*/
     #form-text {
         margin: 0 auto 20px;
-        font-size: 24px;
+        /*        font-size: 24px;*/
     }
     .navbar {
         line-height: 65px;
     }
+/*
     #nav-header {
         width: 40%;
-        /*        font-size: 40px;*/
+        font-size: 40px;
     }
+
     #nav-list {
         width: 60%;
-        /*        font-size: 32px;*/
+        font-size: 32px;
     }
+*/
+
     .navbar ul li {
         display: inline;
     }
+
     .background-div {
-        height: 39vh;
-    }
-    #form-text {
-        font-size: 24px;
+        height: 37vh;
     }
 
 }
@@ -368,21 +386,26 @@ footer p {
 /*ipad lanscape / small laptop*/
 
 @media only screen and (min-width: 1024px) {
-
     body {
         color: aliceblue;
     }
+    html {
+        font-size: 28px;
+    }
+    /*
     h1 {
         font-size: 6rem;
         margin: 4rem .5rem;
     }
+
     h3 {
         font-size: 3rem;
         line-height: 4.5rem;
     }
+*/
     #form-text {
         display: inline-block;
-        font-size: 40px;
+        /*        font-size: 40px;*/
         width: 64%;
         text-align: left;
         padding: 0 20px 0 0;
@@ -394,11 +417,11 @@ footer p {
     }
     #nav-header {
         /*        width: 39%;*/
-        font-size: 40px;
+        /*        font-size: 40px;*/
     }
     #nav-list {
         /*        width: 60%;*/
-        font-size: 28px;
+        /*        font-size: 28px;*/
     }
     #form-container {
         /*        margin: 0 0 -250px;*/
