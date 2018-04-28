@@ -54,7 +54,7 @@ button:hover {
 
 #form-text {
     vertical-align: middle;
-    font-size: 24px;
+    font-size: 18px;
     width: 90%;
     text-align: center;
     margin: 0 auto;
@@ -65,17 +65,17 @@ button:hover {
 }
 
 h3 {
+
     font-family: 'Rock Salt';
-    font-size: 2rem;
-    line-height: 3rem;
+    font-size: 1.75rem;
+    line-height: 2.5rem;
 }
 
 .sign-up-form {
     width: 90%;
-
     vertical-align: middle;
     font-weight: 600;
-    margin: 0 auto;
+    margin: 10% auto 0;
     background-color: #FFFF;
     color: #0E2E45;
     max-width: 500px;
@@ -298,13 +298,12 @@ footer p {
         margin: 1.5rem .5rem;
     }
     .sign-up-form {
-        margin-top: 10%;
-    }
-    #form-text {
-        font-size: 18px;
-    }
-    .sign-up-form {
         margin-top: 20%;
+    }
+    h3 {
+        margin-bottom: 0px;
+        font-size: 2rem;
+        line-height: 3rem;
     }
 }
 
@@ -319,6 +318,9 @@ footer p {
     }
     h1 {
         margin: 2.5rem .5rem;
+    }
+    .sign-up-form {
+        margin-top: 10%;
     }
 }
 
@@ -357,6 +359,10 @@ footer p {
     .background-div {
         height: 39vh;
     }
+    #form-text {
+        font-size: 24px;
+    }
+
 }
 
 /*ipad lanscape / small laptop*/
@@ -368,7 +374,7 @@ footer p {
     }
     h1 {
         font-size: 6rem;
-        margin: 2.5rem .5rem;
+        margin: 4rem .5rem;
     }
     h3 {
         font-size: 3rem;
@@ -400,5 +406,7 @@ footer p {
     .background-div {
         height: 50vh;
     }
-
+    .sign-up-form {
+        margin-top: 0;
+    }
 }
