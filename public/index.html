@@ -12,7 +12,7 @@
 
 <body>
 
-    <nav class="navbar" style="display: none;">
+    <nav class="navbar">
         <div id="nav-header">
             <h4>Shakespeare Passport</h4>
         </div>
@@ -23,7 +23,7 @@
         </div>
     </nav>
 
-    <section id="homepage-header">
+    <section id="homepage-header" style="display: none;">
         <div class="background-div"></div>
 
         <header role="banner">
@@ -32,7 +32,7 @@
     </section>
 
     <main role="main">
-        <section id="signup-home-page">
+        <section id="signup-home-page" style="display: none;">
             <div id="form-text">
                 <h3>All the World's a Stage</h3>
                 <div class="form-text-section">
@@ -56,7 +56,7 @@
                         <input type="password" id="signUpPassword" placeholder="Lt_Fish1902" value="pass2018">
                     </p>
                     <button type="submit" class="submit-button">Sign In</button>
-                    <p>Have an account? <button id="change-form-login">Login</button></p>
+                    <p id="login-p">Have an account? <button id="change-form-login">Login</button></p>
                 </fieldset>
             </form>
 
@@ -79,16 +79,21 @@
                 </fieldset>
             </form>
         </section>
-        <section id="user-dashboard" style="display: none;">
+        <section id="user-dashboard">
             <div class="entry-commands">
                 <ul>
                     <li>Add Entry</li>
-                    <li>Update Entry</li>
+                    <!--
+                    <li>Update Entry</li> User can access these functions by clicking on entry
                     <li>Delete Entry</li>
+-->
                 </ul>
             </div>
             <div class="user-list">
                 <p>No Entries - add an entry.</p>
+                <div class="entry-div read"></div>
+                <div class="entry-div seen"></div>
+                <div class="entry-div performed"></div>
             </div>
         </section>
     </main>
