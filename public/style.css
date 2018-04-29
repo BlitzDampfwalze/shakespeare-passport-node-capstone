@@ -253,17 +253,25 @@ footer p {
     border-radius: 5px;
 }
 
-.entry-commands {
-    text-align: left;
-    /*    width: 15%;*/
+#add-entry {
+    width: 10%;
+    text-align: center;
     background: rgba(245, 245, 245, .9);
     color: black;
     border-radius: 5px;
     padding: 7px;
     margin: 2.5%;
-    /*    display: inline-block;*/
 }
 
+.type {
+    text-transform: uppercase;
+}
+
+.notes {
+    overflow-wrap: break-word;
+}
+
+/*
 .entry-commands ul {
     list-style-type: none;
 }
@@ -271,9 +279,28 @@ footer p {
 .entry-commands li {
     display: inline-block;
 }
+*/
 
 #user-dashboard {
     width: 100%;
+}
+
+#entry-toolbar {
+    width: 100%;
+    text-align: right;
+}
+
+#entry-views {
+    display: inline-block;
+}
+
+#entry-views p,
+button {
+    display: inline-block;
+}
+
+#add-entry {
+    display: inline-block;
 }
 
 .entry-div {
@@ -282,7 +309,7 @@ footer p {
     color: black;
     border-radius: 5px;
     padding: 7px;
-    margin: 2.5%;
+    margin: 0 auto 1.5%;
     widows: 95%;
 }
 

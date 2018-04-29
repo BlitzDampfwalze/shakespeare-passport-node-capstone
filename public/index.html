@@ -80,17 +80,23 @@
             </form>
         </section>
         <section id="user-dashboard">
-            <div class="entry-commands">
-                <ul>
-                    <li>Add Entry</li>
-                    <!--
-                    <li>Update Entry</li> User can access these functions by clicking on entry
-                    <li>Delete Entry</li>
--->
-                </ul>
+            <div id="entry-toolbar">
+                <div id="entry-views">
+                    <p>View By:</p>
+                    <button id="date-sort">Date</button>
+                    <p> | </p>
+                    <button id="read-sort">Read</button>
+                    <p> | </p>
+                    <button id="seen-sort">Seen</button>
+                    <p> | </p>
+                    <button id="performed-sort">Performed</button>
+                </div>
+                <button id="add-entry">+ Add Entry</button>
             </div>
+
+
             <div class="user-list">
-                <p>No Entries - add an entry.</p>
+                <p id="no-entry" style="display: none;">No Entries - add an entry.</p>
                 <div class="list-wrapper read-list">
                     <div class="entry-div read">
                         <span class="entry-info type">Read</span>
