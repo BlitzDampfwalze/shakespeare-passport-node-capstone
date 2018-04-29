@@ -17,10 +17,9 @@
             <h4>Shakespeare Passport</h4>
         </div>
         <div id="nav-list">
-            <ul>
-                <li>Welcome <span id="username">User</span></li>
-                <li>Logout</li>
-            </ul>
+            <span>Welcome <span id="username">User</span></span>
+            <p> | </p>
+            <span><button type="button" id="logout">Logout</button></span>
         </div>
     </nav>
 
@@ -95,7 +94,6 @@
                 <button id="add-entry">+ Add Entry</button>
             </div>
 
-
             <div class="user-list">
                 <p id="no-entry" style="display: none;">No Entries - add an entry.</p>
                 <div class="list-wrapper read-list">
@@ -113,7 +111,7 @@
                         <span class="entry-info play">
                             <p>Play:</p>
                             <p>Macbeth</p>
-                            <p>by <span class="author">William Shakespeare</span></p>
+                            <span class="author">William Shakespeare</span>
                         </span>
                         <span class="entry-info notes">
                             <p>Notes:</p>
@@ -137,7 +135,7 @@
                         <span class="entry-info play">
                             <p>Play:</p>
                             <p>King Lear</p>
-                            <p>by <span class="author">William Shakespeare</span></p>
+                            <span class="author">William Shakespeare</span>
                         </span>
                         <span class="entry-info theater-co">
                             <p>Company:</p>
@@ -170,7 +168,7 @@
                         <span class="entry-info play">
                             <p>Play:</p>
                             <p>Midsummer Night's Dream</p>
-                            <p>by <span class="author">William Shakespeare</span></p>
+                            <span class="author">William Shakespeare</span>
                         </span>
                         <span class="entry-info role">
                             <p>Role:</p>
@@ -194,7 +192,24 @@
                 </div>
             </div>
         </section>
+        <section id="add-entry-container">
+            <div id="add-entry-wrapper">
+                <form id="add-entry-form">
+                    <legend>Create New Entry</legend>
+                    <fieldset>
+                        <label class="question" for="entry-type">Entry Type:</label>
+                        <select name="entryType" id='entry-type' required>
+                            <option value="0">Read</option>
+                            <option value="1" selected>Seen</option>
+                            <option value="2">Performed</option>
+                        </select>
+                        <button>Add Entry</button>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
     </main>
+
     <footer>
         <img src="images/flagstaff-shakes-logo.png" alt="Flagstaff Shakespeare Festival logo graphic with fancy Shakespeare 'S'" id="flag-shakes-logo">
         <p>Copyright 2018</p>

@@ -38,10 +38,19 @@ header {
     padding: 1px 0;
 }
 
+/*remove default button styling*/
+
+button {
+    background: inherit;
+    border: none;
+    color: inherit;
+}
+
 button:hover {
     background-color: aliceblue;
     color: #0E2E45;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .background-div {
@@ -225,15 +234,12 @@ footer p {
     display: inline-block;
     vertical-align: middle;
     font-size: 22px;
-}
-
-#nav-list ul {
-    list-style-type: none;
     text-align: right;
 }
 
-#nav-list li {
-    padding: 7px;
+#nav-list span,
+p {
+    display: inline-block;
 }
 
 .user-list {
@@ -246,11 +252,13 @@ footer p {
     border-radius: 5px;
 }
 
-#nav-list li:hover {
+#logout {
+    padding: 5px;
+}
+
+button #logout:hover {
     background-color: whitesmoke;
     color: black;
-    cursor: pointer;
-    border-radius: 5px;
 }
 
 #add-entry {
@@ -261,14 +269,6 @@ footer p {
     border-radius: 5px;
     padding: 7px;
     margin: 2.5%;
-}
-
-.type {
-    text-transform: uppercase;
-}
-
-.notes {
-    overflow-wrap: break-word;
 }
 
 /*
@@ -287,7 +287,7 @@ footer p {
 
 #entry-toolbar {
     width: 100%;
-    text-align: right;
+    text-align: center;
 }
 
 #entry-views {
@@ -323,6 +323,11 @@ button {
     margin: 1.5%;
 }
 
+.entry-info p,
+span {
+    display: block;
+}
+
 .edit-entry {
     float: right;
     color: slategray;
@@ -348,6 +353,60 @@ p {
 .view-more:hover {
     color: black;
     cursor: pointer;
+}
+
+.type {
+    width: 10%;
+    text-transform: uppercase;
+}
+
+.date {
+    width: 10%;
+}
+
+.play {
+    width: 22%;
+}
+
+.notes {
+    width: 33%;
+    overflow-wrap: break-word;
+}
+
+/*----------------------------------------------------------*/
+
+/*Add Entry Form*/
+
+#add-entry-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+}
+
+#add-entry-wrapper {
+    width: 100%;
+
+    line-height: 28px;
+    background-color: white;
+    margin: 0 auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#add-entry-form {
+    /*    background-color: whitesmoke;*/
+    color: black;
+    width: 50%;
+    margin: 0 auto;
 }
 
 /*/////////////Above this line, mobile styles. Below this line, desktop styles.///////////////*/
@@ -457,11 +516,11 @@ p {
     }
     #nav-header {
         width: 39%;
-        font-size: 40px;
+        font-size: 1.75rem;
     }
     #nav-list {
         width: 60%;
-        font-size: 28px;
+        font-size: 1.2rem;
     }
     #signup-home-page {
         margin-bottom: 30px;
@@ -479,5 +538,9 @@ p {
     }
     #add-entry {
         width: 10%;
+    }
+    #entry-toolbar {
+        text-align: right;
+        font-size: 1rem;
     }
 }
