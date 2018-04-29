@@ -377,7 +377,7 @@ p {
 
 /*Add Entry Form*/
 
-#add-entry-container {
+#entry-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -387,14 +387,12 @@ p {
     transition: opacity 500ms;
 }
 
-#add-entry-wrapper {
-    width: 100%;
-
+.entry-wrapper {
     line-height: 28px;
     background-color: white;
     margin: 0 auto;
     padding: 30px;
-    width: 90%;
+    width: 100%;
     max-width: 700px;
     position: absolute;
     top: 50%;
@@ -402,11 +400,29 @@ p {
     transform: translate(-50%, -50%);
 }
 
-#add-entry-form {
+.entry-form {
     /*    background-color: whitesmoke;*/
     color: black;
     width: 50%;
     margin: 0 auto;
+}
+
+legend {
+    margin: 10px auto;
+    padding: 10px;
+    border-bottom: #0E2E45 solid 1px;
+    /*    width: 85%;*/
+    font-size: 1.5rem;
+}
+
+
+.close-popup {
+    position: absolute;
+    top: 0px;
+    right: 7px;
+    font-size: 50px;
+    color: dodgerblue;
+    text-decoration: none;
 }
 
 /*/////////////Above this line, mobile styles. Below this line, desktop styles.///////////////*/

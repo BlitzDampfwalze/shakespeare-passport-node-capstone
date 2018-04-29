@@ -192,9 +192,10 @@
                 </div>
             </div>
         </section>
-        <section id="add-entry-container">
-            <div id="add-entry-wrapper">
-                <form id="add-entry-form">
+        <section id="entry-container" style="display: none;">
+            <div class="add-entry entry-wrapper">
+                <a class="close-popup" href="#">&times;</a>
+                <form class="entry-form">
                     <legend>Create New Entry</legend>
                     <fieldset>
                         <label class="question" for="entry-type">Entry Type:</label>
@@ -203,7 +204,18 @@
                             <option value="1" selected>Seen</option>
                             <option value="2">Performed</option>
                         </select>
-                        <button>Add Entry</button>
+
+
+                        <button class="submit-button">Add Entry</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="delete-entry entry-wrapper" style="display: none;">
+                <a class="close-popup" href="#">&times;</a>
+                <form class="entry-form">
+                    <legend>Are you sure you want to Delet this entry?</legend>
+                    <fieldset>
+                        <button>Delete Entry</button>
                     </fieldset>
                 </form>
             </div>
