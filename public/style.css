@@ -238,7 +238,7 @@ footer p {
 
 .user-list {
     width: 95%;
-    margin: 2.5%;
+    margin: 0 2.5% 2.5%;
     border: 1px whitesmoke solid;
     padding: 2%;
     min-height: 400px;
@@ -254,7 +254,7 @@ footer p {
 }
 
 #add-entry {
-    width: 10%;
+    width: 20%;
     text-align: center;
     background: rgba(245, 245, 245, .9);
     color: black;
@@ -299,6 +299,10 @@ button {
     display: inline-block;
 }
 
+#entry-views button {
+    background-color: none;
+}
+
 #add-entry {
     display: inline-block;
 }
@@ -317,6 +321,33 @@ button {
     display: inline-block;
     vertical-align: top;
     margin: 1.5%;
+}
+
+.edit-entry {
+    float: right;
+    color: slategray;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.edit-entry span,
+p {
+    display: inline-block;
+}
+
+.edit-entry span:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.view-more {
+    text-align: center;
+    color: slategray;
+}
+
+.view-more:hover {
+    color: black;
+    cursor: pointer;
 }
 
 /*/////////////Above this line, mobile styles. Below this line, desktop styles.///////////////*/
@@ -445,5 +476,8 @@ button {
     #login-p {
         font-size: 1rem;
         text-align: center;
+    }
+    #add-entry {
+        width: 10%;
     }
 }

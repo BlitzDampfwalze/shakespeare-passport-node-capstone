@@ -18,6 +18,7 @@
         </div>
         <div id="nav-list">
             <ul>
+                <li>Welcome <span id="username">User</span></li>
                 <li>Logout</li>
             </ul>
         </div>
@@ -83,7 +84,7 @@
             <div id="entry-toolbar">
                 <div id="entry-views">
                     <p>View By:</p>
-                    <button id="date-sort">Date</button>
+                    <button type="button" id="date-sort">Date</button>
                     <p> | </p>
                     <button id="read-sort">Read</button>
                     <p> | </p>
@@ -98,6 +99,11 @@
             <div class="user-list">
                 <p id="no-entry" style="display: none;">No Entries - add an entry.</p>
                 <div class="list-wrapper read-list">
+                    <div class="edit-entry">
+                        <span class="update">Update</span>
+                        <p> | </p>
+                        <span class="delete">Delete</span>
+                    </div>
                     <div class="entry-div read">
                         <span class="entry-info type">Read</span>
                         <span class="entry-info date">
@@ -107,20 +113,84 @@
                         <span class="entry-info play">
                             <p>Play:</p>
                             <p>Macbeth</p>
-                            <p>By <span class="author">William Shakespeare</span></p>
+                            <p>by <span class="author">William Shakespeare</span></p>
                         </span>
                         <span class="entry-info notes">
                             <p>Notes:</p>
                             <p>Long and pretty dramatic. Everybody had a messed up childhood.</p>
                         </span>
                     </div>
+                    <div class="view-more" style="display: none;">View More</div>
                 </div>
                 <div class="list-wrapper seen-list">
-                    <div class="entry-div seen"></div>
+                    <div class="entry-div seen">
+                        <div class="edit-entry">
+                            <span class="update">Update</span>
+                            <p> | </p>
+                            <span class="delete">Delete</span>
+                        </div>
+                        <span class="entry-info type">Seen</span>
+                        <span class="entry-info date">
+                            <p>Date:</p>
+                            <p>Jan 2015</p>
+                        </span>
+                        <span class="entry-info play">
+                            <p>Play:</p>
+                            <p>King Lear</p>
+                            <p>by <span class="author">William Shakespeare</span></p>
+                        </span>
+                        <span class="entry-info theater-co">
+                            <p>Company:</p>
+                            <p>Southwest Shakespeare Company</p>
+                        </span>
+                        <span class="entry-info location">
+                            <p>Location:</p>
+                            <p>Mesa Arts Center, Piper Theater</p>
+                            <p>Mesa, AZ, USA</p>
+                        </span>
+                        <span class="entry-info notes">
+                            <p>Notes:</p>
+                            <p>I thought I had problems.</p>
+                        </span>
+                        <div class="view-more">View More</div>
+                    </div>
                 </div>
                 <div class="list-wrapper performed-list">
-                    <div class="entry-div performed"></div>
-                    <div class="entry-div performed"></div>
+                    <div class="entry-div performed">
+                        <div class="edit-entry">
+                            <span class="update">Update</span>
+                            <p> | </p>
+                            <span class="delete">Delete</span>
+                        </div>
+                        <span class="entry-info type">Performed</span>
+                        <span class="entry-info date">
+                            <p>Dates:</p>
+                            <p>Jan 2011 - March 2011</p>
+                        </span>
+                        <span class="entry-info play">
+                            <p>Play:</p>
+                            <p>Midsummer Night's Dream</p>
+                            <p>by <span class="author">William Shakespeare</span></p>
+                        </span>
+                        <span class="entry-info role">
+                            <p>Role:</p>
+                            <p>Puck</p>
+                        </span>
+                        <span class="entry-info theater-co">
+                            <p>Company:</p>
+                            <p>Kingsmen Shakespeare Company</p>
+                        </span>
+                        <span class="entry-info location">
+                            <p>Location:</p>
+                            <p>California Lutheran Universtiy</p>
+                            <p>Thousands Oak, CA, USA</p>
+                        </span>
+                        <span class="entry-info notes">
+                            <p>Notes:</p>
+                            <p>So many lines.</p>
+                        </span>
+                        <div class="view-more">View More</div>
+                    </div>
                 </div>
             </div>
         </section>
