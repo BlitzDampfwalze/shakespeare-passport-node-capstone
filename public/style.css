@@ -276,6 +276,22 @@ footer p {
     width: 100%;
 }
 
+.entry-div {
+    text-align: left;
+    background: rgba(245, 245, 245, .9);
+    color: black;
+    border-radius: 5px;
+    padding: 7px;
+    margin: 2.5%;
+    widows: 95%;
+}
+
+.entry-info {
+    display: inline-block;
+    vertical-align: top;
+    margin: 1.5%;
+}
+
 /*/////////////Above this line, mobile styles. Below this line, desktop styles.///////////////*/
 
 /*iPhone portrait*/
