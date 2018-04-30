@@ -23,7 +23,7 @@
         </div>
     </nav>
 
-    <section id="homepage-header" style="display: none;">
+    <section id="homepage-header">
         <div class="background-div"></div>
 
         <header role="banner">
@@ -32,7 +32,7 @@
     </section>
 
     <main role="main">
-        <section id="signup-home-page" style="display: none;">
+        <section id="signup-home-page">
             <div id="form-text">
                 <h3>All the World's a Stage</h3>
                 <div class="form-text-section">
@@ -62,7 +62,7 @@
 
         </section>
 
-        <section id="login-page" style="display: none;">
+        <section id="login-page">
             <form class="login-form">
                 <legend>Login</legend>
                 <fieldset>
@@ -74,7 +74,7 @@
                         <label for="loginPassword">Password</label>
                         <input type="password" id="loginPassword" placeholder="Lt_Fish1902" value="pass2018">
                     </p>
-                    <button type="submit" class="submit-button">Sign In</button>
+                    <button type="submit" class="submit-button" id="login-button">Sign In</button>
                     <span>Need to <button id="change-form-signup">Sign-up</button>?</span>
                 </fieldset>
             </form>
@@ -91,16 +91,16 @@
                     <p> | </p>
                     <button id="performed-sort">Performed</button>
                 </div>
-                <button id="add-entry">+ Add Entry</button>
+                <button id="add-entry-button">+ Add Entry</button>
             </div>
 
             <div class="user-list">
-                <p id="no-entry" style="display: none;">No Entries - add an entry.</p>
-                <div class="list-wrapper read-list">
-                    <div class="edit-entry">
-                        <span class="update">Update</span>
+                <p id="no-entry">No Entries - add an entry.</p>
+                <div class="entries-container">
+                    <div class="edit-entry-buttons">
+                        <span class="update-select">Edit</span>
                         <p> | </p>
-                        <span class="delete">Delete</span>
+                        <span class="delete-select">Delete</span>
                     </div>
                     <div class="entry-div read">
                         <span class="entry-info type">Read</span>
@@ -118,14 +118,13 @@
                             <p>Long and pretty dramatic. Everybody had a messed up childhood.</p>
                         </span>
                     </div>
-                    <div class="view-more" style="display: none;">View More</div>
                 </div>
-                <div class="list-wrapper seen-list">
+                <div class="entries-container">
                     <div class="entry-div seen">
-                        <div class="edit-entry">
-                            <span class="update">Update</span>
+                        <div class="edit-entry-buttons">
+                            <span class="update-select">Edit</span>
                             <p> | </p>
-                            <span class="delete">Delete</span>
+                            <span class="delete-select">Delete</span>
                         </div>
                         <span class="entry-info type">Seen</span>
                         <span class="entry-info date">
@@ -153,12 +152,12 @@
                         <div class="view-more">View More</div>
                     </div>
                 </div>
-                <div class="list-wrapper performed-list">
+                <div class="entries-container">
                     <div class="entry-div performed">
-                        <div class="edit-entry">
-                            <span class="update">Update</span>
+                        <div class="edit-entry-buttons">
+                            <span class="update-select">Edit</span>
                             <p> | </p>
-                            <span class="delete">Delete</span>
+                            <span class="delete-select">Delete</span>
                         </div>
                         <span class="entry-info type">Performed</span>
                         <span class="entry-info date">
@@ -187,38 +186,48 @@
                             <p>Notes:</p>
                             <p>So many lines.</p>
                         </span>
-                        <div class="view-more">View More</div>
+                        <!--                        <div class="view-more">View More</div>-->
+                    </div>
+                    <div class="js-edit-entry">
+                        <form action="" id="edit-entry-form">
+                            <fieldset>
+                                <label class="question" for="entry-type">Entry Type:</label>
+                                <select name="entryType" id='entry-type' required>
+                                   <option value="0">Read</option>
+                                   <option value="1" selected>Seen</option>
+                                   <option value="2">Performed</option>
+                               </select>
+                            </fieldset>
+                            <button type="submit" class="submit-button">Update Entry</button>
+                        </form>
+                    </div>
+                    <div class="js-delete-entry">
+                        <h4>Are you sure you want to delete this entry?</h4>
+                        <button class="delete-button">Delete</button>
+                        <span id="cancel-button">Cancel</span>
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="entry-container" style="display: none;">
-            <div class="add-entry entry-wrapper">
-                <a class="close-popup" href="#">&times;</a>
-                <form class="entry-form">
-                    <legend>Create New Entry</legend>
-                    <fieldset>
-                        <label class="question" for="entry-type">Entry Type:</label>
-                        <select name="entryType" id='entry-type' required>
-                            <option value="0">Read</option>
-                            <option value="1" selected>Seen</option>
-                            <option value="2">Performed</option>
-                        </select>
+            <section id="add-entry-container">
+                <div class="add-entry entry-wrapper">
+                    <a class="close-popup" href="#">&times;</a>
+                    <form class="entry-form">
+                        <legend>Create New Entry</legend>
+                        <fieldset>
+                            <label class="question" for="entry-type">Entry Type:</label>
+                            <select name="entryType" id='entry-type' required>
+                                <option value="0">Read</option>
+                                <option value="1" selected>Seen</option>
+                                <option value="2">Performed</option>
+                            </select>
 
 
-                        <button class="submit-button">Add Entry</button>
-                    </fieldset>
-                </form>
-            </div>
-            <div class="delete-entry entry-wrapper" style="display: none;">
-                <a class="close-popup" href="#">&times;</a>
-                <form class="entry-form">
-                    <legend>Are you sure you want to Delet this entry?</legend>
-                    <fieldset>
-                        <button>Delete Entry</button>
-                    </fieldset>
-                </form>
-            </div>
+                            <button class="submit-button">Add Entry</button>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </section>
         </section>
     </main>
 
@@ -226,6 +235,8 @@
         <img src="images/flagstaff-shakes-logo.png" alt="Flagstaff Shakespeare Festival logo graphic with fancy Shakespeare 'S'" id="flag-shakes-logo">
         <p>Copyright 2018</p>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="client.js"></script>
 </body>
 
 </html>

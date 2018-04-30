@@ -261,7 +261,7 @@ button #logout:hover {
     color: black;
 }
 
-#add-entry {
+#add-entry-button {
     width: 20%;
     text-align: center;
     background: rgba(245, 245, 245, .9);
@@ -303,7 +303,7 @@ button {
     background-color: none;
 }
 
-#add-entry {
+#add-entry-button {
     display: inline-block;
 }
 
@@ -328,19 +328,19 @@ span {
     display: block;
 }
 
-.edit-entry {
+.edit-entry-buttons {
     float: right;
     color: slategray;
     margin-top: 10px;
     margin-right: 10px;
 }
 
-.edit-entry span,
+.edit-entry-buttons span,
 p {
     display: inline-block;
 }
 
-.edit-entry span:hover {
+.edit-entry-buttons span:hover {
     color: black;
     cursor: pointer;
 }
@@ -377,7 +377,7 @@ p {
 
 /*Add Entry Form*/
 
-#entry-container {
+#add-entry-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -423,6 +423,40 @@ legend {
     font-size: 50px;
     color: dodgerblue;
     text-decoration: none;
+}
+
+
+/*Edit|Delete Entries*/
+
+.entries-container {
+    text-align: left;
+    background: rgba(245, 245, 245, .9);
+    color: black;
+    border-radius: 5px;
+    padding: 7px;
+    margin: 0 auto 1.5%;
+    widows: 95%;
+}
+
+.js-delete-entry {
+    text-align: center;
+}
+
+.delete-button {
+    background-color: red;
+    padding: 8px 18px;
+    border-radius: 8px;
+    color: whitesmoke;
+}
+
+.delete-button:hover {
+    background-color: slategrey;
+    color: red;
+}
+
+#cancel-button:hover {
+    cursor: pointer;
+    color: darkgrey;
 }
 
 /*/////////////Above this line, mobile styles. Below this line, desktop styles.///////////////*/
@@ -552,7 +586,7 @@ legend {
         font-size: 1rem;
         text-align: center;
     }
-    #add-entry {
+    #add-entry-button {
         width: 10%;
     }
     #entry-toolbar {
