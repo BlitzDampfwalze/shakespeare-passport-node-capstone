@@ -1,5 +1,26 @@
 //jquery related functionality
 //definitions: function , objects/data, variables, etc.
+let editEntryForm = `
+<div class="js-edit-entry">
+    <form action="" id="edit-entry-form">
+        <fieldset>
+            <label class="question" for="entry-type">Entry Type:</label>
+            <select name="entryType" id='entry-type' required>
+                <option value="0">Read</option>
+                <option value="1" selected>Seen</option>
+                <option value="2">Performed</option>
+            </select>
+        </fieldset>
+        <button type="submit" class="submit-button">Update Entry</button>
+    </form>
+</div>`;
+let deleteEntryForm = `
+<div class="js-delete-entry">
+    <h4> Are you sure you want to delete this entry ? </h4>
+    <button class="delete-button">Delete</button>
+    <span id="cancel-button">Cancel</span>
+</div>`;
+
 
 ///////////////////////////////////////////////////////////////////
 //Invocations (calling)& function Triggers
@@ -102,18 +123,18 @@ $("#edit-entry-form").submit(function (event) {
 //Delete Entry
 $('.delete-select').click(function (event) {
     event.preventDefault();
-
-    $('.js-delete-entry').show();
+    //    $('.js-delete-entry').show();
+    $(event.currentTarget).parents('.entry-div').append(deleteEntryForm);
 });
 
 $('.delete-button').click(function (event) {
     event.preventDefault();
-
-    $('.js-delete-entry').hide();
+    //    $('.js-delete-entry').hide();
+    $('.js-delete-entry').remove();
     alert("Entry has been deleted");
 });
 $('#cancel-button').click(function (event) {
     event.preventDefault();
 
-    $('.js-delete-entry').hide();
+    $('.js-delete-entry').remove();
 });
