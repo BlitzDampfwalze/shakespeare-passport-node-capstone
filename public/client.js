@@ -111,10 +111,10 @@ $('.update-select').click(function (event) {
     event.preventDefault();
 
     //    $(this).closest('.entry-div').hide();
-    $('.js-edit-entry').show();
-
+    //    $('.js-edit-entry').show();
+    $(event.currentTarget).closest('.entry-div').siblings('.js-edit-entry').show();
 });
-$("#edit-entry-form").submit(function (event) {
+$(".edit-entry-form").submit(function (event) {
     event.preventDefault();
     $('.js-edit-entry').hide();
 
