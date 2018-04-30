@@ -109,8 +109,6 @@ $('#performed-sort').click(function (event) {
 //Update Entry
 $('.update-select').click(function (event) {
     event.preventDefault();
-
-    //    $(this).closest('.entry-div').hide();
     //    $('.js-edit-entry').show();
     $(event.currentTarget).closest('.entry-div').siblings('.js-edit-entry').show();
 });
@@ -124,17 +122,18 @@ $(".edit-entry-form").submit(function (event) {
 $('.delete-select').click(function (event) {
     event.preventDefault();
     //    $('.js-delete-entry').show();
-    $(event.currentTarget).parents('.entry-div').append(deleteEntryForm);
+    $(event.currentTarget).closest('.entry-div').siblings('.js-delete-entry').show();
+    //    $(event.currentTarget).parents('.entry-div').append(deleteEntryForm);
 });
 
 $('.delete-button').click(function (event) {
     event.preventDefault();
-    //    $('.js-delete-entry').hide();
-    $('.js-delete-entry').remove();
+    $('.js-delete-entry').hide();
+    //    $('.js-delete-entry').remove();
     alert("Entry has been deleted");
 });
 $('#cancel-button').click(function (event) {
     event.preventDefault();
 
-    $('.js-delete-entry').remove();
+    $('.js-delete-entry').hide();
 });
