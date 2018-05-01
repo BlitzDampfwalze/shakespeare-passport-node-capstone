@@ -34,6 +34,7 @@ $(function () {
 
     $('#homepage-header').show();
     $('#signup-home-page').show();
+    $('.place-container').show();
 });
 
 $(".sign-up-form").submit(function (event) {
@@ -67,13 +68,12 @@ $('#change-form-signup').click(function (event) {
 $('#add-entry-button').click(function (event) {
     event.preventDefault();
 
-    $('#entry-container').show();
-    $('.delete-entry').hide();
+    $('#add-entry-container').show();
 });
 
 $(".entry-form").submit(function (event) {
     event.preventDefault();
-    $('#entry-container').hide();
+    $('#add-entry-container').hide();
     alert("Entry has been added");
 });
 

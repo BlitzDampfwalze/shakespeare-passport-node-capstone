@@ -405,6 +405,22 @@ p {
     color: black;
     width: 50%;
     margin: 0 auto;
+    text-align: left;
+}
+
+.entry-form input {
+    border: 1px #0E2E45 solid;
+    border-radius: 2px;
+    margin: 5px auto 10px;
+    width: 100%;
+}
+
+.entry-form select {
+    margin: 10px auto;
+}
+
+.entry-form button {
+    margin: 20px auto;
 }
 
 legend {
@@ -415,6 +431,12 @@ legend {
     font-size: 1.5rem;
 }
 
+#date-text {
+    font-size: .5rem;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
 
 .close-popup {
     position: absolute;
