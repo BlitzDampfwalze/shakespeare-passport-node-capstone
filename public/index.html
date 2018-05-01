@@ -256,22 +256,27 @@
                                 <option value="1" selected>Seen</option>
                                 <option value="2">Performed</option>
                             </select>
+                            <br>
                             <label for="inputDate">Date</label>
                             <input type="date" id="inputDate">
                             <button type="button" id="date-text">Need Date Range?</button>
-                            <label for="inputPlay">Play</label>
-                            <input type="text" id="inputPlay">
-                            <label for="inputAuthor">Author</label>
-                            <input type="text" id="inputAuthor">
-                            <label for="inputRole">Role</label>
-                            <input type="text" id="inputRole">
-                            <section class="place-container">
+                            <div class="play-info">
+                                <label for="inputPlay">Play</label>
+                                <input type="text" id="inputPlay" placeholder="Titus Andronicus">
+                                <label for="inputAuthor">Author</label>
+                                <input type="text" id="inputAuthor" placeholder="The Bard">
+                                <label for="inputRole">Role</label>
+                                <input type="text" id="inputRole" placeholder="Titus">
+                            </div>
+                            <div class="place-info">
                                 <label for="inputCo">Company</label>
-                                <input type="text" id="inputCo">
-                                <label for="inputRole">Location</label>
-                                <input type="text" id="inputRole">
-                            </section>
-
+                                <input type="text" id="inputCo" placeholder="Flagstaff Shakespeare Company">
+                                <label for="inputLocation">Location</label>
+                                <input type="text" id="inputLocation" placeholder="Museum of Northern Arizona">
+                            </div>
+                            <br>
+                            <label for="inputNotes">Notes</label>
+                            <textarea name="Text1" id="inputNotes" cols="40" rows="5"></textarea>
 
                             <button type="submit" class="submit-button">Add Entry</button>
                         </fieldset>

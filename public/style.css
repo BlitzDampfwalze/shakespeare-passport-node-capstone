@@ -393,7 +393,7 @@ p {
     margin: 0 auto;
     padding: 30px;
     width: 100%;
-    max-width: 700px;
+    max-width: 1100px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -403,12 +403,14 @@ p {
 .entry-form {
     /*    background-color: whitesmoke;*/
     color: black;
-    width: 50%;
+    width: 75%;
     margin: 0 auto;
     text-align: left;
+    padding: 25px 0;
 }
 
-.entry-form input {
+.entry-form input,
+textarea {
     border: 1px #0E2E45 solid;
     border-radius: 2px;
     margin: 5px auto 10px;
@@ -436,6 +438,14 @@ legend {
     text-align: center;
     display: block;
     margin: 0 auto;
+}
+
+.play-info,
+.place-info {
+    vertical-align: top;
+    display: inline-block;
+    width: 45%;
+    margin: 1% auto
 }
 
 .close-popup {
