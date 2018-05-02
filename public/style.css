@@ -135,7 +135,8 @@ button:hover {
     padding: 8px 18px;
     border-radius: 8px;
     color: whitesmoke;
-    width: 100%;
+    width: 25%;
+    margin: 0 auto;
     /*    margin: 5% 0;*/
 }
 
@@ -403,13 +404,13 @@ p {
 .entry-form {
     /*    background-color: whitesmoke;*/
     color: black;
-    width: 75%;
+    width: 100%;
     margin: 0 auto;
     text-align: left;
     padding: 25px 0;
 }
 
-.entry-form input,
+input,
 textarea {
     border: 1px #0E2E45 solid;
     border-radius: 2px;
@@ -444,8 +445,20 @@ legend {
 .place-info {
     vertical-align: top;
     display: inline-block;
-    width: 45%;
+    width: 48%;
     margin: 1% auto
+}
+
+.place-info {
+    margin-left: 1.9%;
+}
+
+
+
+.edit-entry-form button {
+    text-align: center;
+    width: auto;
+    margin: 10px auto;
 }
 
 .close-popup {
@@ -456,6 +469,8 @@ legend {
     color: dodgerblue;
     text-decoration: none;
 }
+
+
 
 
 /*Edit|Delete Entries*/

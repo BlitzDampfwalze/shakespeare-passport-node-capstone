@@ -76,11 +76,10 @@ $(".entry-form").submit(function (event) {
     $('#add-entry-container').hide();
     alert("Entry has been added");
 });
-
+//click on x closes add entry popup
 $('.close-popup').click(function (event) {
     event.preventDefault();
-
-    $('#entry-container').hide();
+    $('#add-entry-container').hide();
 });
 
 $('#logout').click(function (event) {
