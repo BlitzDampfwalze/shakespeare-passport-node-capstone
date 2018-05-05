@@ -17,7 +17,6 @@ body {
     text-align: center;
     font-family: 'Puritan';
     font-weight: normal;
-    /*    font-size: 1.1875rem;*/
 }
 
 h1 {
@@ -103,6 +102,7 @@ button:hover {
     border-radius: 8px;
     font-size: 1.3rem;
     padding: 20px 0;
+    text-align: center;
 }
 
 .sign-up-form legend {
@@ -117,12 +117,11 @@ button:hover {
     border: none;
     padding: 0 2rem;
     line-height: 34px;
+    text-align: left;
 }
 
-.sign-up-form fieldset p {
-    margin: 10px auto 30px;
-    text-align: left;
-
+.sign-up-form input {
+    margin: 10px auto 20px;
 }
 
 .sign-up-form input {
@@ -135,7 +134,7 @@ button:hover {
     padding: 8px 18px;
     border-radius: 8px;
     color: whitesmoke;
-    width: 25%;
+    /*    width: 25%;*/
     margin: 0 auto;
     /*    margin: 5% 0;*/
 }
@@ -410,7 +409,7 @@ p {
     padding: 25px 0;
 }
 
-input,
+.entry-form input,
 textarea {
     border: 1px #0E2E45 solid;
     border-radius: 2px;
@@ -426,7 +425,7 @@ textarea {
     margin: 20px auto;
 }
 
-legend {
+.entry-form legend {
     margin: 10px auto;
     padding: 10px;
     border-bottom: #0E2E45 solid 1px;
@@ -453,7 +452,13 @@ legend {
     margin-left: 1.9%;
 }
 
-
+.edit-entry-form input,
+textarea {
+    border: 1px #0E2E45 solid;
+    border-radius: 2px;
+    margin: 5px auto 10px;
+    width: 100%;
+}
 
 .edit-entry-form button {
     text-align: center;
@@ -552,7 +557,7 @@ legend {
         height: 33vh;
     }
     .sign-up-form {
-        margin-top: 10%;
+        margin-top: 6%;
     }
 }
 
@@ -564,7 +569,7 @@ legend {
         color: red;
     }
     html {
-        font-size: 24px;
+        font-size: 22px;
     }
     #form-text {
         margin: 0 auto 20px;
@@ -592,7 +597,7 @@ legend {
     }
     h1 {
         font-size: 3rem;
-        margin: 2.5rem 1rem;
+        margin: 1.9rem 1rem;
     }
     h3 {
         font-size: 2.3rem;
@@ -620,7 +625,7 @@ legend {
         font-size: 1.2rem;
     }
     #signup-home-page {
-        margin-bottom: 30px;
+        /*        margin-bottom: 30px;*/
         padding: 0 50px;
     }
     .background-div {

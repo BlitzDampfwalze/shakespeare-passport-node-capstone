@@ -39,6 +39,50 @@ $(function () {
 
 $(".sign-up-form").submit(function (event) {
     event.preventDefault();
+
+
+    //take the input from the user
+    const name = $("#signUpName").val();
+    const username = $("#signUpUsername").val();
+    const password = $("#signUpPassword").val();
+
+    //validate the input
+    if (name == "") {
+        alert('Please add a name');
+    } else if (username == "") {
+        alert('Please add an user name');
+    } else if (password == "") {
+        alert('Please add a password');
+    }
+    //if the input is valid
+    else {
+        const newUserObject = {
+            name: name,
+            username: username,
+            password: password
+        };
+        console.log(newUserObject);
+        $.ajax({
+                type: 'POST',
+                url: '/users/create',
+                dataType: 'json',
+                data: JSON.stringify(newUserObject),
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                console.log(result);
+//                newUserToggle = true;
+//                alert('Thanks for signing up! You may now sign in with your username and password.');
+//                showSignInPage();
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
+
+
     $('section').hide();
     $('.navbar').show();
     $('#user-dashboard').show();

@@ -1,112 +1,245 @@
+const User = require('./models/user');
+const Achievement = require('./models/achievement');
+const bodyParser = require('body-parser');
+const config = require('./config');
+const mongoose = require('mongoose');
+const moment = require('moment');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const BasicStrategy = require('passport-http').BasicStrategy;
 const express = require('express');
-
 const app = express();
-
-const router = require('./blogPosts');
-
+app.use(bodyParser.json());
+app.use(cors());
 app.use(express.static('public'));
-//routing requests to express router instances that were imported above
-app.use('/user-list', router);
 
+mongoose.Promise = global.Promise;
 
-app.listen(process.env.PORT || 8080, () => {
-    console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
+// ---------------- RUN/CLOSE SERVER -----------------------------------------------------
+let server = undefined;
+
+function runServer(urlToUse) {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(urlToUse, err => {
+            if (err) {
+                return reject(err);
+            }
+            server = app.listen(config.PORT, () => {
+                console.log(`Listening on localhost:${config.PORT}`);
+                resolve();
+            }).on('error', err => {
+                mongoose.disconnect();
+                reject(err);
+            });
+        });
+    });
+}
+
+if (require.main === module) {
+    runServer(config.DATABASE_URL).catch(err => console.error(err));
+}
+
+function closeServer() {
+    return mongoose.disconnect().then(() => new Promise((resolve, reject) => {
+        console.log('Closing server');
+        server.close(err => {
+            if (err) {
+                return reject(err);
+            }
+            resolve();
+        });
+    }));
+}
+
+// ---------------USER ENDPOINTS-------------------------------------
+// POST -----------------------------------
+// creating a new user
+app.post('/users/create', (req, res) => {
+    let username = req.body.username;
+    username = username.trim();
+    let password = req.body.password;
+    password = password.trim();
+    bcrypt.genSalt(10, (err, salt) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal server error'
+            });
+        }
+
+        bcrypt.hash(password, salt, (err, hash) => {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Internal server error'
+                });
+            }
+
+            User.create({
+                username,
+                password: hash,
+            }, (err, item) => {
+                if (err) {
+                    return res.status(500).json({
+                        message: 'Internal Server Error'
+                    });
+                }
+                if (item) {
+                    console.log(`User \`${username}\` created.`);
+                    return res.json(item);
+                }
+            });
+        });
+    });
+});
+
+// signing in a user
+app.post('/signin', function (req, res) {
+    const user = req.body.username;
+    const pw = req.body.password;
+    User
+        .findOne({
+            username: req.body.username
+        }, function (err, items) {
+            if (err) {
+                return res.status(500).json({
+                    message: "Internal server error"
+                });
+            }
+            if (!items) {
+                // bad username
+                return res.status(401).json({
+                    message: "Not found!"
+                });
+            } else {
+                items.validatePassword(req.body.password, function (err, isValid) {
+                    if (err) {
+                        console.log('There was an error validating the password.');
+                    }
+                    if (!isValid) {
+                        return res.status(401).json({
+                            message: "Not found"
+                        });
+                    } else {
+                        var logInTime = new Date();
+                        console.log("User logged in: " + req.body.username + ' at ' + logInTime);
+                        return res.json(items);
+                    }
+                });
+            };
+        });
 });
 
 
+// -------------ACHIEVEMENT ENDPOINTS------------------------------------------------
+// POST -----------------------------------------
+// creating a new achievement
+app.post('/new/create', (req, res) => {
+    let achieveWhat = req.body.achieveWhat;
+    achieveWhat = achieveWhat.trim();
+    let achieveHow = req.body.achieveHow;
+    let achieveWhy = req.body.achieveWhy;
+    let achieveWhen = req.body.achieveWhen;
+    let user = req.body.user;
 
+    Achievement.create({
+        user,
+        achieveWhat,
+        achieveHow,
+        achieveWhen,
+        achieveWhy
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        if (item) {
+            console.log(`Achievement \`${achieveWhat}\` added.`);
+            return res.json(item);
+        }
+    });
+});
 
+// PUT --------------------------------------
+app.put('/achievement/:id', function (req, res) {
+    let toUpdate = {};
+    let updateableFields = ['achieveWhat', 'achieveHow', 'achieveWhen', 'achieveWhy'];
+    updateableFields.forEach(function (field) {
+        if (field in req.body) {
+            toUpdate[field] = req.body[field];
+        }
+    });
+    Achievement
+        .findByIdAndUpdate(req.params.id, {
+            $set: toUpdate
+        }).exec().then(function (achievement) {
+            return res.status(204).end();
+        }).catch(function (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
 
+// GET ------------------------------------
+// accessing all of a user's achievements
+app.get('/achievements/:user', function (req, res) {
+    Achievement
+        .find()
+        .sort('achieveWhen')
+        .then(function (achievements) {
+            let achievementOutput = [];
+            achievements.map(function (achievement) {
+                if (achievement.user == req.params.user) {
+                    achievementOutput.push(achievement);
+                }
+            });
+            res.json({
+                achievementOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
 
-////CRUD Operations (create, read, update, delete)
-//
-////POST - create
-//
-//
-////GET - read
-//
-////PUT - update
-//
-////DELETE - delete
-//
-//////////////////////////////router file///////////////////////////////////
-//////Note that to create a new blog post, you need to supply a title,
-////// content, an author name, and (optionally) a publication date
-////
-//const express = require('express');
-//const router = express.Router();
-//
-//const bodyParser = require('body-parser');
-//const jsonParser = bodyParser.json();
-//
-//const {
-//    BlogPosts
-//} = require('./models');
-////
-//////adding entries to BlogPosts data so there's something to look at
-//////title, content, author, publishDate
-////BlogPosts.create('The Birds', 'A wealthy San Francisco socialite pursues a potential boyfriend to a small Northern California town that slowly takes a turn for the bizarre when birds of all kinds suddenly begin to attack people.', 'Alfred Hitchcock', '1963');
-////BlogPosts.create('React Native', 'Small and created by Facebook', 'MPJ', '2017');
-////
-//////when root of this router is called with GET, return all
-//////current List items
-//router.get('/', (req, res) => {
-//    res.json(BlogPosts.get());
-//});
-//////when new blog post added, ensure it has required fields.
-//////if not log error and return 400 status with helpful message
-//////if okay, add new item, and return it with a status 201
-//router.post('/', jsonParser, (req, res) => {
-//    const requiredFields = ['title', 'content', 'author'];
-//    for (let i = 0; i < requiredFields.length; i++) {
-//        const field = requiredFields[i];
-//        if (!(field in req.body)) {
-//            const message = `Missing \'${field}\' in request body`;
-//            console.error(message);
-//            return res.status(400).send(message);
-//        }
-//    }
-//    const item = BlogPosts.create(req.body.title, req.body.content, req.body.author, req.body.publishDate);
-//    res.status(201).json(item);
-//});
-////
-//////Delete blog posts by id
-//router.delete('/:id', (req, res) => {
-//    BlogPosts.delete(req.params.id);
-//    console.log(`Deleted blog post item \`${req.params.ID}\``);
-//    res.status(204).end();
-//});
-////
-////// PUT update request, checks for required fields
-////// if fails, logs error and sends back status code 400
-////// otherwise call 'Recipes.updateItem' with update Post
-//////title, content, author, publishDate
-//router.put('/:id', jsonParser, (req, res) => {
-//    const requiredFields = ['title', 'content', 'author'];
-//    for (let i = 0; i < requiredFields.length; i++) {
-//        const field = requiredFields[i];
-//        if (!(field in req.body)) {
-//            const message = `Missing \'${field}\' in request body`;
-//            console.error(message);
-//            return res.status(400).send(message);
-//        }
-//    }
-//    if (req.params.id !== req.body.id) {
-//        const message = (
-//            `Request path id (${req.params.id}) and request body id `
-//            `(${req.body.id}) must match`);
-//        console.error(message);
-//        return res.status(400).send(message);
-//    }
-//    console.log(`Updating blog post \`${req.params.id}\``);
-//    const updatedItem = BlogPosts.update({
-//        id: req.params.id,
-//        title: req.body.title,
-//        content: req.body.content,
-//        author: req.body.author,
-//        publishDate: req.body.publishDate
-//    });
-//    res.status(204).end();
-//});
-////
-//module.exports = router;
+// accessing a single achievement by id
+app.get('/achievement/:id', function (req, res) {
+    Achievement
+        .findById(req.params.id).exec().then(function (achievement) {
+            return res.json(achievement);
+        })
+        .catch(function (achievements) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+});
+
+// DELETE ----------------------------------------
+// deleting an achievement by id
+app.delete('/achievement/:id', function (req, res) {
+    Achievement.findByIdAndRemove(req.params.id).exec().then(function (achievement) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+});
+
+// MISC ------------------------------------------
+// catch-all endpoint if client makes request to non-existent endpoint
+app.use('*', (req, res) => {
+    res.status(404).json({
+        message: 'Not Found'
+    });
+});
+
+exports.app = app;
+exports.runServer = runServer;
+exports.closeServer = closeServer;
