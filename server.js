@@ -1,5 +1,5 @@
 const User = require('./models/user');
-const Achievement = require('./models/achievement');
+const Entry = require('./models/entry');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
@@ -56,34 +56,58 @@ function closeServer() {
 // POST -----------------------------------
 // creating a new user
 app.post('/users/create', (req, res) => {
+
+    //take the name, username and the password from the ajax api call
+    let name = req.body.name;
     let username = req.body.username;
-    username = username.trim();
     let password = req.body.password;
+
+    //exclude extra spaces from the username and password
+    username = username.trim();
     password = password.trim();
+
+    //create an encryption key
     bcrypt.genSalt(10, (err, salt) => {
+
+        //if creating the key returns an error...
         if (err) {
+
+            //display it
             return res.status(500).json({
                 message: 'Internal server error'
             });
         }
 
+        //using the encryption key above generate an encrypted pasword
         bcrypt.hash(password, salt, (err, hash) => {
+
+            //if creating the ncrypted pasword returns an error..
             if (err) {
+
+                //display it
                 return res.status(500).json({
                     message: 'Internal server error'
                 });
             }
 
+            //using the mongoose DB schema, connect to the database and create the new user
             User.create({
+                name,
                 username,
                 password: hash,
             }, (err, item) => {
+
+                //if creating a new user in the DB returns an error..
                 if (err) {
+                    //display it
                     return res.status(500).json({
                         message: 'Internal Server Error'
                     });
                 }
+                //if creating a new user in the DB is succefull
                 if (item) {
+
+                    //display the new user
                     console.log(`User \`${username}\` created.`);
                     return res.json(item);
                 }
@@ -93,60 +117,86 @@ app.post('/users/create', (req, res) => {
 });
 
 // signing in a user
-app.post('/signin', function (req, res) {
-    const user = req.body.username;
-    const pw = req.body.password;
-    User
-        .findOne({
-            username: req.body.username
-        }, function (err, items) {
-            if (err) {
-                return res.status(500).json({
-                    message: "Internal server error"
-                });
-            }
-            if (!items) {
-                // bad username
-                return res.status(401).json({
-                    message: "Not found!"
-                });
-            } else {
-                items.validatePassword(req.body.password, function (err, isValid) {
-                    if (err) {
-                        console.log('There was an error validating the password.');
-                    }
-                    if (!isValid) {
-                        return res.status(401).json({
-                            message: "Not found"
-                        });
-                    } else {
-                        var logInTime = new Date();
-                        console.log("User logged in: " + req.body.username + ' at ' + logInTime);
-                        return res.json(items);
-                    }
-                });
-            };
-        });
+app.post('/users/login', function (req, res) {
+
+    //take the username and the password from the ajax api call
+    const username = req.body.username;
+    const password = req.body.password;
+
+    //using the mongoose DB schema, connect to the database and the user with the same username as above
+    User.findOne({
+        username: username
+    }, function (err, items) {
+
+        //if the there is an error connecting to the DB
+        if (err) {
+
+            //display it
+            return res.status(500).json({
+                message: "Internal server error"
+            });
+        }
+        // if there are no users with that username
+        if (!items) {
+            //display it
+            return res.status(401).json({
+                message: "Not found!"
+            });
+        }
+        //if the username is found
+        else {
+
+            //try to validate the password
+            items.validatePassword(password, function (err, isValid) {
+
+                //if the connection to the DB to validate the password is not working
+                if (err) {
+
+                    //display error
+                    console.log('Could not connect to the DB to validate the password.');
+                }
+
+                //if the password is not valid
+                if (!isValid) {
+
+                    //display error
+                    return res.status(401).json({
+                        message: "Password Invalid"
+                    });
+                }
+                //if the password is valid
+                else {
+                    //return the logged in user
+                    return res.json(items);
+                }
+            });
+        };
+    });
 });
 
 
-// -------------ACHIEVEMENT ENDPOINTS------------------------------------------------
+// -------------entry ENDPOINTS------------------------------------------------
 // POST -----------------------------------------
 // creating a new achievement
-app.post('/new/create', (req, res) => {
-    let achieveWhat = req.body.achieveWhat;
-    achieveWhat = achieveWhat.trim();
-    let achieveHow = req.body.achieveHow;
-    let achieveWhy = req.body.achieveWhy;
-    let achieveWhen = req.body.achieveWhen;
-    let user = req.body.user;
+app.post('/entry/create', (req, res) => {
+    let entryType = req.body.entryType;
+    let inputDate = req.body.inputDate;
+    let inputPlay = req.body.inputPlay;
+    let inputAuthor = req.body.inputAuthor;
+    let inputRole = req.body.inputRole;
+    let inputCo = req.body.inputCo;
+    let inputLocation = req.body.inputLocation;
+    let loggedInUserName = req.body.loggedInUserName;
 
-    Achievement.create({
-        user,
-        achieveWhat,
-        achieveHow,
-        achieveWhen,
-        achieveWhy
+    Entry.create({
+        entryType,
+        inputDate,
+        inputPlay,
+        inputAuthor,
+        inputRole,
+        inputCo,
+        inputLocation,
+        loggedInUserName,
     }, (err, item) => {
         if (err) {
             return res.status(500).json({

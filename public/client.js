@@ -40,7 +40,6 @@ $(function () {
 $(".sign-up-form").submit(function (event) {
     event.preventDefault();
 
-
     //take the input from the user
     const name = $("#signUpName").val();
     const username = $("#signUpUsername").val();
@@ -56,12 +55,15 @@ $(".sign-up-form").submit(function (event) {
     }
     //if the input is valid
     else {
+        //create the payload object (what data we send to the api call)
         const newUserObject = {
             name: name,
             username: username,
             password: password
         };
-        console.log(newUserObject);
+        //console.log(newUserObject);
+
+        //make the api call using the payload above
         $.ajax({
                 type: 'POST',
                 url: '/users/create',
@@ -69,23 +71,22 @@ $(".sign-up-form").submit(function (event) {
                 data: JSON.stringify(newUserObject),
                 contentType: 'application/json'
             })
+            //if call is succefull
             .done(function (result) {
                 console.log(result);
-//                newUserToggle = true;
-//                alert('Thanks for signing up! You may now sign in with your username and password.');
-//                showSignInPage();
+                $('#loggedInName').text(result.name);
+                $('#loggedInUserName').val(result.username);
+                $('section').hide();
+                $('.navbar').show();
+                $('#user-dashboard').show();
             })
+            //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);
                 console.log(error);
                 console.log(errorThrown);
             });
     };
-
-
-    $('section').hide();
-    $('.navbar').show();
-    $('#user-dashboard').show();
 });
 
 $('#change-form-login').click(function (event) {
@@ -98,14 +99,58 @@ $('#change-form-login').click(function (event) {
 
 $(".login-form").submit(function (event) {
     event.preventDefault();
-    $('section').hide();
-    $('.navbar').show();
-    $('#user-dashboard').show();
-    $('section').hide();
+
+    //take the input from the user
+    const username = $("#loginUsername").val();
+    const password = $("#loginPassword").val();
+
+    //validate the input
+    if (username == "") {
+        alert('Please input user name');
+    } else if (password == "") {
+        alert('Please input password');
+    }
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const loginUserObject = {
+            username: username,
+            password: password
+        };
+        //console.log(loginUserObject);
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'POST',
+                url: '/users/login',
+                dataType: 'json',
+                data: JSON.stringify(loginUserObject),
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function (result) {
+                console.log(result);
+                $('section').hide();
+                $('.navbar').show();
+                $('#user-dashboard').show();
+                $('#loggedInName').text(result.name);
+                $('#loggedInUserName').val(result.username);
+
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
+
+
 });
 
 $('#change-form-signup').click(function (event) {
     event.preventDefault();
+    $('section').hide();
     location.reload();
 });
 
@@ -117,6 +162,66 @@ $('#add-entry-button').click(function (event) {
 
 $(".entry-form").submit(function (event) {
     event.preventDefault();
+
+    //take the input from the user
+    const entryType = $("#entry-type").val();
+    const inputDate = $("#inputDate").val();
+    const inputPlay = $("#inputPlay").val();
+    const inputAuthor = $("#inputAuthor").val();
+    const inputRole = $("#inputRole").val();
+    const inputCo = $("#inputCo").val();
+    const inputLocation = $("#inputLocation").val();
+    const loggedInUserName = $("#loggedInUserName").val();
+
+    //validate the input
+    if (entryType == "") {
+        alert('Please input entry type');
+    } else if (inputDate == "") {
+        alert('Please input inputDate');
+    }
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const entryObject = {
+            entryType: entryType,
+            inputDate: inputDate,
+            inputPlay: inputPlay,
+            inputAuthor: inputAuthor,
+            inputRole: inputRole,
+            inputCo: inputCo,
+            inputLocation: inputLocation,
+            loggedInUserName: loggedInUserName,
+        };
+        //console.log(entryObject);
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'POST',
+                url: '/entry/create',
+                dataType: 'json',
+                data: JSON.stringify(entryObject),
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function (result) {
+                console.log(result);
+                $('section').hide();
+                $('.navbar').show();
+                $('#user-dashboard').show();
+                $('#loggedInName').text(result.name);
+                $('#loggedInUserName').val(result.username);
+
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
+
+
+
     $('#add-entry-container').hide();
     alert("Entry has been added");
 });
@@ -128,6 +233,7 @@ $('.close-popup').click(function (event) {
 
 $('#logout').click(function (event) {
     event.preventDefault();
+    $('section').hide();
     location.reload();
 });
 
