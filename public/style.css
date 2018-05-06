@@ -211,6 +211,7 @@ footer p {
 /*///////////////User Dashboard///////////////////*/
 
 .navbar {
+    text-align: center;
     width: 100%;
     background: #00000099 url(images/globe-theatre.jpg) no-repeat center center;
     background-size: 100% auto;
@@ -220,21 +221,15 @@ footer p {
 }
 
 #nav-header {
-    padding-left: 1.5%;
-    text-align: left;
-    width: 51%;
-    display: inline-block;
     vertical-align: middle;
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 #nav-list {
-    width: 43%;
-    padding-right: 1.5%;
-    display: inline-block;
+
     vertical-align: middle;
-    font-size: 22px;
-    text-align: right;
+    font-size: 1.3rem;
+
 }
 
 #nav-list span,
@@ -540,10 +535,16 @@ textarea {
         padding: 15px auto;
     }
     #nav-header {
-        width: 66%;
+        width: 48%;
+        padding-left: 1.5%;
+        display: inline-block;
+        text-align: left;
     }
     #nav-list {
-        width: 34%;
+        width: 48%;
+        padding-right: 1.5%;
+        display: inline-block;
+        text-align: right;
     }
     .background-div {
         height: 30vh;
@@ -564,6 +565,9 @@ textarea {
     }
     .sign-up-form {
         margin-top: 6%;
+    }
+    #nav-header {
+        width: 51%;
     }
 }
 
@@ -635,11 +639,11 @@ textarea {
     }
     #nav-header {
         width: 39%;
-        font-size: 1.75rem;
+        /*        font-size: 1.75rem;*/
     }
     #nav-list {
         width: 60%;
-        font-size: 1.2rem;
+        /*        font-size: 1.2rem;*/
     }
     #signup-home-page {
         /*        margin-bottom: 30px;*/
@@ -652,7 +656,7 @@ textarea {
         margin-top: 0;
     }
     #login-p {
-        font-size: 1rem;
+        /*        font-size: 1rem;*/
         text-align: center;
     }
     #add-entry-button {
@@ -660,6 +664,6 @@ textarea {
     }
     #entry-toolbar {
         text-align: right;
-        font-size: 1rem;
+        /*        font-size: 1rem;*/
     }
 }
