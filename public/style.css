@@ -263,13 +263,13 @@ button #logout:hover {
 }
 
 #add-entry-button {
-    width: 20%;
     text-align: center;
     background: rgba(245, 245, 245, .9);
     color: black;
     border-radius: 5px;
-    padding: 7px;
+    padding: 7px 15px;
     margin: 2.5%;
+    display: inline-block;
 }
 
 /*
@@ -302,10 +302,6 @@ button {
 
 #entry-views button {
     background-color: none;
-}
-
-#add-entry-button {
-    display: inline-block;
 }
 
 .entry-div {
@@ -674,12 +670,5 @@ textarea {
     header {
         /*Height set so that this view shows correctly*/
         height: 25vh;
-    }
-    #add-entry-button {
-        width: 10%;
-    }
-    #entry-toolbar {
-        text-align: right;
-        /*        font-size: 1rem;*/
     }
 }
