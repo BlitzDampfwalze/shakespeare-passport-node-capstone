@@ -186,6 +186,7 @@ app.post('/entry/create', (req, res) => {
     let inputRole = req.body.inputRole;
     let inputCo = req.body.inputCo;
     let inputLocation = req.body.inputLocation;
+    let inputNotes = req.body.inputNotes;
     let loggedInUserName = req.body.loggedInUserName;
 
     Entry.create({
@@ -196,6 +197,7 @@ app.post('/entry/create', (req, res) => {
         inputRole,
         inputCo,
         inputLocation,
+        inputNotes,
         loggedInUserName,
     }, (err, item) => {
         if (err) {
@@ -204,7 +206,6 @@ app.post('/entry/create', (req, res) => {
             });
         }
         if (item) {
-            console.log(`Achievement \`${achieveWhat}\` added.`);
             return res.json(item);
         }
     });

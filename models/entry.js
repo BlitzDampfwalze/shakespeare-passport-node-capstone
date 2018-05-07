@@ -9,11 +9,11 @@ const entrySchema = new mongoose.Schema({
         required: false
     },
     inputDate: {
-        type: String,
+        type: Date,
         required: false
     },
     inputPlay: {
-        type: Array,
+        type: String,
         required: false
     },
     inputAuthor: {
@@ -32,12 +32,16 @@ const entrySchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    inputNotes: {
+        type: String,
+        required: false
+    },
     loggedInUserName: {
         type: String,
         required: false
     }
 });
 
-const Entry = mongoose.model('Achievement', entrySchema);
+const Entry = mongoose.model('Entry', entrySchema);
 
 module.exports = Entry;

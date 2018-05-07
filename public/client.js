@@ -164,13 +164,14 @@ $(".entry-form").submit(function (event) {
     event.preventDefault();
 
     //take the input from the user
-    const entryType = $("#entry-type").val();
-    const inputDate = $("#inputDate").val();
-    const inputPlay = $("#inputPlay").val();
-    const inputAuthor = $("#inputAuthor").val();
-    const inputRole = $("#inputRole").val();
-    const inputCo = $("#inputCo").val();
-    const inputLocation = $("#inputLocation").val();
+    const entryType = $(".addEntryType").val();
+    const inputDate = $(".addInputDate").val();
+    const inputPlay = $(".addInputPlay").val();
+    const inputAuthor = $(".addInputAuthor").val();
+    const inputRole = $(".addInputRole").val();
+    const inputCo = $(".addInputCo").val();
+    const inputLocation = $(".addInputLocation").val();
+    const inputNotes = $(".addInputNotes").val();
     const loggedInUserName = $("#loggedInUserName").val();
 
     //validate the input
@@ -190,9 +191,10 @@ $(".entry-form").submit(function (event) {
             inputRole: inputRole,
             inputCo: inputCo,
             inputLocation: inputLocation,
+            inputNotes: inputNotes,
             loggedInUserName: loggedInUserName,
         };
-        //console.log(entryObject);
+        console.log(entryObject);
 
         //make the api call using the payload above
         $.ajax({
@@ -210,7 +212,6 @@ $(".entry-form").submit(function (event) {
                 $('#user-dashboard').show();
                 $('#loggedInName').text(result.name);
                 $('#loggedInUserName').val(result.username);
-
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
