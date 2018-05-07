@@ -178,7 +178,13 @@ $(".entry-form").submit(function (event) {
     if (entryType == "") {
         alert('Please input entry type');
     } else if (inputDate == "") {
-        alert('Please input inputDate');
+        alert('Please input addInputDate');
+    } else if (inputPlay == "") {
+        alert('Please input addInputPlay');
+    } else if (inputAuthor == "") {
+        alert('Please input addInputAuthor');
+    } else if (inputNotes == "") {
+        alert('Please input addInputNotes');
     }
     //if the input is valid
     else {
@@ -212,6 +218,7 @@ $(".entry-form").submit(function (event) {
                 $('#user-dashboard').show();
                 $('#loggedInName').text(result.name);
                 $('#loggedInUserName').val(result.username);
+                $('#add-entry-container').hide();
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
@@ -220,11 +227,6 @@ $(".entry-form").submit(function (event) {
                 console.log(errorThrown);
             });
     };
-
-
-
-    $('#add-entry-container').hide();
-    alert("Entry has been added");
 });
 //click on x closes add entry popup
 $('.close-popup').click(function (event) {
