@@ -1,26 +1,107 @@
 //jquery related functionality
 //definitions: function , objects/data, variables, etc.
-let editEntryForm = `
-<div class="js-edit-entry">
-    <form action="" id="edit-entry-form">
-        <fieldset>
-            <label class="question" for="entry-type">Entry Type:</label>
-            <select name="entryType" id='entry-type' required>
-                <option value="0">Read</option>
-                <option value="1" selected>Seen</option>
-                <option value="2">Performed</option>
-            </select>
-        </fieldset>
-        <button type="submit" class="submit-button">Update Entry</button>
-    </form>
-</div>`;
-let deleteEntryForm = `
-<div class="js-delete-entry">
-    <h4> Are you sure you want to delete this entry ? </h4>
-    <button class="delete-button">Delete</button>
-    <span id="cancel-button">Cancel</span>
-</div>`;
+let entryArray = 0;
 
+function noEntries() {
+    console.log(entryArray);
+    if (entryArray === 0) {
+        $('#no-entry').show();
+    } else {
+        $('#no-entry').hide();
+    }
+}
+
+function renderHTMLEntry(results) {
+
+    let htmlString = `<div class="entries-container">
+        <div class="entry-div performed">`
+    htmlString += `
+        <div class="edit-entry-buttons">
+        <span class="update-select">Edit</span>
+        <p> | </p>
+        <span class="delete-select">Delete</span>
+        </div>`;
+
+    htmlString += `<span class="entry-info type">${results.entryType}</span>`; //Value of Entry Type
+    htmlString += `<span class="entry-info date">`;
+    htmlString += `<p>Date:</p>`;
+    htmlString += `<p>${results.inputDate}</p>`;
+    htmlString += `</span>`;
+    htmlString += `<span class="entry-info play">`;
+    htmlString += `<p>Play:</p>`;
+    htmlString += `<p>${results.inputPlay}</p>`;
+    htmlString += `<span class="author">${results.inputAuthor}</span>`;
+    htmlString += `</span>`;
+    if (results.inputRole) {
+        htmlString += `<span class="entry-info role">`;
+        htmlString += `<p>Role:</p>`;
+        htmlString += `<p>${results.inputRole}</p>`;
+        htmlString += `</span>`;
+    }
+    if (results.inputCo) {
+        htmlString += `<span class="entry-info theater-co">`;
+        htmlString += `<p>Company:</p>`;
+        htmlString += `<p>${results.inputCo}</p>`;
+        htmlString += `</span>`;
+    }
+    if (results.inputLocation) {
+        htmlString += `<span class="entry-info role">`;
+        htmlString += `<p>Location:</p>`;
+        htmlString += `<p>${results.inputLocation}</p>`;
+        htmlString += `</span>`;
+    }
+    htmlString += `<span class="entry-info notes">`
+    htmlString += `<p>Notes:</p>`
+    htmlString += `<p>${results.inputNotes}</p>`;
+    htmlString += `</span>`;
+    htmlString += `</div>`;
+    //Edit Entry & Delete Entry form
+    htmlString += `</div>`;
+    return htmlString;
+}
+
+function editEntryHTML(results) {
+    let htmlString = `<div class="js-edit-entry">`
+    htmlString += `<form action="" class="edit-entry-form">`
+    htmlString += `<fieldset>`
+    `
+<label class="question" for="entry-type">Entry Type:</label>
+<select name="entryType" class='entry-type' required>
+<option value="read">Read</option>
+<option value="seen" selected>Seen</option>
+<option value="performed">Performed</option>
+</select>
+<br>
+<label for="inputDate">Date</label>
+<input type="date" class="inputDate" value="2009-06-25">
+<button type="button" class="date-text">Need Date Range?</button>
+<div class="play-info">
+<label for="inputPlay">Play</label>
+<input type="text" class="inputPlay" placeholder="Titus Andronicus" value="Cymbeline">
+<label for="inputAuthor">Author</label>
+<input type="text" class="inputAuthor" placeholder="The Bard" value="Shakes">
+<label for="inputRole">Role</label>
+<input type="text" class="inputRole" placeholder="Titus" value="Imogen">
+</div>
+<div class="place-info">
+<label for="inputCo">Company</label>
+<input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company" value="Free Players">
+<label for="inputLocation">Location</label>
+<input type="text" class="inputLocation" placeholder="Museum of Northern Arizona" value="West Park Presbyterian Church">
+</div>
+<br>
+<label for="inputNotes">Notes</label>
+<textarea name="Text1" class="inputNotes" cols="40" rows="5" value="A three story adventure of a crumbling building."></textarea>
+</fieldset>
+<button type="submit" class="submit-button">Update Entry</button>
+</form>
+</div>
+<div class="js-delete-entry">
+<h4>Are you sure you want to delete this entry?</h4>
+<button class="delete-button">Delete</button>
+<span id="cancel-button">Cancel</span>
+</div>`
+}
 
 ///////////////////////////////////////////////////////////////////
 //Invocations (calling)& function Triggers
@@ -79,6 +160,7 @@ $(".sign-up-form").submit(function (event) {
                 $('section').hide();
                 $('.navbar').show();
                 $('#user-dashboard').show();
+                noEntries();
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
@@ -135,6 +217,7 @@ $(".login-form").submit(function (event) {
                 $('#user-dashboard').show();
                 $('#loggedInName').text(result.name);
                 $('#loggedInUserName').val(result.username);
+                noEntries();
 
             })
             //if the call is failing
@@ -188,6 +271,7 @@ $(".entry-form").submit(function (event) {
     }
     //if the input is valid
     else {
+        entryArray++;
         //create the payload object (what data we send to the api call)
         const entryObject = {
             entryType: entryType,
@@ -219,6 +303,9 @@ $(".entry-form").submit(function (event) {
                 $('#loggedInName').text(result.name);
                 $('#loggedInUserName').val(result.username);
                 $('#add-entry-container').hide();
+                noEntries();
+                //Add Entry to page
+                $('#user-list').append(renderHTMLEntry(result));
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {

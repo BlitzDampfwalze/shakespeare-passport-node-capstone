@@ -86,7 +86,7 @@
                 <button id="add-entry-button">+ Add Entry</button>
             </div>
 
-            <div class="user-list">
+            <div id="user-list">
                 <p id="no-entry">No Entries - add an entry.</p>
                 <div class="entries-container">
                     <div class="entry-div read">
@@ -112,34 +112,35 @@
                     </div>
                     <div class="js-edit-entry">
                         <form action="" class="edit-entry-form">
+
                             <fieldset>
                                 <label class="question" for="entry-type">Entry Type:</label>
-                                <select name="entryType" class='entry-type' required>
-                                    <option value="0">Read</option>
-                                    <option value="1" selected>Seen</option>
-                                    <option value="2">Performed</option>
+                                <select name="entryType" class='entry-type' value='read' required>
+                                    <option value="read">Read</option>
+                                    <option value="seen" selected>Seen</option>
+                                    <option value="performed">Performed</option>
                                 </select>
                                 <br>
                                 <label for="inputDate">Date</label>
-                                <input type="date" class="inputDate">
+                                <input type="date" class="inputDate" value="2009-06-25">
                                 <button type="button" class="date-text">Need Date Range?</button>
                                 <div class="play-info">
                                     <label for="inputPlay">Play</label>
-                                    <input type="text" class="inputPlay" placeholder="Titus Andronicus">
+                                    <input type="text" class="inputPlay" placeholder="Titus Andronicus" value="Cymbeline">
                                     <label for="inputAuthor">Author</label>
-                                    <input type="text" class="inputAuthor" placeholder="The Bard">
+                                    <input type="text" class="inputAuthor" placeholder="The Bard" value="Shakes">
                                     <label for="inputRole">Role</label>
-                                    <input type="text" class="inputRole" placeholder="Titus">
+                                    <input type="text" class="inputRole" placeholder="Titus" value="Imogen">
                                 </div>
                                 <div class="place-info">
                                     <label for="inputCo">Company</label>
-                                    <input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company">
+                                    <input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company" value="Free Players">
                                     <label for="inputLocation">Location</label>
-                                    <input type="text" class="inputLocation" placeholder="Museum of Northern Arizona">
+                                    <input type="text" class="inputLocation" placeholder="Museum of Northern Arizona" value="West Park Presbyterian Church">
                                 </div>
                                 <br>
                                 <label for="inputNotes">Notes</label>
-                                <textarea name="Text1" class="inputNotes" cols="40" rows="5"></textarea>
+                                <textarea name="Text1" class="inputNotes" cols="40" rows="5" value="A three story adventure of a crumbling building."></textarea>
 
                             </fieldset>
                             <button type="submit" class="submit-button">Update Entry</button>
@@ -181,38 +182,39 @@
                             <p>Notes:</p>
                             <p>I thought I had problems.</p>
                         </span>
-                        <div class="view-more">View More</div>
+                        <!--                        <div class="view-more">View More</div>-->
                     </div>
                     <div class="js-edit-entry">
                         <form class="edit-entry-form">
+
                             <fieldset>
                                 <label class="question" for="entry-type">Entry Type:</label>
                                 <select name="entryType" class='entry-type' required>
-                                    <option value="0">Read</option>
-                                    <option value="1" selected>Seen</option>
-                                    <option value="2">Performed</option>
-                                </select>
+                                    <option value="read">Read</option>
+                                    <option value="seen" selected>Seen</option>
+                                    <option value="performed">Performed</option>
+                                    </select>
                                 <br>
                                 <label for="inputDate">Date</label>
-                                <input type="date" class="inputDate">
+                                <input type="date" class="inputDate" value="2009-06-25">
                                 <button type="button" class="date-text">Need Date Range?</button>
                                 <div class="play-info">
                                     <label for="inputPlay">Play</label>
-                                    <input type="text" class="inputPlay" placeholder="Titus Andronicus">
+                                    <input type="text" class="inputPlay" placeholder="Titus Andronicus" value="Cymbeline">
                                     <label for="inputAuthor">Author</label>
-                                    <input type="text" class="inputAuthor" placeholder="The Bard">
+                                    <input type="text" class="inputAuthor" placeholder="The Bard" value="Shakes">
                                     <label for="inputRole">Role</label>
-                                    <input type="text" class="inputRole" placeholder="Titus">
+                                    <input type="text" class="inputRole" placeholder="Titus" value="Imogen">
                                 </div>
                                 <div class="place-info">
                                     <label for="inputCo">Company</label>
-                                    <input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company">
+                                    <input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company" value="Free Players">
                                     <label for="inputLocation">Location</label>
-                                    <input type="text" class="inputLocation" placeholder="Museum of Northern Arizona">
+                                    <input type="text" class="inputLocation" placeholder="Museum of Northern Arizona" value="West Park Presbyterian Church">
                                 </div>
                                 <br>
                                 <label for="inputNotes">Notes</label>
-                                <textarea name="Text1" class="inputNotes" cols="40" rows="5"></textarea>
+                                <textarea name="Text1" class="inputNotes" cols="40" rows="5" value="A three story adventure of a crumbling building."></textarea>
 
                             </fieldset>
                             <button type="submit" class="submit-button">Update Entry</button>
@@ -265,31 +267,31 @@
                             <fieldset>
                                 <label class="question" for="entry-type">Entry Type:</label>
                                 <select name="entryType" class='entry-type' required>
-                                    <option value="0">Read</option>
-                                    <option value="1" selected>Seen</option>
-                                    <option value="2">Performed</option>
+                                    <option value="read">Read</option>
+                                    <option value="seen" selected>Seen</option>
+                                    <option value="performed">Performed</option>
                                 </select>
                                 <br>
                                 <label for="inputDate">Date</label>
-                                <input type="date" class="inputDate">
+                                <input type="date" class="inputDate" value="2009-06-25">
                                 <button type="button" class="date-text">Need Date Range?</button>
                                 <div class="play-info">
                                     <label for="inputPlay">Play</label>
-                                    <input type="text" class="inputPlay" placeholder="Titus Andronicus">
+                                    <input type="text" class="inputPlay" placeholder="Titus Andronicus" value="Cymbeline">
                                     <label for="inputAuthor">Author</label>
-                                    <input type="text" class="inputAuthor" placeholder="The Bard">
+                                    <input type="text" class="inputAuthor" placeholder="The Bard" value="Shakes">
                                     <label for="inputRole">Role</label>
-                                    <input type="text" class="inputRole" placeholder="Titus">
+                                    <input type="text" class="inputRole" placeholder="Titus" value="Imogen">
                                 </div>
                                 <div class="place-info">
                                     <label for="inputCo">Company</label>
-                                    <input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company">
+                                    <input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company" value="Free Players">
                                     <label for="inputLocation">Location</label>
-                                    <input type="text" class="inputLocation" placeholder="Museum of Northern Arizona">
+                                    <input type="text" class="inputLocation" placeholder="Museum of Northern Arizona" value="West Park Presbyterian Church">
                                 </div>
                                 <br>
                                 <label for="inputNotes">Notes</label>
-                                <textarea name="Text1" class="inputNotes" cols="40" rows="5"></textarea>
+                                <textarea name="Text1" class="inputNotes" cols="40" rows="5" value="A three story adventure of a crumbling building."></textarea>
 
                             </fieldset>
                             <button type="submit" class="submit-button">Update Entry</button>
@@ -310,9 +312,9 @@
                         <fieldset>
                             <label class="question" for="addEntryType">Entry Type:</label>
                             <select name="entryType" class='addEntryType' required>
-                                <option value="0">Read</option>
-                                <option value="1" selected>Seen</option>
-                                <option value="2">Performed</option>
+                                <option value="read">Read</option>
+                                <option value="seen" selected>Seen</option>
+                                <option value="performed">Performed</option>
                             </select>
                             <br>
                             <label for="addInputDate">Date</label>

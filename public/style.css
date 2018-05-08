@@ -240,7 +240,7 @@ p {
     display: inline-block;
 }
 
-.user-list {
+#user-list {
     width: 95%;
     margin: 0 2.5% 2.5%;
     border: 1px whitesmoke solid;
