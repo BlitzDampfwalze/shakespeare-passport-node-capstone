@@ -1,46 +1,52 @@
 //jquery related functionality
 //definitions: function , objects/data, variables, etc.
-let editEntryForm = `
-<div class="js-edit-entry" style="display: none;">
-    <form action="" class="edit-entry-form">
-        <fieldset>
-            <label class="question" for="entry-type">Entry Type:</label>
-            <select name="entryType" class='entry-type' value='read' required>
-                <option value="read">Read</option>
-                <option value="seen" selected>Seen</option>
-                <option value="performed">Performed</option>
-            </select>
-            <br>
-            <label for="inputDate">Date</label>
-            <input type="date" class="inputDate" value="2009-06-25">
-            <button type="button" class="date-text">Need Date Range?</button>
-            <div class="play-info">
-                <label for="inputPlay">Play</label>
-                <input type="text" class="inputPlay" placeholder="Titus Andronicus" value="Cymbeline">
-                <label for="inputAuthor">Author</label>
-                <input type="text" class="inputAuthor" placeholder="The Bard" value="Shakes">
-                <label for="inputRole">Role</label>
-                <input type="text" class="inputRole" placeholder="Titus" value="Imogen">
-            </div>
-            <div class="place-info">
-                <label for="inputCo">Company</label>
-                <input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company" value="Free Players">
-                <label for="inputLocation">Location</label>
-                <input type="text" class="inputLocation" placeholder="Museum of Northern Arizona" value="West Park Presbyterian Church">
-            </div>
-            <br>
-            <label for="inputNotes">Notes</label>
-            <textarea name="Text1" class="inputNotes" cols="40" rows="5" value="A three story adventure of a crumbling building."></textarea>
-        </fieldset>
-    <button type="submit" class="submit-button">Update Entry</button>
-    </form>
-</div>`;
-let deleteEntry = `
-<div class="js-delete-entry" style="display: none;">
-    <h4>Are you sure you want to delete this entry?</h4>
-    <button class="delete-button">Delete</button>
-    <span class="cancel-button">Cancel</span>
-</div>`
+//let editButtonsHTML = `
+//<div class="edit-entry-buttons">
+//<span class="update-select">Edit</span>
+//<p> | </p>
+//<span class="delete-select">Delete</span>
+//</div>`;
+//let editEntryForm = `
+//<div class="js-edit-entry" style="display: none;">
+//    <form action="" class="edit-entry-form">
+//        <fieldset>
+//            <label class="question" for="entry-type">Entry Type:</label>
+//            <select name="entryType" class='entry-type' value='read' required>
+//                <option value="read">Read</option>
+//                <option value="seen" selected>Seen</option>
+//                <option value="performed">Performed</option>
+//            </select>
+//            <br>
+//            <label for="inputDate">Date</label>
+//            <input type="date" class="inputDate" value="2009-06-25">
+//            <button type="button" class="date-text">Need Date Range?</button>
+//            <div class="play-info">
+//                <label for="inputPlay">Play</label>
+//                <input type="text" class="inputPlay" placeholder="Titus Andronicus" value="Cymbeline">
+//                <label for="inputAuthor">Author</label>
+//                <input type="text" class="inputAuthor" placeholder="The Bard" value="Shakes">
+//                <label for="inputRole">Role</label>
+//                <input type="text" class="inputRole" placeholder="Titus" value="Imogen">
+//            </div>
+//            <div class="place-info">
+//                <label for="inputCo">Company</label>
+//                <input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company" value="Free Players">
+//                <label for="inputLocation">Location</label>
+//                <input type="text" class="inputLocation" placeholder="Museum of Northern Arizona" value="West Park Presbyterian Church">
+//            </div>
+//            <br>
+//            <label for="inputNotes">Notes</label>
+//            <textarea name="Text1" class="inputNotes" cols="40" rows="5" value="A three story adventure of a crumbling building."></textarea>
+//        </fieldset>
+//    <button type="submit" class="submit-button">Update Entry</button>
+//    </form>
+//</div>`;
+//let deleteEntry = `
+//<div class="js-delete-entry" style="display: none;">
+//    <h4>Are you sure you want to delete this entry?</h4>
+//    <button class="delete-button">Delete</button>
+//    <span class="cancel-button">Cancel</span>
+//</div>`
 let entryArray = 0;
 
 function noEntries() {
@@ -52,62 +58,138 @@ function noEntries() {
     }
 }
 
-function renderHTMLEntry(results) {
+function htmlUserDashboard(results) {
 
-    let htmlString = `<div class="entries-container">
-        <div class="entry-div performed">`
-    htmlString += `
-        <div class="edit-entry-buttons">
-        <span class="update-select">Edit</span>
-        <p> | </p>
-        <span class="delete-select">Delete</span>
-        </div>`;
-
-    htmlString += `<span class="entry-info type">${results.entryType}</span>`; //Value of Entry Type
-    htmlString += `<span class="entry-info date">`;
-    htmlString += `<p>Date:</p>`;
-    htmlString += `<p>${results.inputDate}</p>`;
-    htmlString += `</span>`;
-    htmlString += `<span class="entry-info play">`;
-    htmlString += `<p>Play:</p>`;
-    htmlString += `<p>${results.inputPlay}</p>`;
-    htmlString += `<span class="author">${results.inputAuthor}</span>`;
-    htmlString += `</span>`;
-    if (results.inputRole) {
-        htmlString += `<span class="entry-info role">`;
-        htmlString += `<p>Role:</p>`;
-        htmlString += `<p>${results.inputRole}</p>`;
-        htmlString += `</span>`;
-    }
-    if (results.inputCo) {
-        htmlString += `<span class="entry-info theater-co">`;
-        htmlString += `<p>Company:</p>`;
-        htmlString += `<p>${results.inputCo}</p>`;
-        htmlString += `</span>`;
-    }
-    if (results.inputLocation) {
-        htmlString += `<span class="entry-info role">`;
-        htmlString += `<p>Location:</p>`;
-        htmlString += `<p>${results.inputLocation}</p>`;
-        htmlString += `</span>`;
-    }
-    htmlString += `<span class="entry-info notes">`
-    htmlString += `<p>Notes:</p>`
-    htmlString += `<p>${results.inputNotes}</p>`;
-    htmlString += `</span>`;
-    htmlString += `</div>`;
-    //Edit Entry & Delete Entry form
-    htmlString += editEntryForm;
-    htmlString += deleteEntry;
-    htmlString += `</div>`;
-
-    return htmlString;
 }
 
-//function editEntryHTML(results) {
-//    $('').val()
-//
-//}
+function addEntryRenderHTML(resultsObject) {
+    console.log(resultsObject);
+    let htmlString = ``;
+
+    //loop throu all the results
+    $.each(resultsObject, function (key, results) {
+
+        htmlString += `<div class="entries-container" id="${results._id}">`;
+        let displayDate = results.inputDate.substring(0, 10);
+        //edit buttons start
+        htmlString += `<div class="entry-div ${results.entryType}">`;
+        htmlString += `<div class="edit-entry-buttons">`;
+        htmlString += `<span class="update-select">Edit</span>`;
+        htmlString += `<p> | </p>`;
+        htmlString += `<span class="delete-select">Delete</span>`;
+        htmlString += `</div>`;
+        //edit buttons finish
+
+        htmlString += `<span class="entry-info type">${results.entryType}</span>`; //Value of Entry Type
+        htmlString += `<span class="entry-info date">`;
+        htmlString += `<p>Date:</p>`;
+        htmlString += `<p>${displayDate}</p>`;
+        htmlString += `</span>`;
+        htmlString += `<span class="entry-info play">`;
+        htmlString += `<p>Play:</p>`;
+        htmlString += `<p>${results.inputPlay}</p>`;
+        htmlString += `<span class="author">${results.inputAuthor}</span>`;
+        htmlString += `</span>`;
+        if (results.inputRole) {
+            htmlString += `<span class="entry-info role">`;
+            htmlString += `<p>Role:</p>`;
+            htmlString += `<p>${results.inputRole}</p>`;
+            htmlString += `</span>`;
+        }
+        if (results.inputCo) {
+            htmlString += `<span class="entry-info theater-co">`;
+            htmlString += `<p>Company:</p>`;
+            htmlString += `<p>${results.inputCo}</p>`;
+            htmlString += `</span>`;
+        }
+        if (results.inputLocation) {
+            htmlString += `<span class="entry-info role">`;
+            htmlString += `<p>Location:</p>`;
+            htmlString += `<p>${results.inputLocation}</p>`;
+            htmlString += `</span>`;
+        }
+        htmlString += `<span class="entry-info notes">`
+        htmlString += `<p>Notes:</p>`
+        htmlString += `<p>${results.inputNotes}</p>`;
+        htmlString += `</span>`;
+        htmlString += `</div>`;
+
+
+        //Edit Entry  Entry form start
+        htmlString += `<div class="js-edit-entry" style="display: none;">`;
+        htmlString += `<form action="" class="edit-entry-form">`;
+        htmlString += `<fieldset>`;
+        htmlString += `<label class="question" for="entry-type">Entry Type:</label>`;
+
+        //dynamically preselect the options based on the previous values
+        htmlString += `<select name="entryType" class='entry-type' required>`;
+        if (results.entryType == "read") {
+            htmlString += `<option value="read" selected>Read</option>`;
+            htmlString += `<option value="seen" >Seen</option>`;
+            htmlString += `<option value="performed" >Performed</option>`;
+        } else if (results.entryType == "seen") {
+            htmlString += `<option value="read" >Read</option>`;
+            htmlString += `<option value="seen" selected>Seen</option>`;
+            htmlString += `<option value="performed" >Performed</option>`;
+        } else if (results.entryType == "performed") {
+            htmlString += `<option value="read" >Read</option>`;
+            htmlString += `<option value="seen" >Seen</option>`;
+            htmlString += `<option value="performed" selected>Performed</option>`;
+        }
+        htmlString += `</select>`;
+
+
+        htmlString += `<br>`;
+        htmlString += `<label for="inputDate">Date</label>`;
+        htmlString += `<input type="date" class="inputDate" value="${results.inputDate}">`;
+        htmlString += `<button type="button" class="date-text">Need Date Range?</button>`;
+        htmlString += `<div class="play-info">`;
+        htmlString += `<label for="inputPlay">Play</label>`;
+        htmlString += `<input type="text" class="inputPlay" placeholder="Play" value="${results.inputPlay}">`;
+        htmlString += `<label for="inputAuthor">Author</label>`;
+        htmlString += `<input type="text" class="inputAuthor" placeholder="Author" value="${results.inputAuthor}">`;
+        htmlString += `<label for="inputRole">Role</label>`;
+        htmlString += `<input type="text" class="inputRole" placeholder="Role" value="${results.inputRole}">`;
+        htmlString += `</div>`;
+        htmlString += `<div class="place-info">`;
+        htmlString += `<label for="inputCo">Company</label>`;
+        htmlString += `<input type="text" class="inputCo" placeholder="Company" value="${results.inputCo}">`;
+        htmlString += `<label for="inputLocation">Location</label>`;
+        htmlString += `<input type="text" class="inputLocation" placeholder="Location" value="${results.inputLocation}">`;
+        htmlString += `</div>`;
+        htmlString += `<br>`;
+        htmlString += `<label for="inputNotes">Notes</label>`;
+        htmlString += `<textarea name="Text1" class="inputNotes" cols="40" rows="5">${results.inputNotes}</textarea>`;
+        htmlString += `</fieldset>`;
+        htmlString += `<button type="submit" class="submit-button">Update Entry</button>`;
+        htmlString += `</form>`;
+        htmlString += `</div>`;
+        //Edit Entry  Entry form finish
+
+        //delete entry form start
+        htmlString += `<div class="js-delete-entry" style="display: none;">`;
+        htmlString += `<h4>Are you sure you want to delete this entry?</h4>`;
+        htmlString += `<button class="delete-button">Delete</button>`;
+        htmlString += `<span class="cancel-button">Cancel</span>`;
+        htmlString += `</div>`;
+        //delete entry form finish
+
+
+        htmlString += `</div>`;
+    });
+    //empty the user-list container before populating it dynamically
+    $('#user-list').html("");
+    $('#user-list').html(htmlString);
+}
+
+function updateEditFormValues(results) {
+    let id = results._id;
+    let jsEntryText = $(`#${results._id}`).find('.entry-div .type').text();
+    $(`#${results._id}`).find('.js-edit-entry .entry-type').val(jsEntryText);
+    //    console.log($(`#${results._id}`).find('.js-edit-entry .entry-type').val());
+    console.log(jsEntryText);
+
+}
 
 ///////////////////////////////////////////////////////////////////
 //Invocations (calling)& function Triggers
@@ -166,6 +248,7 @@ $(".sign-up-form").submit(function (event) {
                 $('section').hide();
                 $('.navbar').show();
                 $('#user-dashboard').show();
+//            htmlUserDashboard(result);
                 noEntries();
             })
             //if the call is failing
@@ -223,6 +306,7 @@ $(".login-form").submit(function (event) {
                 $('#user-dashboard').show();
                 $('#loggedInName').text(result.name);
                 $('#loggedInUserName').val(result.username);
+//            htmlUserDashboard();
                 noEntries();
 
             })
@@ -311,7 +395,9 @@ $(".entry-form").submit(function (event) {
                 $('#add-entry-container').hide();
                 noEntries();
                 //Add Entry to page
-                $('#user-list').append(renderHTMLEntry(result));
+                addEntryRenderHTML(result);
+
+                updateEditFormValues(result);
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
