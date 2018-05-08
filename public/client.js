@@ -1,5 +1,46 @@
 //jquery related functionality
 //definitions: function , objects/data, variables, etc.
+let editEntryForm = `
+<div class="js-edit-entry" style="display: none;">
+    <form action="" class="edit-entry-form">
+        <fieldset>
+            <label class="question" for="entry-type">Entry Type:</label>
+            <select name="entryType" class='entry-type' value='read' required>
+                <option value="read">Read</option>
+                <option value="seen" selected>Seen</option>
+                <option value="performed">Performed</option>
+            </select>
+            <br>
+            <label for="inputDate">Date</label>
+            <input type="date" class="inputDate" value="2009-06-25">
+            <button type="button" class="date-text">Need Date Range?</button>
+            <div class="play-info">
+                <label for="inputPlay">Play</label>
+                <input type="text" class="inputPlay" placeholder="Titus Andronicus" value="Cymbeline">
+                <label for="inputAuthor">Author</label>
+                <input type="text" class="inputAuthor" placeholder="The Bard" value="Shakes">
+                <label for="inputRole">Role</label>
+                <input type="text" class="inputRole" placeholder="Titus" value="Imogen">
+            </div>
+            <div class="place-info">
+                <label for="inputCo">Company</label>
+                <input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company" value="Free Players">
+                <label for="inputLocation">Location</label>
+                <input type="text" class="inputLocation" placeholder="Museum of Northern Arizona" value="West Park Presbyterian Church">
+            </div>
+            <br>
+            <label for="inputNotes">Notes</label>
+            <textarea name="Text1" class="inputNotes" cols="40" rows="5" value="A three story adventure of a crumbling building."></textarea>
+        </fieldset>
+    <button type="submit" class="submit-button">Update Entry</button>
+    </form>
+</div>`;
+let deleteEntry = `
+<div class="js-delete-entry" style="display: none;">
+    <h4>Are you sure you want to delete this entry?</h4>
+    <button class="delete-button">Delete</button>
+    <span class="cancel-button">Cancel</span>
+</div>`
 let entryArray = 0;
 
 function noEntries() {
@@ -56,52 +97,17 @@ function renderHTMLEntry(results) {
     htmlString += `</span>`;
     htmlString += `</div>`;
     //Edit Entry & Delete Entry form
+    htmlString += editEntryForm;
+    htmlString += deleteEntry;
     htmlString += `</div>`;
+
     return htmlString;
 }
 
-function editEntryHTML(results) {
-    let htmlString = `<div class="js-edit-entry">`
-    htmlString += `<form action="" class="edit-entry-form">`
-    htmlString += `<fieldset>`
-    `
-<label class="question" for="entry-type">Entry Type:</label>
-<select name="entryType" class='entry-type' required>
-<option value="read">Read</option>
-<option value="seen" selected>Seen</option>
-<option value="performed">Performed</option>
-</select>
-<br>
-<label for="inputDate">Date</label>
-<input type="date" class="inputDate" value="2009-06-25">
-<button type="button" class="date-text">Need Date Range?</button>
-<div class="play-info">
-<label for="inputPlay">Play</label>
-<input type="text" class="inputPlay" placeholder="Titus Andronicus" value="Cymbeline">
-<label for="inputAuthor">Author</label>
-<input type="text" class="inputAuthor" placeholder="The Bard" value="Shakes">
-<label for="inputRole">Role</label>
-<input type="text" class="inputRole" placeholder="Titus" value="Imogen">
-</div>
-<div class="place-info">
-<label for="inputCo">Company</label>
-<input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company" value="Free Players">
-<label for="inputLocation">Location</label>
-<input type="text" class="inputLocation" placeholder="Museum of Northern Arizona" value="West Park Presbyterian Church">
-</div>
-<br>
-<label for="inputNotes">Notes</label>
-<textarea name="Text1" class="inputNotes" cols="40" rows="5" value="A three story adventure of a crumbling building."></textarea>
-</fieldset>
-<button type="submit" class="submit-button">Update Entry</button>
-</form>
-</div>
-<div class="js-delete-entry">
-<h4>Are you sure you want to delete this entry?</h4>
-<button class="delete-button">Delete</button>
-<span id="cancel-button">Cancel</span>
-</div>`
-}
+//function editEntryHTML(results) {
+//    $('').val()
+//
+//}
 
 ///////////////////////////////////////////////////////////////////
 //Invocations (calling)& function Triggers
@@ -358,20 +364,21 @@ $(".edit-entry-form").submit(function (event) {
     alert("Entry has been updated");
 });
 //Delete Entry
-$('.delete-select').click(function (event) {
+$('#user-list').on('click', '.delete-select', function (event) {
     event.preventDefault();
     //    $('.js-delete-entry').show();
     $(event.currentTarget).closest('.entry-div').siblings('.js-delete-entry').show();
     //    $(event.currentTarget).parents('.entry-div').append(deleteEntryForm);
 });
 
-$('.delete-button').click(function (event) {
+$('#user-list').on('click', '.delete-button', function (event) {
     event.preventDefault();
     $('.js-delete-entry').hide();
     //    $('.js-delete-entry').remove();
     alert("Entry has been deleted");
 });
-$('#cancel-button').click(function (event) {
+
+$('#user-list').on('click', '.cancel-button', function (event) {
     event.preventDefault();
 
     $('.js-delete-entry').hide();
