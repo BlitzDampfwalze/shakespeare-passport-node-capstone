@@ -108,9 +108,12 @@ function addEntryRenderHTML(results) {
 
     //delete entry form start
     htmlString += `<div class="js-delete-entry" style="display: none;">`;
+    htmlString += `<form class="delete-entry-form">`;
+    htmlString += `<input type="hidden" class="inputEntryID"  value="${results._id}">`;
     htmlString += `<h4>Are you sure you want to delete this entry?</h4>`;
-    htmlString += `<button class="delete-button">Delete</button>`;
+    htmlString += `<button type="submit" class="delete-button">Delete</button>`;
     htmlString += `<span class="cancel-button">Cancel</span>`;
+    htmlString += `</form>`;
     htmlString += `</div>`;
     //delete entry form finish
 
@@ -513,19 +516,43 @@ $('#user-list').on('click', '.delete-select', function (event) {
     $(event.currentTarget).closest('.entry-div').siblings('.js-delete-entry').show();
     //    $(event.currentTarget).parents('.entry-div').append(deleteEntryForm);
 
-    //AJAX to DELETE
-    //    if (result.entriesOutput.length === 0) {
-    //        $('#no-entry').show();
-    //    } else {
-    //        $('#no-entry').hide();
-    //    }
 });
 
-$('#user-list').on('click', '.delete-button', function (event) {
+$('#user-list').on('submit', '.delete-entry-form', function (event) {
     event.preventDefault();
-    $('.js-delete-entry').hide();
-    //    $('.js-delete-entry').remove();
-    alert("Entry has been deleted");
+
+
+    //take the input from the user
+    const entryId = $(this).parent().find('.inputEntryID').val();
+    const loggedInUserName = $("#loggedInUserName").val();
+
+    //    console.log(currentForm, entryId);
+    //    console.log(entryType, inputDate, inputPlay, inputAuthor, inputRole, inputCo, inputLocation, inputNotes);
+
+    //make the api call using the payload above
+    $.ajax({
+            type: 'DELETE',
+            url: `/entry/${entryId}`,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            populateUserDashboard(loggedInUserName);
+            alert("Entry deleted");
+            $('.js-delete-entry').hide();
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+
+
+
 });
 
 $('#user-list').on('click', '.cancel-button', function (event) {
