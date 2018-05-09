@@ -70,8 +70,7 @@ function addEntryRenderHTML(results) {
     //    $.each(resultsObject, function (key, results) {
 
     htmlString += `<div class="entries-container" id="${results._id}">`;
-    let displayDate = results.inputDate
-    //        .substring(0, 10);
+    let displayDate = results.inputDate.substring(0, 10);
     //edit buttons start
     htmlString += `<div class="entry-div ${results.entryType}">`;
     htmlString += `<div class="edit-entry-buttons">`;
