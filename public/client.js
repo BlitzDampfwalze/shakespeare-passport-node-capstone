@@ -1,81 +1,20 @@
 //jquery related functionality
 //definitions: function , objects/data, variables, etc.
-//let editButtonsHTML = `
-//<div class="edit-entry-buttons">
-//<span class="update-select">Edit</span>
-//<p> | </p>
-//<span class="delete-select">Delete</span>
-//</div>`;
-//let editEntryForm = `
-//<div class="js-edit-entry" style="display: none;">
-//    <form action="" class="edit-entry-form">
-//        <fieldset>
-//            <label class="question" for="entry-type">Entry Type:</label>
-//            <select name="entryType" class='entry-type' value='read' required>
-//                <option value="read">Read</option>
-//                <option value="seen" selected>Seen</option>
-//                <option value="performed">Performed</option>
-//            </select>
-//            <br>
-//            <label for="inputDate">Date</label>
-//            <input type="date" class="inputDate" value="2009-06-25">
-//            <button type="button" class="date-text">Need Date Range?</button>
-//            <div class="play-info">
-//                <label for="inputPlay">Play</label>
-//                <input type="text" class="inputPlay" placeholder="Titus Andronicus" value="Cymbeline">
-//                <label for="inputAuthor">Author</label>
-//                <input type="text" class="inputAuthor" placeholder="The Bard" value="Shakes">
-//                <label for="inputRole">Role</label>
-//                <input type="text" class="inputRole" placeholder="Titus" value="Imogen">
-//            </div>
-//            <div class="place-info">
-//                <label for="inputCo">Company</label>
-//                <input type="text" class="inputCo" placeholder="Flagstaff Shakespeare Company" value="Free Players">
-//                <label for="inputLocation">Location</label>
-//                <input type="text" class="inputLocation" placeholder="Museum of Northern Arizona" value="West Park Presbyterian Church">
-//            </div>
-//            <br>
-//            <label for="inputNotes">Notes</label>
-//            <textarea name="Text1" class="inputNotes" cols="40" rows="5" value="A three story adventure of a crumbling building."></textarea>
-//        </fieldset>
-//    <button type="submit" class="submit-button">Update Entry</button>
-//    </form>
-//</div>`;
-//let deleteEntry = `
-//<div class="js-delete-entry" style="display: none;">
-//    <h4>Are you sure you want to delete this entry?</h4>
-//    <button class="delete-button">Delete</button>
-//    <span class="cancel-button">Cancel</span>
-//</div>`
-let entryArray = 0;
-
-function noEntries() {
-    console.log(entryArray);
-    if (entryArray === 0) {
-        $('#no-entry').show();
-    } else {
-        $('#no-entry').hide();
-    }
-}
-
-function htmlUserDashboard(results) {
-
-}
 
 function addEntryRenderHTML(results) {
     console.log(results);
     let htmlString = ``;
+    let displayDate = results.inputDate.substring(0, 10);
 
     //loop throu all the results
     //    $.each(resultsObject, function (key, results) {
 
     htmlString += `<div class="entries-container" id="${results._id}">`;
-    let displayDate = results.inputDate.substring(0, 10);
     //edit buttons start
     htmlString += `<div class="entry-div ${results.entryType}">`;
     htmlString += `<div class="edit-entry-buttons">`;
     htmlString += `<span class="update-select">Edit</span>`;
-    htmlString += `<p> | </p>`;
+    htmlString += `<p>&nbsp|&nbsp</p>`;
     htmlString += `<span class="delete-select">Delete</span>`;
     htmlString += `</div>`;
     //edit buttons finish
@@ -177,9 +116,8 @@ function addEntryRenderHTML(results) {
 
     htmlString += `</div>`;
     //    });
-    //empty the user-list container before populating it dynamically
-    $('#user-list').html("");
-    $('#user-list').html(htmlString);
+
+    $('#user-list').append(htmlString);
 }
 
 
@@ -192,7 +130,7 @@ function populateUserDashboard(username) { //Get AJAX User Entries call, render 
     //make the api call using the payload above
     $.ajax({
             type: 'GET',
-            url: `/entry/:${username}`,
+            url: `/entry/${username}`,
             dataType: 'json',
             data: JSON.stringify(UserObject),
             contentType: 'application/json'
@@ -200,7 +138,14 @@ function populateUserDashboard(username) { //Get AJAX User Entries call, render 
         //if call is succefull
         .done(function (result) {
             console.log(result);
+            if (result.entriesOutput.length === 0) {
+                $('#no-entry').show();
+            } else {
+                $('#no-entry').hide();
+            }
 
+            //empty the user-list container before populating it dynamically
+            $('#user-list').html("");
             htmlUserDashboard(result);
 
         })
@@ -213,21 +158,20 @@ function populateUserDashboard(username) { //Get AJAX User Entries call, render 
 }
 
 function htmlUserDashboard(resultsObject) {
-    console.log('html user dashboard function ran');
-    //    $.each(resultsObject, function (key, results) {
-    //        addEntryRenderHTML(results);
-    //    });
-
+    console.log(resultsObject.entriesOutput);
+    $.each(resultsObject.entriesOutput, function (key, value) {
+        addEntryRenderHTML(value);
+    });
 }
 
-function updateEditFormValues(results) {
-    let id = results._id;
-    let jsEntryText = $(`#${results._id}`).find('.entry-div .type').text();
-    $(`#${results._id}`).find('.js-edit-entry .entry-type').val(jsEntryText);
-    //    console.log($(`#${results._id}`).find('.js-edit-entry .entry-type').val());
-    console.log(jsEntryText);
-
-}
+//function updateEditFormValues(results) {
+//    let id = results._id;
+//    let jsEntryText = $(`#${results._id}`).find('.entry-div .type').text();
+//    $(`#${results._id}`).find('.js-edit-entry .entry-type').val(jsEntryText);
+//    //    console.log($(`#${results._id}`).find('.js-edit-entry .entry-type').val());
+//    console.log(jsEntryText);
+//
+//}
 
 
 
@@ -288,8 +232,7 @@ $(".sign-up-form").submit(function (event) {
                 $('section').hide();
                 $('.navbar').show();
                 $('#user-dashboard').show();
-                //            htmlUserDashboard(result);
-                noEntries();
+                populateUserDashboard(result.username);
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
@@ -348,7 +291,7 @@ $(".login-form").submit(function (event) {
                 $('#loggedInUserName').val(result.username);
                 //            htmlUserDashboard();
                 populateUserDashboard(result.username); //AJAX call in here??
-                noEntries();
+                //                noEntries();
 
             })
             //if the call is failing
@@ -402,7 +345,7 @@ $(".entry-form").submit(function (event) {
     }
     //if the input is valid
     else {
-        entryArray++;
+
         //create the payload object (what data we send to the api call)
         const entryObject = {
             entryType: entryType,
@@ -434,7 +377,7 @@ $(".entry-form").submit(function (event) {
                 $('#loggedInName').text(result.name);
                 $('#loggedInUserName').val(result.username);
                 $('#add-entry-container').hide();
-                noEntries();
+                //                noEntries();
                 //Add Entry to page
                 addEntryRenderHTML(result);
 
@@ -496,6 +439,13 @@ $('#user-list').on('click', '.delete-select', function (event) {
     //    $('.js-delete-entry').show();
     $(event.currentTarget).closest('.entry-div').siblings('.js-delete-entry').show();
     //    $(event.currentTarget).parents('.entry-div').append(deleteEntryForm);
+
+    //AJAX to DELETE
+    //    if (result.entriesOutput.length === 0) {
+    //        $('#no-entry').show();
+    //    } else {
+    //        $('#no-entry').hide();
+    //    }
 });
 
 $('#user-list').on('click', '.delete-button', function (event) {

@@ -259,31 +259,6 @@ app.get('/entry/:user', function (req, res) {
         });
 });
 
-// accessing all of a user's achievements
-app.get('/achievements/:user', function (req, res) {
-    Achievement
-        .find()
-        .sort('achieveWhen')
-        .then(function (achievements) {
-            let achievementOutput = [];
-            achievements.map(function (achievement) {
-                if (achievement.user == req.params.user) {
-                    achievementOutput.push(achievement);
-                }
-            });
-            res.json({
-                achievementOutput
-            });
-        })
-        .catch(function (err) {
-            console.error(err);
-            res.status(500).json({
-                message: 'Internal server error'
-            });
-        });
-});
-
-
 // accessing a single achievement by id
 app.get('/entry/:id', function (req, res) {
     Entry
