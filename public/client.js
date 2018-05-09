@@ -62,124 +62,163 @@ function htmlUserDashboard(results) {
 
 }
 
-function addEntryRenderHTML(resultsObject) {
-    console.log(resultsObject);
+function addEntryRenderHTML(results) {
+    console.log(results);
     let htmlString = ``;
 
     //loop throu all the results
-    $.each(resultsObject, function (key, results) {
+    //    $.each(resultsObject, function (key, results) {
 
-        htmlString += `<div class="entries-container" id="${results._id}">`;
-        let displayDate = results.inputDate.substring(0, 10);
-        //edit buttons start
-        htmlString += `<div class="entry-div ${results.entryType}">`;
-        htmlString += `<div class="edit-entry-buttons">`;
-        htmlString += `<span class="update-select">Edit</span>`;
-        htmlString += `<p> | </p>`;
-        htmlString += `<span class="delete-select">Delete</span>`;
-        htmlString += `</div>`;
-        //edit buttons finish
+    htmlString += `<div class="entries-container" id="${results._id}">`;
+    let displayDate = results.inputDate
+    //        .substring(0, 10);
+    //edit buttons start
+    htmlString += `<div class="entry-div ${results.entryType}">`;
+    htmlString += `<div class="edit-entry-buttons">`;
+    htmlString += `<span class="update-select">Edit</span>`;
+    htmlString += `<p> | </p>`;
+    htmlString += `<span class="delete-select">Delete</span>`;
+    htmlString += `</div>`;
+    //edit buttons finish
 
-        htmlString += `<span class="entry-info type">${results.entryType}</span>`; //Value of Entry Type
-        htmlString += `<span class="entry-info date">`;
-        htmlString += `<p>Date:</p>`;
-        htmlString += `<p>${displayDate}</p>`;
+    htmlString += `<span class="entry-info type">${results.entryType}</span>`; //Value of Entry Type
+    htmlString += `<span class="entry-info date">`;
+    htmlString += `<p>Date:</p>`;
+    htmlString += `<p>${displayDate}</p>`;
+    htmlString += `</span>`;
+    htmlString += `<span class="entry-info play">`;
+    htmlString += `<p>Play:</p>`;
+    htmlString += `<p>${results.inputPlay}</p>`;
+    htmlString += `<span class="author">${results.inputAuthor}</span>`;
+    htmlString += `</span>`;
+    if (results.inputRole) {
+        htmlString += `<span class="entry-info role">`;
+        htmlString += `<p>Role:</p>`;
+        htmlString += `<p>${results.inputRole}</p>`;
         htmlString += `</span>`;
-        htmlString += `<span class="entry-info play">`;
-        htmlString += `<p>Play:</p>`;
-        htmlString += `<p>${results.inputPlay}</p>`;
-        htmlString += `<span class="author">${results.inputAuthor}</span>`;
+    }
+    if (results.inputCo) {
+        htmlString += `<span class="entry-info theater-co">`;
+        htmlString += `<p>Company:</p>`;
+        htmlString += `<p>${results.inputCo}</p>`;
         htmlString += `</span>`;
-        if (results.inputRole) {
-            htmlString += `<span class="entry-info role">`;
-            htmlString += `<p>Role:</p>`;
-            htmlString += `<p>${results.inputRole}</p>`;
-            htmlString += `</span>`;
-        }
-        if (results.inputCo) {
-            htmlString += `<span class="entry-info theater-co">`;
-            htmlString += `<p>Company:</p>`;
-            htmlString += `<p>${results.inputCo}</p>`;
-            htmlString += `</span>`;
-        }
-        if (results.inputLocation) {
-            htmlString += `<span class="entry-info role">`;
-            htmlString += `<p>Location:</p>`;
-            htmlString += `<p>${results.inputLocation}</p>`;
-            htmlString += `</span>`;
-        }
-        htmlString += `<span class="entry-info notes">`
-        htmlString += `<p>Notes:</p>`
-        htmlString += `<p>${results.inputNotes}</p>`;
+    }
+    if (results.inputLocation) {
+        htmlString += `<span class="entry-info role">`;
+        htmlString += `<p>Location:</p>`;
+        htmlString += `<p>${results.inputLocation}</p>`;
         htmlString += `</span>`;
-        htmlString += `</div>`;
+    }
+    htmlString += `<span class="entry-info notes">`
+    htmlString += `<p>Notes:</p>`
+    htmlString += `<p>${results.inputNotes}</p>`;
+    htmlString += `</span>`;
+    htmlString += `</div>`;
 
 
-        //Edit Entry  Entry form start
-        htmlString += `<div class="js-edit-entry" style="display: none;">`;
-        htmlString += `<form action="" class="edit-entry-form">`;
-        htmlString += `<fieldset>`;
-        htmlString += `<label class="question" for="entry-type">Entry Type:</label>`;
+    //Edit Entry  Entry form start
+    htmlString += `<div class="js-edit-entry" style="display: none;">`;
+    htmlString += `<form action="" class="edit-entry-form">`;
+    htmlString += `<fieldset>`;
+    htmlString += `<label class="question" for="entry-type">Entry Type:</label>`;
 
-        //dynamically preselect the options based on the previous values
-        htmlString += `<select name="entryType" class='entry-type' required>`;
-        if (results.entryType == "read") {
-            htmlString += `<option value="read" selected>Read</option>`;
-            htmlString += `<option value="seen" >Seen</option>`;
-            htmlString += `<option value="performed" >Performed</option>`;
-        } else if (results.entryType == "seen") {
-            htmlString += `<option value="read" >Read</option>`;
-            htmlString += `<option value="seen" selected>Seen</option>`;
-            htmlString += `<option value="performed" >Performed</option>`;
-        } else if (results.entryType == "performed") {
-            htmlString += `<option value="read" >Read</option>`;
-            htmlString += `<option value="seen" >Seen</option>`;
-            htmlString += `<option value="performed" selected>Performed</option>`;
-        }
-        htmlString += `</select>`;
-
-
-        htmlString += `<br>`;
-        htmlString += `<label for="inputDate">Date</label>`;
-        htmlString += `<input type="date" class="inputDate" value="${results.inputDate}">`;
-        htmlString += `<button type="button" class="date-text">Need Date Range?</button>`;
-        htmlString += `<div class="play-info">`;
-        htmlString += `<label for="inputPlay">Play</label>`;
-        htmlString += `<input type="text" class="inputPlay" placeholder="Play" value="${results.inputPlay}">`;
-        htmlString += `<label for="inputAuthor">Author</label>`;
-        htmlString += `<input type="text" class="inputAuthor" placeholder="Author" value="${results.inputAuthor}">`;
-        htmlString += `<label for="inputRole">Role</label>`;
-        htmlString += `<input type="text" class="inputRole" placeholder="Role" value="${results.inputRole}">`;
-        htmlString += `</div>`;
-        htmlString += `<div class="place-info">`;
-        htmlString += `<label for="inputCo">Company</label>`;
-        htmlString += `<input type="text" class="inputCo" placeholder="Company" value="${results.inputCo}">`;
-        htmlString += `<label for="inputLocation">Location</label>`;
-        htmlString += `<input type="text" class="inputLocation" placeholder="Location" value="${results.inputLocation}">`;
-        htmlString += `</div>`;
-        htmlString += `<br>`;
-        htmlString += `<label for="inputNotes">Notes</label>`;
-        htmlString += `<textarea name="Text1" class="inputNotes" cols="40" rows="5">${results.inputNotes}</textarea>`;
-        htmlString += `</fieldset>`;
-        htmlString += `<button type="submit" class="submit-button">Update Entry</button>`;
-        htmlString += `</form>`;
-        htmlString += `</div>`;
-        //Edit Entry  Entry form finish
-
-        //delete entry form start
-        htmlString += `<div class="js-delete-entry" style="display: none;">`;
-        htmlString += `<h4>Are you sure you want to delete this entry?</h4>`;
-        htmlString += `<button class="delete-button">Delete</button>`;
-        htmlString += `<span class="cancel-button">Cancel</span>`;
-        htmlString += `</div>`;
-        //delete entry form finish
+    //dynamically preselect the options based on the previous values
+    htmlString += `<select name="entryType" class='entry-type' required>`;
+    if (results.entryType == "read") {
+        htmlString += `<option value="read" selected>Read</option>`;
+        htmlString += `<option value="seen" >Seen</option>`;
+        htmlString += `<option value="performed" >Performed</option>`;
+    } else if (results.entryType == "seen") {
+        htmlString += `<option value="read" >Read</option>`;
+        htmlString += `<option value="seen" selected>Seen</option>`;
+        htmlString += `<option value="performed" >Performed</option>`;
+    } else if (results.entryType == "performed") {
+        htmlString += `<option value="read" >Read</option>`;
+        htmlString += `<option value="seen" >Seen</option>`;
+        htmlString += `<option value="performed" selected>Performed</option>`;
+    }
+    htmlString += `</select>`;
 
 
-        htmlString += `</div>`;
-    });
+    htmlString += `<br>`;
+    htmlString += `<label for="inputDate">Date</label>`;
+    htmlString += `<input type="date" class="inputDate" value="${results.inputDate}">`;
+    htmlString += `<button type="button" class="date-text">Need Date Range?</button>`;
+    htmlString += `<div class="play-info">`;
+    htmlString += `<label for="inputPlay">Play</label>`;
+    htmlString += `<input type="text" class="inputPlay" placeholder="Play" value="${results.inputPlay}">`;
+    htmlString += `<label for="inputAuthor">Author</label>`;
+    htmlString += `<input type="text" class="inputAuthor" placeholder="Author" value="${results.inputAuthor}">`;
+    htmlString += `<label for="inputRole">Role</label>`;
+    htmlString += `<input type="text" class="inputRole" placeholder="Role" value="${results.inputRole}">`;
+    htmlString += `</div>`;
+    htmlString += `<div class="place-info">`;
+    htmlString += `<label for="inputCo">Company</label>`;
+    htmlString += `<input type="text" class="inputCo" placeholder="Company" value="${results.inputCo}">`;
+    htmlString += `<label for="inputLocation">Location</label>`;
+    htmlString += `<input type="text" class="inputLocation" placeholder="Location" value="${results.inputLocation}">`;
+    htmlString += `</div>`;
+    htmlString += `<br>`;
+    htmlString += `<label for="inputNotes">Notes</label>`;
+    htmlString += `<textarea name="Text1" class="inputNotes" cols="40" rows="5">${results.inputNotes}</textarea>`;
+    htmlString += `</fieldset>`;
+    htmlString += `<button type="submit" class="submit-button">Update Entry</button>`;
+    htmlString += `</form>`;
+    htmlString += `</div>`;
+    //Edit Entry  Entry form finish
+
+    //delete entry form start
+    htmlString += `<div class="js-delete-entry" style="display: none;">`;
+    htmlString += `<h4>Are you sure you want to delete this entry?</h4>`;
+    htmlString += `<button class="delete-button">Delete</button>`;
+    htmlString += `<span class="cancel-button">Cancel</span>`;
+    htmlString += `</div>`;
+    //delete entry form finish
+
+
+    htmlString += `</div>`;
+    //    });
     //empty the user-list container before populating it dynamically
     $('#user-list').html("");
     $('#user-list').html(htmlString);
+}
+
+
+
+function populateUserDashboard(username) { //Get AJAX User Entries call, render on page
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: username
+    };
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/entry/:${username}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+
+            htmlUserDashboard(result);
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function htmlUserDashboard(resultsObject) {
+    console.log('html user dashboard function ran');
+    //    $.each(resultsObject, function (key, results) {
+    //        addEntryRenderHTML(results);
+    //    });
+
 }
 
 function updateEditFormValues(results) {
@@ -190,6 +229,8 @@ function updateEditFormValues(results) {
     console.log(jsEntryText);
 
 }
+
+
 
 ///////////////////////////////////////////////////////////////////
 //Invocations (calling)& function Triggers
@@ -307,6 +348,7 @@ $(".login-form").submit(function (event) {
                 $('#loggedInName').text(result.name);
                 $('#loggedInUserName').val(result.username);
                 //            htmlUserDashboard();
+                populateUserDashboard(result.username); //AJAX call in here??
                 noEntries();
 
             })

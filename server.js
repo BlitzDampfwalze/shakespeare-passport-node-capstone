@@ -177,7 +177,7 @@ app.post('/users/login', function (req, res) {
 
 // -------------entry ENDPOINTS------------------------------------------------
 // POST -----------------------------------------
-// creating a new achievement
+// creating a new Entry
 app.post('/entry/create', (req, res) => {
     let entryType = req.body.entryType;
     let inputDate = req.body.inputDate;
@@ -212,15 +212,16 @@ app.post('/entry/create', (req, res) => {
 });
 
 // PUT --------------------------------------
-app.put('/achievement/:id', function (req, res) {
+app.put('/entry/:id', function (req, res) {
     let toUpdate = {};
-    let updateableFields = ['achieveWhat', 'achieveHow', 'achieveWhen', 'achieveWhy'];
+    //    let updateableFields = ['achieveWhat', 'achieveHow', 'achieveWhen', 'achieveWhy']; //<--Marius? 'entryType
+    let updateableFields = ['entryType', 'inputDate', 'inputPlay', 'inputAuthor', 'inputRole', 'inputCo', 'inputLocation', 'inputNotes'];
     updateableFields.forEach(function (field) {
         if (field in req.body) {
             toUpdate[field] = req.body[field];
         }
     });
-    Achievement
+    Entry
         .findByIdAndUpdate(req.params.id, {
             $set: toUpdate
         }).exec().then(function (achievement) {
@@ -233,20 +234,21 @@ app.put('/achievement/:id', function (req, res) {
 });
 
 // GET ------------------------------------
-// accessing all of a user's achievements
-app.get('/achievements/:user', function (req, res) {
-    Achievement
+// accessing all of a user's entries
+app.get('/entry/:user', function (req, res) {
+
+    Entry
         .find()
-        .sort('achieveWhen')
-        .then(function (achievements) {
-            let achievementOutput = [];
-            achievements.map(function (achievement) {
-                if (achievement.user == req.params.user) {
-                    achievementOutput.push(achievement);
+        .sort('inputDate')
+        .then(function (entries) {
+            let entriesOutput = [];
+            entries.map(function (entry) {
+                if (entry.loggedInUserName == req.params.user) {
+                    entriesOutput.push(entry);
                 }
             });
             res.json({
-                achievementOutput
+                entriesOutput
             });
         })
         .catch(function (err) {
@@ -258,12 +260,12 @@ app.get('/achievements/:user', function (req, res) {
 });
 
 // accessing a single achievement by id
-app.get('/achievement/:id', function (req, res) {
-    Achievement
-        .findById(req.params.id).exec().then(function (achievement) {
-            return res.json(achievement);
+app.get('/entry/:id', function (req, res) {
+    Entry
+        .findById(req.params.id).exec().then(function (entry) {
+            return res.json(entry);
         })
-        .catch(function (achievements) {
+        .catch(function (entries) {
             console.error(err);
             res.status(500).json({
                 message: 'Internal Server Error'
@@ -273,8 +275,8 @@ app.get('/achievement/:id', function (req, res) {
 
 // DELETE ----------------------------------------
 // deleting an achievement by id
-app.delete('/achievement/:id', function (req, res) {
-    Achievement.findByIdAndRemove(req.params.id).exec().then(function (achievement) {
+app.delete('/entry/:id', function (req, res) {
+    Entry.findByIdAndRemove(req.params.id).exec().then(function (entry) {
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({
