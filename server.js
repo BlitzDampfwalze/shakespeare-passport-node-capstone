@@ -215,12 +215,13 @@ app.post('/entry/create', (req, res) => {
 app.put('/entry/:id', function (req, res) {
     let toUpdate = {};
     //    let updateableFields = ['achieveWhat', 'achieveHow', 'achieveWhen', 'achieveWhy']; //<--Marius? 'entryType
-    let updateableFields = ['entryType', 'inputDate', 'inputPlay', 'inputAuthor', 'inputRole', 'inputCo', 'inputLocation', 'inputNotes'];
+    let updateableFields = ['entryType', 'inputDate', 'inputPlay', 'inputAuthor', 'inputRole', 'inputCo', 'inputLocation', 'inputNotes', 'loggedInUserName'];
     updateableFields.forEach(function (field) {
         if (field in req.body) {
             toUpdate[field] = req.body[field];
         }
     });
+    console.log(toUpdate);
     Entry
         .findByIdAndUpdate(req.params.id, {
             $set: toUpdate

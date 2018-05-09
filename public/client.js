@@ -85,6 +85,7 @@ function addEntryRenderHTML(results) {
     htmlString += `<div class="play-info">`;
     htmlString += `<label for="inputPlay">Play</label>`;
     htmlString += `<input type="text" class="inputPlay" placeholder="Play" value="${results.inputPlay}">`;
+    htmlString += `<input type="hidden" class="inputEntryID"  value="${results._id}">`;
     htmlString += `<label for="inputAuthor">Author</label>`;
     htmlString += `<input type="text" class="inputAuthor" placeholder="Author" value="${results.inputAuthor}">`;
     htmlString += `<label for="inputRole">Role</label>`;
@@ -380,6 +381,7 @@ $(".entry-form").submit(function (event) {
                 //Add Entry to page
                 $('#user-list').append(addEntryRenderHTML(result));
 
+
                 //                updateEditFormValues(result);
             })
             //if the call is failing
@@ -431,23 +433,22 @@ $('#user-list').on('click', '.update-select', function (event) {
 });
 $('#user-list').on('submit', '.edit-entry-form', function (event) {
     event.preventDefault();
-    alert('Form Updated');
 
     //take the input from the user
     const currentForm = event.currentTarget.closest('.edit-entry-form');
-    const entryType = $(currentForm).find(".entry-type").val();
-    const inputDate = $(currentForm).find(".inputDate").val();
-    const inputPlay = $(currentForm).find(".inputPlay").val();
-    const inputAuthor = $(currentForm).find(".inputAuthor").val();
-    const inputRole = $(currentForm).find(".inputRole").val();
-    const inputCo = $(currentForm).find(".inputCo").val();
-    const inputLocation = $(currentForm).find(".inputLocation").val();
-    const inputNotes = $(currentForm).find(".inputNotes").val();
-    //    const loggedInUserName = $(currentForm).find("#loggedInUserName").val();
-    const entryId = $(currentForm).closest('.entries-container').attr('id');
+    const entryType = $(this).parent().find(".entry-type").val();
+    const inputDate = $(this).parent().find(".inputDate").val();
+    const inputPlay = $(this).parent().find(".inputPlay").val();
+    const inputAuthor = $(this).parent().find(".inputAuthor").val();
+    const inputRole = $(this).parent().find(".inputRole").val();
+    const inputCo = $(this).parent().find(".inputCo").val();
+    const inputLocation = $(this).parent().find(".inputLocation").val();
+    const inputNotes = $(this).parent().find(".inputNotes").val();
+    const loggedInUserName = $("#loggedInUserName").val();
+    const entryId = $(this).parent().find('.inputEntryID').val();
 
-    console.log(currentForm, entryId);
-    console.log(entryType, inputDate, inputPlay, inputAuthor, inputRole, inputCo, inputLocation, inputNotes);
+    //    console.log(currentForm, entryId);
+    //    console.log(entryType, inputDate, inputPlay, inputAuthor, inputRole, inputCo, inputLocation, inputNotes);
 
 
     //validate the input
@@ -474,9 +475,10 @@ $('#user-list').on('submit', '.edit-entry-form', function (event) {
             inputCo: inputCo,
             inputLocation: inputLocation,
             inputNotes: inputNotes,
+            loggedInUserName: loggedInUserName,
             entryId: entryId
         };
-        //        console.log(entryObject);
+        console.log(entryObject);
 
 
         //make the api call using the payload above
@@ -490,10 +492,8 @@ $('#user-list').on('submit', '.edit-entry-form', function (event) {
             //if call is succefull
             .done(function (result) {
                 console.log(result);
-                //Add Entry to page
-                $(`#${entryId}`).html(addEntryRenderHTML(result));
-                //                    updateEditFormValues(result);
-
+                populateUserDashboard(loggedInUserName);
+                alert("Entry updated");
                 $('.js-edit-entry').hide();
             })
             //if the call is failing
