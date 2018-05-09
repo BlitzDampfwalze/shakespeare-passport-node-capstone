@@ -80,7 +80,7 @@ function addEntryRenderHTML(results) {
 
     htmlString += `<br>`;
     htmlString += `<label for="inputDate">Date</label>`;
-    htmlString += `<input type="date" class="inputDate" value="${results.inputDate}">`;
+    htmlString += `<input type="date" class="inputDate" value="${displayDate}">`;
     htmlString += `<button type="button" class="date-text">Need Date Range?</button>`;
     htmlString += `<div class="play-info">`;
     htmlString += `<label for="inputPlay">Play</label>`;
@@ -116,8 +116,7 @@ function addEntryRenderHTML(results) {
 
     htmlString += `</div>`;
     //    });
-
-    $('#user-list').append(htmlString);
+    return htmlString;
 }
 
 
@@ -160,7 +159,7 @@ function populateUserDashboard(username) { //Get AJAX User Entries call, render 
 function htmlUserDashboard(resultsObject) {
     console.log(resultsObject.entriesOutput);
     $.each(resultsObject.entriesOutput, function (key, value) {
-        addEntryRenderHTML(value);
+        $('#user-list').append(addEntryRenderHTML(value));
     });
 }
 
@@ -379,9 +378,9 @@ $(".entry-form").submit(function (event) {
                 $('#add-entry-container').hide();
                 //                noEntries();
                 //Add Entry to page
-                addEntryRenderHTML(result);
+                $('#user-list').append(addEntryRenderHTML(result));
 
-                updateEditFormValues(result);
+                //                updateEditFormValues(result);
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
@@ -401,6 +400,8 @@ $('#logout').click(function (event) {
     event.preventDefault();
     $('section').hide();
     location.reload();
+
+
 });
 
 // Date |   Read |   Seen |   Performed
@@ -426,13 +427,85 @@ $('#user-list').on('click', '.update-select', function (event) {
     event.preventDefault();
     //    $('.js-edit-entry').show();
     $(event.currentTarget).closest('.entry-div').siblings('.js-edit-entry').show();
-});
-$('#user-list').on('click', '.edit-entry-form', function (event) {
-    event.preventDefault();
-    $('.js-edit-entry').hide();
 
-    alert("Entry has been updated");
 });
+$('#user-list').on('submit', '.edit-entry-form', function (event) {
+    event.preventDefault();
+    alert('Form Updated');
+
+    //take the input from the user
+    const currentForm = event.currentTarget.closest('.edit-entry-form');
+    const entryType = $(currentForm).find(".entry-type").val();
+    const inputDate = $(currentForm).find(".inputDate").val();
+    const inputPlay = $(currentForm).find(".inputPlay").val();
+    const inputAuthor = $(currentForm).find(".inputAuthor").val();
+    const inputRole = $(currentForm).find(".inputRole").val();
+    const inputCo = $(currentForm).find(".inputCo").val();
+    const inputLocation = $(currentForm).find(".inputLocation").val();
+    const inputNotes = $(currentForm).find(".inputNotes").val();
+    //    const loggedInUserName = $(currentForm).find("#loggedInUserName").val();
+    const entryId = $(currentForm).closest('.entries-container').attr('id');
+
+    console.log(currentForm, entryId);
+    console.log(entryType, inputDate, inputPlay, inputAuthor, inputRole, inputCo, inputLocation, inputNotes);
+
+
+    //validate the input
+    if (entryType == "") {
+        alert('Please input entry type');
+    } else if (inputDate == "") {
+        alert('Please input addInputDate');
+    } else if (inputPlay == "") {
+        alert('Please input addInputPlay');
+    } else if (inputAuthor == "") {
+        alert('Please input addInputAuthor');
+    } else if (inputNotes == "") {
+        alert('Please input addInputNotes');
+    }
+    //if the input is valid
+    else {
+        //create the payload object (what data we send to the api call)
+        const entryObject = {
+            entryType: entryType,
+            inputDate: inputDate,
+            inputPlay: inputPlay,
+            inputAuthor: inputAuthor,
+            inputRole: inputRole,
+            inputCo: inputCo,
+            inputLocation: inputLocation,
+            inputNotes: inputNotes,
+            entryId: entryId
+        };
+        //        console.log(entryObject);
+
+
+        //make the api call using the payload above
+        $.ajax({
+                type: 'PUT',
+                url: `/entry/${entryId}`,
+                dataType: 'json',
+                data: JSON.stringify(entryObject),
+                contentType: 'application/json'
+            })
+            //if call is succefull
+            .done(function (result) {
+                console.log(result);
+                //Add Entry to page
+                $(`#${entryId}`).html(addEntryRenderHTML(result));
+                //                    updateEditFormValues(result);
+
+                $('.js-edit-entry').hide();
+            })
+            //if the call is failing
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            });
+    };
+
+});
+
 //Delete Entry
 $('#user-list').on('click', '.delete-select', function (event) {
     event.preventDefault();
