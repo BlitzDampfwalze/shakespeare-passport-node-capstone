@@ -248,7 +248,7 @@ $(".sign-up-form").submit(function (event) {
                 $('section').hide();
                 $('.navbar').show();
                 $('#user-dashboard').show();
-//            htmlUserDashboard(result);
+                //            htmlUserDashboard(result);
                 noEntries();
             })
             //if the call is failing
@@ -306,7 +306,7 @@ $(".login-form").submit(function (event) {
                 $('#user-dashboard').show();
                 $('#loggedInName').text(result.name);
                 $('#loggedInUserName').val(result.username);
-//            htmlUserDashboard();
+                //            htmlUserDashboard();
                 noEntries();
 
             })
@@ -438,12 +438,12 @@ $('#performed-sort').click(function (event) {
 });
 
 //Update Entry
-$('.update-select').click(function (event) {
+$('#user-list').on('click', '.update-select', function (event) {
     event.preventDefault();
     //    $('.js-edit-entry').show();
     $(event.currentTarget).closest('.entry-div').siblings('.js-edit-entry').show();
 });
-$(".edit-entry-form").submit(function (event) {
+$('#user-list').on('click', '.edit-entry-form', function (event) {
     event.preventDefault();
     $('.js-edit-entry').hide();
 
