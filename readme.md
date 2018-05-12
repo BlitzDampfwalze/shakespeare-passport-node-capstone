@@ -7,11 +7,12 @@ basic structure (https://github.com/mariusbanea/not-just-luck-thinkful-full-stac
 Home Page View | Login Page View #2
 :-------------------------:|:-------------------------:
 ![Home Page](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/home-page.jpg)  |  ![Login Page](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/login.jpg)
-Museum by Map View #1 | Museum by Map View #2
-![Map Museum view-1]() | ![Map Museum view-2]()
-Featured Museums View  | Featured Museums View
-![Featured Museums view-1]() | ![Featured Museums view-2]()
-![Featured Museums view-3]() |
+User Dashboard | Seen Entry
+![User Dashboard](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/user-dashboard.jpg) | ![Seen Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/seen-entry.jpg)
+Add Entry  | Edit Entry
+![Add Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/add-entry.jpg) | ![Edit Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/edit-entry.jpg)
+Delete Entry |
+![Delete Entry](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/delete-entry.jpg) |
 
 ## User Cases
 This app is for three types of users:
