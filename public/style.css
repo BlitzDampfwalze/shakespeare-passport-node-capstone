@@ -269,6 +269,10 @@ button #logout:hover {
     margin: 1% 2.5% 3.5%;
 }
 
+#add-entry-button:hover {
+    background: rgba(245, 245, 245, .6);
+}
+
 #user-dashboard {
     width: 100%;
 }
@@ -454,6 +458,14 @@ textarea {
 }
 */
 
+.edit-entry-form {
+    text-align: center;
+}
+
+.edit-entry-form fieldset {
+    text-align: left;
+}
+
 .edit-entry-form input,
 textarea {
     border: 1px #0E2E45 solid;
@@ -463,7 +475,6 @@ textarea {
 }
 
 .edit-entry-form button {
-    text-align: center;
     width: auto;
     margin: 10px auto;
 }
@@ -508,7 +519,7 @@ textarea {
     color: red;
 }
 
-#cancel-button:hover {
+.cancel-button:hover {
     cursor: pointer;
     color: darkgrey;
 }

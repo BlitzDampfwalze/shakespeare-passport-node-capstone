@@ -102,6 +102,7 @@ function addEntryRenderHTML(results) {
     htmlString += `<textarea name="Text1" class="inputNotes" cols="40" rows="5">${results.inputNotes}</textarea>`;
     htmlString += `</fieldset>`;
     htmlString += `<button type="submit" class="submit-button">Update Entry</button>`;
+    htmlString += `<span class="cancel-button">Cancel</span>`;
     htmlString += `</form>`;
     htmlString += `</div>`;
     //Edit Entry  Entry form finish
@@ -431,10 +432,12 @@ $('#performed-sort').click(function (event) {
 //Update Entry
 $('#user-list').on('click', '.update-select', function (event) {
     event.preventDefault();
-    //    $('.js-edit-entry').show();
+    $('.js-delete-entry').hide();
+    $('.js-edit-entry').hide();
     $(event.currentTarget).closest('.entry-div').siblings('.js-edit-entry').show();
 
 });
+//Update Entry Submit
 $('#user-list').on('submit', '.edit-entry-form', function (event) {
     event.preventDefault();
 
@@ -514,9 +517,10 @@ $('#user-list').on('submit', '.edit-entry-form', function (event) {
 $('#user-list').on('click', '.delete-select', function (event) {
     event.preventDefault();
     //    $('.js-delete-entry').show();
+    $('.js-delete-entry').hide();
+    $('.js-edit-entry').hide();
     $(event.currentTarget).closest('.entry-div').siblings('.js-delete-entry').show();
     //    $(event.currentTarget).parents('.entry-div').append(deleteEntryForm);
-
 });
 
 $('#user-list').on('submit', '.delete-entry-form', function (event) {
@@ -557,4 +561,5 @@ $('#user-list').on('click', '.cancel-button', function (event) {
     event.preventDefault();
 
     $('.js-delete-entry').hide();
+    $('.js-edit-entry').hide();
 });
