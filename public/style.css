@@ -244,7 +244,7 @@ p {
     width: 95%;
     margin: 0 2.5% 2.5%;
     border: 1px whitesmoke solid;
-    padding: 2%;
+    padding: 1%;
     min-height: 400px;
     min-height: 70vh;
     border-radius: 5px;
@@ -363,7 +363,6 @@ p {
 */
 
 .notes {
-    /*    width: 33%;*/
     overflow-wrap: break-word;
 }
 
@@ -574,17 +573,20 @@ textarea {
     #entry-views {
         width: auto;
     }
+    /*
     .entry-info {
         display: inline-block;
         width: auto;
     }
-    .type,
+*/
     .date,
     .role {
-        width: 25%;
+        display: inline-block;
+        width: 50%;
     }
     .location,
     .theater-co {
+        display: inline-block;
         width: 50%;
     }
     .notes,
@@ -644,7 +646,6 @@ textarea {
         width: 48%;
         margin: 1% auto
     }
-
     .place-info {
         margin-left: 1.9%;
     }
