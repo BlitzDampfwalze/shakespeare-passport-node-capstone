@@ -4,9 +4,9 @@ The Shakespeare Passport app is designed for Theatrical Performers, Theatre Goer
 basic structure (https://github.com/mariusbanea/not-just-luck-thinkful-full-stack-capstone)
 ## Screenshots
 
-Home Page View #1 | Home Page View #2
+Home Page View | Login Page View #2
 :-------------------------:|:-------------------------:
-![Home Page view-1]()  |  ![Home Page view-2]()
+![Home Page](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/home-page.jpg)  |  ![Login Page](https://github.com/KatiLong/shakespeare-passport-node-capstone/blob/master/github-images/login.jpg)
 Museum by Map View #1 | Museum by Map View #2
 ![Map Museum view-1]() | ![Map Museum view-2]()
 Featured Museums View  | Featured Museums View
