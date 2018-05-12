@@ -306,7 +306,6 @@ button {
 .entry-info {
     /*    display: inline-block;*/
     vertical-align: top;
-    margin: 1.5%;
     width: 100%;
 }
 
@@ -344,13 +343,16 @@ p {
 
 .info-label {
     text-transform: uppercase;
+    margin: 10px 0 5px;
+    font-weight: 300;
+}
+
+
+.type {
+    font-size: 2rem;
 }
 
 /*
-.type {
-    width: 50%;
-}
-
 .date {
     width: 10%;
 }
@@ -568,6 +570,27 @@ textarea {
     }
     #entry-views button {
         display: inline-block;
+    }
+    #entry-views {
+        width: auto;
+    }
+    .entry-info {
+        display: inline-block;
+        width: auto;
+    }
+    .type,
+    .date,
+    .role {
+        width: 25%;
+    }
+    .location,
+    .theater-co {
+        width: 50%;
+    }
+    .notes,
+    .play,
+        {
+        width: 100%;
     }
 }
 
