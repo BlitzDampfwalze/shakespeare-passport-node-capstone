@@ -454,10 +454,6 @@ $('#user-list').on('submit', '.edit-entry-form', function (event) {
     const loggedInUserName = $("#loggedInUserName").val();
     const entryId = $(this).parent().find('.inputEntryID').val();
 
-    //    console.log(currentForm, entryId);
-    //    console.log(entryType, inputDate, inputPlay, inputAuthor, inputRole, inputCo, inputLocation, inputNotes);
-
-
     //validate the input
     if (entryType == "") {
         alert('Please input entry type');
