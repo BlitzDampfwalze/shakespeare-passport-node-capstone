@@ -237,10 +237,85 @@ app.put('/entry/:id', function (req, res) {
 
 // GET ------------------------------------
 // accessing all of a user's entries
-app.get('/entry/:user', function (req, res) {
+app.get('/entry-date/:user', function (req, res) {
 
     Entry
         .find()
+        .sort('inputDate')
+        .then(function (entries) {
+            let entriesOutput = [];
+            entries.map(function (entry) {
+                if (entry.loggedInUserName == req.params.user) {
+                    entriesOutput.push(entry);
+                }
+            });
+            res.json({
+                entriesOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+app.get('/entry-read/:user', function (req, res) {
+
+    Entry
+        .find({
+            "entryType": "read"
+        })
+        .sort('inputDate')
+        .then(function (entries) {
+            let entriesOutput = [];
+            entries.map(function (entry) {
+                if (entry.loggedInUserName == req.params.user) {
+                    entriesOutput.push(entry);
+                }
+            });
+            res.json({
+                entriesOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+app.get('/entry-seen/:user', function (req, res) {
+
+    Entry
+        .find({
+            "entryType": "seen"
+        })
+        .sort('inputDate')
+        .then(function (entries) {
+            let entriesOutput = [];
+            entries.map(function (entry) {
+                if (entry.loggedInUserName == req.params.user) {
+                    entriesOutput.push(entry);
+                }
+            });
+            res.json({
+                entriesOutput
+            });
+        })
+        .catch(function (err) {
+            console.error(err);
+            res.status(500).json({
+                message: 'Internal server error'
+            });
+        });
+});
+app.get('/entry-performed/:user', function (req, res) {
+
+    Entry
+        .find({
+            "entryType": "performed"
+        })
         .sort('inputDate')
         .then(function (entries) {
             let entriesOutput = [];

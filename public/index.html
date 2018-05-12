@@ -75,13 +75,13 @@
             <div id="entry-toolbar">
                 <div id="entry-views">
                     <p>View By:</p>
-                    <button type="button" id="date-sort">Date</button>
+                    <button type="button" id="date-sort" onclick="populateUserDashboardDate()">Date</button>
                     <p> | </p>
-                    <button id="read-sort">Read</button>
+                    <button id="read-sort" onclick="populateUserDashboardRead()">Read</button>
                     <p> | </p>
-                    <button id="seen-sort">Seen</button>
+                    <button id="seen-sort" onclick="populateUserDashboardSeen()">Seen</button>
                     <p> | </p>
-                    <button id="performed-sort">Performed</button>
+                    <button id="performed-sort" onclick="populateUserDashboardPerformed()">Performed</button>
                 </div>
                 <button id="add-entry-button">+ Add Entry</button>
             </div>

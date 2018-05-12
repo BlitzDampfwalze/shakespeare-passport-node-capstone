@@ -126,15 +126,140 @@ function addEntryRenderHTML(results) {
 
 
 
-function populateUserDashboard(username) { //Get AJAX User Entries call, render on page
+function populateUserDashboardDate(username) { //Get AJAX User Entries call, render on page
+
+    if ((username == "") || (username == undefined) || (username == null)) {
+        username = $('#loggedInUserName').val();
+    }
     //create the payload object (what data we send to the api call)
     const UserObject = {
         user: username
     };
+    console.log(UserObject);
     //make the api call using the payload above
     $.ajax({
             type: 'GET',
-            url: `/entry/${username}`,
+            url: `/entry-date/${username}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            if (result.entriesOutput.length === 0) {
+                $('#no-entry').show();
+            } else {
+                $('#no-entry').hide();
+            }
+
+            //empty the user-list container before populating it dynamically
+            $('#user-list').html("");
+            htmlUserDashboard(result);
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function populateUserDashboardRead(username) { //Get AJAX User Entries call, render on page
+
+    if ((username == "") || (username == undefined) || (username == null)) {
+        username = $('#loggedInUserName').val();
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: username
+    };
+    console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/entry-read/${username}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            if (result.entriesOutput.length === 0) {
+                $('#no-entry').show();
+            } else {
+                $('#no-entry').hide();
+            }
+
+            //empty the user-list container before populating it dynamically
+            $('#user-list').html("");
+            htmlUserDashboard(result);
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function populateUserDashboardSeen(username) { //Get AJAX User Entries call, render on page
+
+    if ((username == "") || (username == undefined) || (username == null)) {
+        username = $('#loggedInUserName').val();
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: username
+    };
+    console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/entry-seen/${username}`,
+            dataType: 'json',
+            data: JSON.stringify(UserObject),
+            contentType: 'application/json'
+        })
+        //if call is succefull
+        .done(function (result) {
+            console.log(result);
+            if (result.entriesOutput.length === 0) {
+                $('#no-entry').show();
+            } else {
+                $('#no-entry').hide();
+            }
+
+            //empty the user-list container before populating it dynamically
+            $('#user-list').html("");
+            htmlUserDashboard(result);
+
+        })
+        //if the call is failing
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+function populateUserDashboardPerformed(username) { //Get AJAX User Entries call, render on page
+
+    if ((username == "") || (username == undefined) || (username == null)) {
+        username = $('#loggedInUserName').val();
+    }
+    //create the payload object (what data we send to the api call)
+    const UserObject = {
+        user: username
+    };
+    console.log(UserObject);
+    //make the api call using the payload above
+    $.ajax({
+            type: 'GET',
+            url: `/entry-performed/${username}`,
             dataType: 'json',
             data: JSON.stringify(UserObject),
             contentType: 'application/json'
@@ -236,7 +361,7 @@ $(".sign-up-form").submit(function (event) {
                 $('section').hide();
                 $('.navbar').show();
                 $('#user-dashboard').show();
-                populateUserDashboard(result.username);
+                populateUserDashboardDate(result.username);
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
@@ -294,7 +419,7 @@ $(".login-form").submit(function (event) {
                 $('#loggedInName').text(result.name);
                 $('#loggedInUserName').val(result.username);
                 //            htmlUserDashboard();
-                populateUserDashboard(result.username); //AJAX call in here??
+                populateUserDashboardDate(result.username); //AJAX call in here??
                 //                noEntries();
 
             })
@@ -412,22 +537,22 @@ $('#logout').click(function (event) {
 });
 
 // Date |   Read |   Seen |   Performed
-$('#date-sort').click(function (event) {
-    event.preventDefault();
-    alert('Sorted by Date');
-});
-$('#read-sort').click(function (event) {
-    event.preventDefault();
-    alert('Sorted by Read');
-});
-$('#seen-sort').click(function (event) {
-    event.preventDefault();
-    alert('Sorted by Seen');
-});
-$('#performed-sort').click(function (event) {
-    event.preventDefault();
-    alert('Sorted by Performed');
-});
+//$('#date-sort').click(function (event) {
+//    event.preventDefault();
+//    alert('Sorted by Date');
+//});
+//$('#read-sort').click(function (event) {
+//    event.preventDefault();
+//    alert('Sorted by Read');
+//});
+//$('#seen-sort').click(function (event) {
+//    event.preventDefault();
+//    alert('Sorted by Seen');
+//});
+//$('#performed-sort').click(function (event) {
+//    event.preventDefault();
+//    alert('Sorted by Performed');
+//});
 
 //Update Entry
 $('#user-list').on('click', '.update-select', function (event) {
@@ -495,7 +620,7 @@ $('#user-list').on('submit', '.edit-entry-form', function (event) {
             //if call is succefull
             .done(function (result) {
                 console.log(result);
-                populateUserDashboard(loggedInUserName);
+                populateUserDashboardDate(loggedInUserName);
                 alert("Entry updated");
                 $('.js-edit-entry').hide();
             })
@@ -540,7 +665,7 @@ $('#user-list').on('submit', '.delete-entry-form', function (event) {
         //if call is succefull
         .done(function (result) {
             console.log(result);
-            populateUserDashboard(loggedInUserName);
+            populateUserDashboardDate(loggedInUserName);
             alert("Entry deleted");
             $('.js-delete-entry').hide();
 
