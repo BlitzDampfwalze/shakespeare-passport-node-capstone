@@ -265,19 +265,9 @@ button #logout:hover {
     color: black;
     border-radius: 5px;
     padding: 7px 15px;
-    margin: 2.5%;
-    display: inline-block;
-}
 
-/*
-.entry-commands ul {
-    list-style-type: none;
+    margin: 1% 2.5% 3.5%;
 }
-
-.entry-commands li {
-    display: inline-block;
-}
-*/
 
 #user-dashboard {
     width: 100%;
@@ -290,6 +280,9 @@ button #logout:hover {
 
 #entry-views {
     display: inline-block;
+    margin: 2% auto;
+    font-size: 1.2rem;
+    width: 100%;
 }
 
 #entry-views p,
@@ -306,15 +299,15 @@ button {
     background: rgba(245, 245, 245, .9);
     color: black;
     border-radius: 5px;
-    padding: 7px;
+    padding: 10px;
     margin: 0 auto 1.5%;
-    widows: 95%;
 }
 
 .entry-info {
-    display: inline-block;
+    /*    display: inline-block;*/
     vertical-align: top;
     margin: 1.5%;
+    width: 100%;
 }
 
 .entry-info p,
@@ -325,7 +318,7 @@ span {
 .edit-entry-buttons {
     float: right;
     color: slategray;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-right: 10px;
 }
 
@@ -349,9 +342,13 @@ p {
     cursor: pointer;
 }
 
-.type {
-    width: 10%;
+.info-label {
     text-transform: uppercase;
+}
+
+/*
+.type {
+    width: 50%;
 }
 
 .date {
@@ -361,9 +358,10 @@ p {
 .play {
     width: 22%;
 }
+*/
 
 .notes {
-    width: 33%;
+    /*    width: 33%;*/
     overflow-wrap: break-word;
 }
 
@@ -490,7 +488,7 @@ textarea {
     border-radius: 5px;
     padding: 7px;
     margin: 0 auto 1.5%;
-    widows: 95%;
+    font-size: 1.2rem;
 }
 
 .js-delete-entry {
@@ -563,6 +561,13 @@ textarea {
     #form-text {
         margin: 0 auto;
         height: auto;
+    }
+    #add-entry-button {
+        margin: 2.5%;
+        display: inline-block;
+    }
+    #entry-views button {
+        display: inline-block;
     }
 }
 

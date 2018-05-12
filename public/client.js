@@ -19,36 +19,36 @@ function addEntryRenderHTML(results) {
     htmlString += `</div>`;
     //edit buttons finish
 
-    htmlString += `<span class="entry-info type">${results.entryType}</span>`; //Value of Entry Type
+    htmlString += `<span class="entry-info type info-label">${results.entryType}</span>`; //Value of Entry Type
     htmlString += `<span class="entry-info date">`;
-    htmlString += `<p>Date:</p>`;
+    htmlString += `<p class="info-label">Date</p>`;
     htmlString += `<p>${displayDate}</p>`;
-    htmlString += `</span>`;
-    htmlString += `<span class="entry-info play">`;
-    htmlString += `<p>Play:</p>`;
-    htmlString += `<p>${results.inputPlay}</p>`;
-    htmlString += `<span class="author">${results.inputAuthor}</span>`;
     htmlString += `</span>`;
     if (results.inputRole) {
         htmlString += `<span class="entry-info role">`;
-        htmlString += `<p>Role:</p>`;
+        htmlString += `<p class="info-label">Role</p>`;
         htmlString += `<p>${results.inputRole}</p>`;
         htmlString += `</span>`;
     }
+    htmlString += `<span class="entry-info play">`;
+    htmlString += `<p class="info-label">Play</p>`;
+    htmlString += `<p>${results.inputPlay}</p>`;
+    htmlString += `<span class="author">${results.inputAuthor}</span>`;
+    htmlString += `</span>`;
     if (results.inputCo) {
         htmlString += `<span class="entry-info theater-co">`;
-        htmlString += `<p>Company:</p>`;
+        htmlString += `<p class="info-label">Company</p>`;
         htmlString += `<p>${results.inputCo}</p>`;
         htmlString += `</span>`;
     }
     if (results.inputLocation) {
-        htmlString += `<span class="entry-info role">`;
-        htmlString += `<p>Location:</p>`;
+        htmlString += `<span class="entry-info location">`;
+        htmlString += `<p class="info-label">Location</p>`;
         htmlString += `<p>${results.inputLocation}</p>`;
         htmlString += `</span>`;
     }
     htmlString += `<span class="entry-info notes">`
-    htmlString += `<p>Notes:</p>`
+    htmlString += `<p class="info-label">Notes</p>`
     htmlString += `<p>${results.inputNotes}</p>`;
     htmlString += `</span>`;
     htmlString += `</div>`;
@@ -384,6 +384,7 @@ $(".entry-form").submit(function (event) {
                 //Add Entry to page
                 $('#user-list').append(addEntryRenderHTML(result));
 
+                //                $().scrollTop();
 
                 //                updateEditFormValues(result);
             })
@@ -550,9 +551,6 @@ $('#user-list').on('submit', '.delete-entry-form', function (event) {
             console.log(error);
             console.log(errorThrown);
         });
-
-
-
 });
 
 $('#user-list').on('click', '.cancel-button', function (event) {

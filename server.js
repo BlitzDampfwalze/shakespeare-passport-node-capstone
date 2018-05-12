@@ -167,6 +167,7 @@ app.post('/users/login', function (req, res) {
                 //if the password is valid
                 else {
                     //return the logged in user
+                    console.log(`User \`${username}\` logged in.`);
                     return res.json(items);
                 }
             });
