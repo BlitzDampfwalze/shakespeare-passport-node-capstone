@@ -199,7 +199,7 @@ app.post('/entry/create', (req, res) => {
         inputCo,
         inputLocation,
         inputNotes,
-        loggedInUserName,
+        loggedInUserName
     }, (err, item) => {
         if (err) {
             return res.status(500).json({

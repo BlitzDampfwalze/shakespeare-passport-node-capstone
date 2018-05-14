@@ -12,7 +12,7 @@
 
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar" style="display: none;">
         <div id="nav-header">
             <h4>Shakespeare Passport</h4>
         </div>
@@ -41,6 +41,20 @@
                     <p>Track all the plays you've Read, Seen, or Performed in.</p>
                 </div>
             </div>
+            <form class="login-form">
+                <legend>Login</legend>
+                <fieldset>
+                    <label for="loginUsername">Email</label>
+                    <input type="email" id="loginUsername" placeholder="OtisThePug@hotmail.com" value="paul.thomp@gmail.com">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Lt_Fish1902" value="pass2018">
+                </fieldset>
+                <button type="submit" class="submit-button" id="login-button">Sign In</button>
+                <span>Need to <button id="change-form-signup">Sign-up</button>?</span>
+            </form>
+        </section>
+
+        <section id="signup-page">
             <form class="sign-up-form">
                 <legend>Sign up</legend>
                 <fieldset>
@@ -54,21 +68,6 @@
                 <button type="submit" class="submit-button">Sign In</button>
                 <br>
                 <p id="signup-p">Have an account? <button id="change-form-login">Login</button></p>
-            </form>
-
-        </section>
-
-        <section id="login-page">
-            <form class="login-form">
-                <legend>Login</legend>
-                <fieldset>
-                    <label for="loginUsername">Email</label>
-                    <input type="email" id="loginUsername" placeholder="OtisThePug@hotmail.com" value="paul.thomp@gmail.com">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="Lt_Fish1902" value="pass2018">
-                </fieldset>
-                <button type="submit" class="submit-button" id="login-button">Sign In</button>
-                <span>Need to <button id="change-form-signup">Sign-up</button>?</span>
             </form>
         </section>
         <section id="user-dashboard">

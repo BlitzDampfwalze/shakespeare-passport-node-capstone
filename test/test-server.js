@@ -14,19 +14,21 @@ var list = require('../models/list.js');
 var should = chai.should();
 
 chai.use(chaiHttp);
-describe('shopping-list-full-stack-capstone', function () {
+describe('shakespeare-passport-node-capstone', function () {
     //    it('Should ', function () {});
-    it('should add a recipe on POST', function (done) {
+    it('should add an entry on POST', function (done) {
         chai.request(app)
-            .post('/add-recipe-db/')
+            .post('/entry/create')
             .send({
-                'name': 'Homemade Fish Balls with Spicy Fish Ball Sauce',
-                'rating': '4',
-                'course': 'main',
-                'id': 'Homemade-Fish-Balls-with-Spicy-Fish-Ball-Sauce-2272743',
-                'day': 'monday',
-                'shortList': '[\"1 pound fish flesh\",\"2 tablespoons cornstarch\",\"2 teaspoons salt\",\"1 teaspoon sugar\",\"¼ cup cold water\",\"2 cups water\",\"⅓ cup soy sauce\",\"1 head garlic, peeled and minced\",\"3 shallots, peeled and finely chopped\",\"4 to 5Thai chili peppers, stemmed and chopped\",\"1 cup brown sugar\",\"1 tablespoon flour\",\"1 tablespoon cornstarch\",\"1 teaspoon salt or to taste\",\"½ teaspoon pepper\",\"oil\"]',
-
+                'entryType': "performed",
+                'inputDate': "2015/25/01",
+                'inputPlay': "King Lear",
+                'inputAuthor': "William Shakespeare",
+                'inputRole': "Goneril",
+                'inputCo': "Kingman Shakespeare Festival",
+                'inputLocation': "Santa Barbara, CA",
+                'inputNotes': "With A FORK!",
+                'loggedInUserName': "paul.thomp@gmail.com"
             })
             .end(function (err, res) {
                 //should.equal(err, null);

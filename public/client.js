@@ -374,10 +374,9 @@ $(".sign-up-form").submit(function (event) {
 
 $('#change-form-login').click(function (event) {
     event.preventDefault();
-    $('section').hide();
-    $('.navbar').hide();
-    $('#homepage-header').show();
-    $('#login-page').show();
+
+    location.reload();
+
 });
 
 $(".login-form").submit(function (event) {
@@ -436,8 +435,11 @@ $(".login-form").submit(function (event) {
 
 $('#change-form-signup').click(function (event) {
     event.preventDefault();
+    //    $('section').hide();
     $('section').hide();
-    location.reload();
+    $('.navbar').hide();
+    $('#homepage-header').show();
+    $('#signup-page').show();
 });
 
 $('#add-entry-button').click(function (event) {

@@ -175,6 +175,7 @@ button:hover {
     border-radius: 8px;
     font-size: 24px;
     padding: 30px;
+    vertical-align: middle;
 }
 
 .login-form legend {
@@ -685,7 +686,7 @@ textarea {
         text-align: left;
         padding: 0 20px 0 0;
     }
-    .sign-up-form {
+    .login-form {
         display: inline-block;
         width: 39%;
     }
