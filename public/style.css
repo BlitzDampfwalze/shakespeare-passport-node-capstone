@@ -91,6 +91,10 @@ button:hover {
     margin: 15px 0 0;
 }
 
+#stage {
+    display: inline;
+}
+
 .sign-up-form {
     width: 90%;
     vertical-align: middle;
@@ -188,9 +192,11 @@ button:hover {
 
 .login-form fieldset {
     border: none;
-    padding: 0 2rem;
+    padding: 0;
     line-height: 34px;
     text-align: left;
+    width: 85%;
+    margin: 0 auto;
 }
 
 .login-form input {
@@ -675,7 +681,7 @@ textarea {
     }
     h3 {
         font-size: 2.3rem;
-        line-height: 3rem;
+        line-height: 3.2rem;
     }
     .form-text-section {
         margin: .5%;
@@ -711,5 +717,10 @@ textarea {
     header {
         /*Height set so that this view shows correctly*/
         height: 25vh;
+    }
+
+    #stage {
+        text-align: center;
+        display: block;
     }
 }

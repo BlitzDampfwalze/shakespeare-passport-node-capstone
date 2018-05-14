@@ -435,9 +435,7 @@ $(".login-form").submit(function (event) {
 
 $('#change-form-signup').click(function (event) {
     event.preventDefault();
-    //    $('section').hide();
     $('section').hide();
-    $('.navbar').hide();
     $('#homepage-header').show();
     $('#signup-page').show();
 });
