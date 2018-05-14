@@ -718,9 +718,13 @@ textarea {
         /*Height set so that this view shows correctly*/
         height: 25vh;
     }
-
     #stage {
         text-align: center;
         display: block;
+    }
+    .entry-div {
+        /*Make large entries scrollable*/
+        overflow: scroll;
+        max-height: 300px;
     }
 }

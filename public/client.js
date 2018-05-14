@@ -302,7 +302,18 @@ function htmlUserDashboard(resultsObject) {
 //
 //}
 
+function scrollToEntry(id, focus) {
+    let $container = $(`#${id}`);
+    let $scrollTo = $(`${focus}`);
+    console.log(id, focus);
 
+    $(`#${id}`).scrollTop($(`${focus}`).offset().top);
+    //    scrollTo.offset().top - container.offset().top + container.scrollTop()
+    // Or you can animate the scrolling:
+    //    $container.animate({
+    //        scrollTop: $scrollTo.offset().top - $container.offset().top + $container.scrollTop()
+    //    });​
+}
 
 ///////////////////////////////////////////////////////////////////
 //Invocations (calling)& function Triggers
@@ -557,17 +568,25 @@ $('#logout').click(function (event) {
 //Update Entry
 $('#user-list').on('click', '.update-select', function (event) {
     event.preventDefault();
+    let currentEditForm = $(event.currentTarget).closest('.entry-div').siblings('.js-edit-entry');
+
     $('.js-delete-entry').hide();
     $('.js-edit-entry').hide();
-    $(event.currentTarget).closest('.entry-div').siblings('.js-edit-entry').show();
+    currentEditForm.show();
 
+
+    $('html, body').animate({
+        scrollTop: currentEditForm.offset().top
+    }, 1000);
+
+    console.log($(event.currentTarget).closest('.entries-container').attr('id'), '.js-edit-entry');
 });
 //Update Entry Submit
 $('#user-list').on('submit', '.edit-entry-form', function (event) {
     event.preventDefault();
 
     //take the input from the user
-    const currentForm = event.currentTarget.closest('.edit-entry-form');
+    const parentDiv = $(this).parent();
     const entryType = $(this).parent().find(".entry-type").val();
     const inputDate = $(this).parent().find(".inputDate").val();
     const inputPlay = $(this).parent().find(".inputPlay").val();
@@ -619,10 +638,15 @@ $('#user-list').on('submit', '.edit-entry-form', function (event) {
             })
             //if call is succefull
             .done(function (result) {
-                console.log(result);
+
                 populateUserDashboardDate(loggedInUserName);
                 alert("Entry updated");
                 $('.js-edit-entry').hide();
+
+                $('html, body').animate({
+                    scrollTop: parentDiv.offset().top
+                }, 1000);
+
             })
             //if the call is failing
             .fail(function (jqXHR, error, errorThrown) {
