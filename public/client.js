@@ -5,6 +5,8 @@ function addEntryRenderHTML(results) {
 
     let htmlString = ``;
     let displayDate = results.inputDate.substring(0, 10);
+    let formattedDisplayDate = displayDate.split("-");
+    let formattedDisplayDateOutput = formattedDisplayDate[1] + "/" + formattedDisplayDate[2] + "/" + formattedDisplayDate[0];
 
     //loop throu all the results
     //    $.each(resultsObject, function (key, results) {
@@ -22,7 +24,7 @@ function addEntryRenderHTML(results) {
     htmlString += `<span class="entry-info type info-label">${results.entryType}</span>`; //Value of Entry Type
     htmlString += `<span class="entry-info date">`;
     htmlString += `<p class="info-label">Date</p>`;
-    htmlString += `<p>${displayDate}</p>`;
+    htmlString += `<p>${formattedDisplayDateOutput}</p>`;
     htmlString += `</span>`;
     if (results.inputRole) {
         htmlString += `<span class="entry-info role">`;
@@ -81,7 +83,7 @@ function addEntryRenderHTML(results) {
     htmlString += `<br>`;
     htmlString += `<label for="inputDate">Date</label>`;
     htmlString += `<input type="date" class="inputDate" value="${displayDate}">`;
-    htmlString += `<button type="button" class="date-text">Need Date Range?</button>`;
+//    htmlString += `<button type="button" class="date-text">Need Date Range?</button>`;
     htmlString += `<div class="play-info">`;
     htmlString += `<label for="inputPlay">Play</label>`;
     htmlString += `<input type="text" class="inputPlay" placeholder="Play" value="${results.inputPlay}">`;
@@ -668,9 +670,9 @@ $('#user-list').on('click', '.delete-select', function (event) {
     $('.js-edit-entry').hide();
     $(event.currentTarget).closest('.entry-div').siblings('.js-delete-entry').show();
     //    $(event.currentTarget).parents('.entry-div').append(deleteEntryForm);
-//    $('html, body').animate({
-//        scrollTop: $(this).closest('.entry-div').siblings('.js-delete-entry').offset().top
-//    }, 1000);
+    //    $('html, body').animate({
+    //        scrollTop: $(this).closest('.entry-div').siblings('.js-delete-entry').offset().top
+    //    }, 1000);
 });
 
 $('#user-list').on('submit', '.delete-entry-form', function (event) {
