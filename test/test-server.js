@@ -37,30 +37,27 @@ describe('shakespeare-passport-node-capstone', function () {
                 done();
             });
     });
-    it('Should Delete an ingredient', function () {
+    it('Should Update an entry', function () {
         chai.request(app)
-            .delete('/deletering/')
+            .update('/entry/:id') //<-------????? Put request to '/entry/:id'
             .then(function (res) {
                 res.should.have.status(201);
             })
     });
 
-    it('Should Delete all recipes', function () {
+    it('Should Delete an entry', function () {
 
         chai.request(app)
-            .delete('/deleterec/')
+            .delete('/entry/:id')
             .then(function (res) {
                 res.should.have.status(201);
             })
 
     });
-    it('Should Delete all ingredients', function () {
-        const killmsg = {
-            id: 'killAll'
-        };
+    it('Should Get All Users entries', function () {
 
         chai.request(app)
-            .delete('/deletering/')
+            .getAll('/entry-date/:user') //<-------????? Get request to '/entry-date/:user'
             .then(function (res) {
                 res.should.have.status(201);
             })

@@ -2,7 +2,7 @@
 //definitions: function , objects/data, variables, etc.
 
 function addEntryRenderHTML(results) {
-    console.log(results);
+
     let htmlString = ``;
     let displayDate = results.inputDate.substring(0, 10);
 
@@ -519,7 +519,10 @@ $(".entry-form").submit(function (event) {
                 $('#add-entry-container').hide();
                 //                noEntries();
                 //Add Entry to page
-                $('#user-list').append(addEntryRenderHTML(result));
+                $('#user-list').prepend(addEntryRenderHTML(result));
+                $('html, body').animate({
+                    scrollTop: $(`#${result._id}`).offset().top
+                }, 1000);
 
                 //                $().scrollTop();
 
@@ -586,7 +589,7 @@ $('#user-list').on('submit', '.edit-entry-form', function (event) {
     event.preventDefault();
 
     //take the input from the user
-    const parentDiv = $(this).parent();
+    const parentDiv = $(this).closest('.entries-container');
     const entryType = $(this).parent().find(".entry-type").val();
     const inputDate = $(this).parent().find(".inputDate").val();
     const inputPlay = $(this).parent().find(".inputPlay").val();
@@ -638,11 +641,10 @@ $('#user-list').on('submit', '.edit-entry-form', function (event) {
             })
             //if call is succefull
             .done(function (result) {
-
                 populateUserDashboardDate(loggedInUserName);
-                alert("Entry updated");
                 $('.js-edit-entry').hide();
 
+                console.log(parentDiv);
                 $('html, body').animate({
                     scrollTop: parentDiv.offset().top
                 }, 1000);
@@ -666,6 +668,9 @@ $('#user-list').on('click', '.delete-select', function (event) {
     $('.js-edit-entry').hide();
     $(event.currentTarget).closest('.entry-div').siblings('.js-delete-entry').show();
     //    $(event.currentTarget).parents('.entry-div').append(deleteEntryForm);
+//    $('html, body').animate({
+//        scrollTop: $(this).closest('.entry-div').siblings('.js-delete-entry').offset().top
+//    }, 1000);
 });
 
 $('#user-list').on('submit', '.delete-entry-form', function (event) {
@@ -675,6 +680,7 @@ $('#user-list').on('submit', '.delete-entry-form', function (event) {
     //take the input from the user
     const entryId = $(this).parent().find('.inputEntryID').val();
     const loggedInUserName = $("#loggedInUserName").val();
+    const parentDiv = $(this).closest('.entries-container');
 
     //    console.log(currentForm, entryId);
     //    console.log(entryType, inputDate, inputPlay, inputAuthor, inputRole, inputCo, inputLocation, inputNotes);
@@ -693,6 +699,10 @@ $('#user-list').on('submit', '.delete-entry-form', function (event) {
             alert("Entry deleted");
             $('.js-delete-entry').hide();
 
+            $('html, body').animate({
+                scrollTop: $('.navbar').offset().top
+            }, 1000);
+
         })
         //if the call is failing
         .fail(function (jqXHR, error, errorThrown) {
@@ -707,4 +717,7 @@ $('#user-list').on('click', '.cancel-button', function (event) {
 
     $('.js-delete-entry').hide();
     $('.js-edit-entry').hide();
+    $('html, body').animate({
+        scrollTop: $(this).closest('.entries-container').offset().top
+    }, 1000);
 });
