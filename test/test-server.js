@@ -4,18 +4,17 @@ const {
     closeServer
 } = require('../server');
 
-
 var chai = require('chai');
-var chaiHttp = require('chai-http');
 
+var chaiHttp = require('chai-http');
 
 var entry = require('../models/entry.js');
 
 var should = chai.should();
 
 chai.use(chaiHttp);
+
 describe('shakespeare-passport-node-capstone', function () {
-    //    it('Should ', function () {});
     it('should add an entry on POST', function () {
         chai.request(app)
             .post('/entry/create')
@@ -29,17 +28,6 @@ describe('shakespeare-passport-node-capstone', function () {
                 inputLocation: "Santa Barbara, CA",
                 inputNotes: "With A FORK!",
                 loggedInUserName: "paul.thomp@gmail.com"
-                //            {
-                //            entryType,
-                //            inputDate,
-                //            inputPlay,
-                //            inputAuthor,
-                //            inputRole,
-                //            inputCo,
-                //            inputLocation,
-                //            inputNotes,
-                //            loggedInUserName
-                //        }
             })
             .then(function (err, res) {
                 //should.equal(err, null);
@@ -47,23 +35,33 @@ describe('shakespeare-passport-node-capstone', function () {
                 res.should.be.json;
                 res.body.should.be.a('object');
                 done();
-            });
+            })
+            .catch(err => console.log({
+                err
+            }));
     });
     it('Should Update an entry', function () {
         chai.request(app)
             .put('/entry/:id') //<-------????? Put request to '/entry/:id'
             .then(function (res) {
                 res.should.have.status(201);
+                done();
             })
+            .catch(err => console.log({
+                err
+            }));
     });
-
     it('Should Delete an entry', function () {
 
         chai.request(app)
             .delete('/entry/:id')
             .then(function (res) {
                 res.should.have.status(201);
+                done();
             })
+            .catch(err => console.log({
+                err
+            }));
 
     });
     it('Should Get All Users entries', function () {
@@ -72,8 +70,11 @@ describe('shakespeare-passport-node-capstone', function () {
             .get('/entry-date/:user') //<-------????? Get request to '/entry-date/:user'
             .then(function (res) {
                 res.should.have.status(201);
+                done();
             })
-
+            .catch(err => console.log({
+                err
+            }));
     });
 
 });

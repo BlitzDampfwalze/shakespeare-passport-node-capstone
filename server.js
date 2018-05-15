@@ -202,7 +202,6 @@ app.post('/entry/create', (req, res) => {
         loggedInUserName
     }, (err, item) => {
         if (err) {
-            console.log(err);
             return res.status(500).json({
                 message: 'Internal Server Error'
             });
@@ -223,7 +222,7 @@ app.put('/entry/:id', function (req, res) {
             toUpdate[field] = req.body[field];
         }
     });
-    console.log(toUpdate);
+//    console.log(toUpdate);
     Entry
         .findByIdAndUpdate(req.params.id, {
             $set: toUpdate
