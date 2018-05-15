@@ -2,7 +2,7 @@
 //definitions: function , objects/data, variables, etc.
 
 function addEntryRenderHTML(results) {
-
+    console.log(results);
     let htmlString = ``;
     let displayDate = results.inputDate.substring(0, 10);
     let formattedDisplayDate = displayDate.split("-");
@@ -83,7 +83,7 @@ function addEntryRenderHTML(results) {
     htmlString += `<br>`;
     htmlString += `<label for="inputDate">Date</label>`;
     htmlString += `<input type="date" class="inputDate" value="${displayDate}">`;
-//    htmlString += `<button type="button" class="date-text">Need Date Range?</button>`;
+    //    htmlString += `<button type="button" class="date-text">Need Date Range?</button>`;
     htmlString += `<div class="play-info">`;
     htmlString += `<label for="inputPlay">Play</label>`;
     htmlString += `<input type="text" class="inputPlay" placeholder="Play" value="${results.inputPlay}">`;

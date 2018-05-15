@@ -202,6 +202,7 @@ app.post('/entry/create', (req, res) => {
         loggedInUserName
     }, (err, item) => {
         if (err) {
+            console.log(err);
             return res.status(500).json({
                 message: 'Internal Server Error'
             });

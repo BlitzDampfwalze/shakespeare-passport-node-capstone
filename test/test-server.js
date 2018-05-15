@@ -9,37 +9,49 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 
 
-var recipe = require('../models/recipe.js');
-var list = require('../models/list.js');
+var entry = require('../models/entry.js');
+
 var should = chai.should();
 
 chai.use(chaiHttp);
 describe('shakespeare-passport-node-capstone', function () {
     //    it('Should ', function () {});
-    it('should add an entry on POST', function (done) {
+    it('should add an entry on POST', function () {
         chai.request(app)
             .post('/entry/create')
             .send({
-                'entryType': "performed",
-                'inputDate': "2015/25/01",
-                'inputPlay': "King Lear",
-                'inputAuthor': "William Shakespeare",
-                'inputRole': "Goneril",
-                'inputCo': "Kingman Shakespeare Festival",
-                'inputLocation': "Santa Barbara, CA",
-                'inputNotes': "With A FORK!",
-                'loggedInUserName': "paul.thomp@gmail.com"
+                entryType: "performed",
+                inputDate: "2014-11-05T00:00:00.000Z",
+                inputPlay: "King Lear",
+                inputAuthor: "William Shakespeare",
+                inputRole: "Goneril",
+                inputCo: "Kingman Shakespeare Festival",
+                inputLocation: "Santa Barbara, CA",
+                inputNotes: "With A FORK!",
+                loggedInUserName: "paul.thomp@gmail.com"
+                //            {
+                //            entryType,
+                //            inputDate,
+                //            inputPlay,
+                //            inputAuthor,
+                //            inputRole,
+                //            inputCo,
+                //            inputLocation,
+                //            inputNotes,
+                //            loggedInUserName
+                //        }
             })
-            .end(function (err, res) {
+            .then(function (err, res) {
                 //should.equal(err, null);
                 res.should.have.status(201);
-
+                res.should.be.json;
+                res.body.should.be.a('object');
                 done();
             });
     });
     it('Should Update an entry', function () {
         chai.request(app)
-            .update('/entry/:id') //<-------????? Put request to '/entry/:id'
+            .put('/entry/:id') //<-------????? Put request to '/entry/:id'
             .then(function (res) {
                 res.should.have.status(201);
             })
@@ -57,7 +69,7 @@ describe('shakespeare-passport-node-capstone', function () {
     it('Should Get All Users entries', function () {
 
         chai.request(app)
-            .getAll('/entry-date/:user') //<-------????? Get request to '/entry-date/:user'
+            .get('/entry-date/:user') //<-------????? Get request to '/entry-date/:user'
             .then(function (res) {
                 res.should.have.status(201);
             })
