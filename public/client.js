@@ -440,6 +440,7 @@ $(".login-form").submit(function (event) {
                 console.log(jqXHR);
                 console.log(error);
                 console.log(errorThrown);
+                alert('Incorrect Username or Password');
             });
     };
 

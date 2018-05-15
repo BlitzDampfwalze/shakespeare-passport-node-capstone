@@ -16,7 +16,7 @@ Delete Entry |
 ## User Cases
 This app is for three types of users:
 1. READ - For Theatrical Students, so that they can track Plays that have been read (by title and author, optional edition) by date and include Notes.
-2. SEEN - For Theatre-Goers (enthusiasts, specialists, insert-word-here), so that they can track all the shows the have seen, where and when they have seen them, and any specific Notes they would like to add.
+2. SEEN - For Theatre-Goers (enthusiasts, specialists, etc.), so that they can track all the shows the have seen, where and when they have seen them, and any specific Notes they would like to add.
 3. PERFORMED - For Theatrical Artists and Perfomers, so that they can record all shows they have performed in by Role, Location, Date and include Notes (and Lines).
 
 ### UI Flow

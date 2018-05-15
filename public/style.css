@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Rock+Salt|Caudex|Puritan');
 @import url('https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC');
+@import url('https://fonts.googleapis.com/css?family=Lobster|Redressed');
+
 
 * {
     box-sizing: border-box;
@@ -21,7 +23,6 @@ body {
 
 h1 {
     font-family: 'IM Fell French Canon SC', serif;
-    /* text-transform: uppercase; */
     font-size: 2.2rem;
     margin: 1rem .5rem;
 
@@ -353,7 +354,7 @@ p {
 }
 
 .info-label {
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin: 10px 0 5px;
     font-weight: bold;
 }
@@ -361,6 +362,8 @@ p {
 
 .type {
     font-size: 2rem;
+    color: grey;
+    font-family: Redressed;
 }
 
 /*
@@ -635,9 +638,11 @@ textarea {
 
 @media only screen and (min-width: 768px) {
 
+    /*
     body {
         color: red;
     }
+*/
     html {
         font-size: 22px;
     }
@@ -672,9 +677,11 @@ textarea {
 /*ipad lanscape / small laptop*/
 
 @media only screen and (min-width: 1024px) {
+    /*
     body {
         color: aliceblue;
     }
+*/
     h1 {
         font-size: 3rem;
         margin: 1.9rem 1rem;
