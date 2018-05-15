@@ -1,7 +1,6 @@
 ## "Shakespeare Passport" | Thinkful Node Capstone
 The Shakespeare Passport app is designed for Theatrical Performers, Theatre Goers, and Theatre enthusiast alike. It allows a User to compile a list of plays by SEEN, PERFORMED, and READ tracking date and location.
 
-basic structure (https://github.com/mariusbanea/not-just-luck-thinkful-full-stack-capstone)
 ## Screenshots
 
 Home Page View | Login Page View #2
@@ -22,7 +21,7 @@ This app is for three types of users:
 
 ### UI Flow
 ![UI Flow handwritten draft](https://github.com/KatiLong/node-capstone/blob/master/github-images/node-capstone-user-flow.jpg)
-Login/Create an Account Page (demo account) -> Create Login information -> User Account Dashboard (Any entries populate here) --> Add Entry | Delete Entry (if entry exists) | Edit Entry |||| View All | View Performer Page | View Seen Shows | View Read (exists at bottom of other pages) -> Logout Button
+
 ### Wireframe _main
 ![Wireframe _Main](https://github.com/KatiLong/node-capstone/blob/master/github-images/wireframe-v1.jpg)
 
@@ -31,17 +30,18 @@ You can access a working prototype of the app here: https://shakespeare-passport
 
 ## Functionality
 The app's functionality includes:
-* Every User the ability to create an account
+* Every User has the ability to create an account that stores information unique to them
+* User can Add Entries, Update Entries, and Delete Entries
+* User can sort entries by: Date & Type (Read, Seen, Performed)
 
 ## Technology
-* FRONTEND: HTML5 | CSS3 | JavaScript ES6 | jQuery
-* BACKEND: Node.js | Express.js | Mocha | Chai | RESTful API Endpoints | MongoDB | Mongoose
+* Front-End: HTML5 | CSS3 | JavaScript ES6 | jQuery
+* Back-End: Node.js | Express.js | Mocha | Chai | RESTful API Endpoints | MongoDB | Mongoose
 
-* The app uses AJAX JSON calls to the <a href="https://maps.googleapis.com/maps/api">Google Maps</a> Open Platform API, including the Places Library, to return an interactive map to search for Museums in a given area with clickable icons, which return Place Details for each museum result.
 
 
 ## Responsive
-App is strongly built to be usuable on mobile devises, as well as responsive across mobile, tablet, laptop, and desktop screen resolutions.
+App is strongly built to be usuable on mobile devices, as well as responsive across mobile, tablet, laptop, and desktop screen resolutions.
 
 ## Development Roadmap
 This is v1.0 of the app, but future enhancements are expected to include:
