@@ -253,8 +253,6 @@ p {
     margin: 0 2.5% 2.5%;
     border: 1px whitesmoke solid;
     padding: 1%;
-    min-height: 400px;
-    min-height: 70vh;
     border-radius: 5px;
 }
 
@@ -547,9 +545,11 @@ textarea {
 /*iPhone landscape*/
 
 @media only screen and (min-width: 480px) {
+    /*
     body {
         color: green;
     }
+*/
     html {
         font-size: 18px;
     }
@@ -725,15 +725,17 @@ textarea {
         /*Height set so that this view shows correctly*/
         height: 25vh;
     }
-/*
+
     #stage {
         text-align: center;
         display: block;
     }
-*/
+
+/*
     .entry-div {
-        /*Make large entries scrollable*/
+        Make large entries scrollable
         overflow: scroll;
         max-height: 300px;
     }
+*/
 }
